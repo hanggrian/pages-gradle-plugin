@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta content="chrome=1" http-equiv="X-UA-Compatible">
+        <title>pages-gradle-plugin by Hendra Anggrian</title>
+        <link href="styles/main.css" rel="stylesheet">
+        <link href="styles/pygment_trac.css" rel="stylesheet">
+        <meta content="width=device-width" name="viewport">
+        <script src="scripts/theme.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <header>
+                <h1>pages-gradle-plugin</h1>
+                <p>Static webpages generator for GitHub pages</p>
+                <p class="view">
+                    <a href="https://github.com/hendraanggrian/pages-gradle-plugin">View the Project on GitHub <small>hendraanggrian/pages-gradle-plugin</small></a>
+                </p>
+                <ul>
+                    <li>
+                        <a href="dokka">View<strong>Documentation</strong></a>
+                    </li>
+                </ul>
+            </header>
+            <section>
+                <p>
+                    <a href="https://plugins.gradle.org/plugin/com.hendraanggrian.pages.minimal"><img alt="Plugin Portal" src="https://img.shields.io/maven-metadata/v?label=plugin-portal&amp;metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Fcom%2Fhendraanggrian%2Fpages%2Fcom.hendraanggrian.pages.gradle.plugin%2Fmaven-metadata.xml"></a>
+<a href="https://travis-ci.com/github/hendraanggrian/pages-gradle-plugin"><img alt="Travis CI" src="https://img.shields.io/travis/com/hendraanggrian/pages-gradle-plugin"></a>
+<a href="https://openjdk.java.net/projects/jdk8"><img alt="OpenJDK" src="https://img.shields.io/badge/JDK-1.8+-orange"></a>
+<a href="https://ktlint.github.io"><img alt="ktlint" src="https://img.shields.io/badge/code%20style-%E2%9D%A4-ff4081"></a>
+                </p>
+                
+                <h1>Pages Gradle Plugin</h1>
+                
+                <p>Static webpages generator for GitHub pages.</p>
+                
+                <h2>Download</h2>
+                
+                <p>Using plugins DSL:</p>
+                
+                <pre><code class="language-gradle">plugins {
+    id('com.hendraanggrian.pages') version "$version"
+}
+</code></pre>
+                
+                <p>Using legacy plugin application:</p>
+                
+                <pre><code class="language-gradle">buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath("com.hendraanggrian:pages-gradle-plugin:$version")
+    }
+}
+
+apply plugin: 'com.hendraanggrian.pages'
+</code></pre>
+                
+                <h2>Usage</h2>
+                
+                <h3>
+                    <a href="https://github.com/hendraanggrian/minimal-theme">Minimal</a>
+                </h3>
+                
+                <p>At the moment, this is the only feature.</p>
+                
+                <pre><code class="language-gradle">buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath("com.hendraanggrian:pages-gradle-plugin:$version") {
+            capabilities {
+                requireCapability("com.hendraanggrian.pages:minimal:version")
+            }
+        }
+    }
+}
+</code></pre>
+                
+                <p>
+                    Configure minimal theme by invoking <code>minimal</code> DSL.
+                </p>
+                
+                <pre><code class="language-gradle">plugins {
+    id('com.hendraanggrian.pages')
+}
+
+pages {
+    minimal {
+        authorName.set('Hendra Anggrian')
+        projectName.set('My Project')
+        projectDescription.set('A very awesome project')
+        headerButtons {
+            button("Download", "Sources", "https://github.com/hendraanggrian/my-project/zipball/main")
+        }
+    }
+}
+</code></pre>
+                
+            </section>
+            <footer>
+                <p>
+                    <button onclick="toggleDarkMode()" title="Toggle dark mode"><span id="theme-toggle"></span></button>
+                </p>
+                <p>
+                    This project is maintained by <a href="https://github.com/hendraanggrian">Hendra Anggrian</a>
+                </p>
+                <small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/hendraanggrian/minimal-theme">minimal</a></small>
+            </footer>
+        </div>
+        <script src="scripts/scale.fix.js"></script>
+    </body>
+</html>
