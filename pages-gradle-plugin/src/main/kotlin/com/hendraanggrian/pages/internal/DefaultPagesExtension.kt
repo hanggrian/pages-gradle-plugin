@@ -1,8 +1,8 @@
 package com.hendraanggrian.pages.internal
 
-import com.hendraanggrian.pages.Pages
-import com.hendraanggrian.pages.minimal.MinimalSpec
-import com.hendraanggrian.pages.minimal.MinimalSpecImpl
+import com.hendraanggrian.pages.PagesExtension
+import com.hendraanggrian.pages.minimal.MinimalPagesOptions
+import com.hendraanggrian.pages.minimal.MinimalPagesOptionsImpl
 import com.hendraanggrian.pages.minimal.resources.dark_mode_svg
 import com.hendraanggrian.pages.minimal.resources.getMainCss
 import com.hendraanggrian.pages.minimal.resources.light_mode_svg
@@ -43,7 +43,7 @@ import org.gradle.api.provider.MapProperty
 import org.gradle.kotlin.dsl.mapProperty
 import org.w3c.dom.Document
 
-open class DefaultPages(private val project: Project) : Pages {
+open class DefaultPagesExtension(private val project: Project) : PagesExtension {
 
     override val resourcesMap: MapProperty<String, String> = project.objects.mapProperty<String, String>()
         .convention(mapOf())
@@ -54,10 +54,10 @@ open class DefaultPages(private val project: Project) : Pages {
     override val outputDirectory: DirectoryProperty = project.objects.directoryProperty()
         .convention(project.layout.buildDirectory.dir("pages"))
 
-    override fun minimal(action: Action<MinimalSpec>) {
-        val minimal = MinimalSpecImpl(project.name)
-        action.execute(minimal)
-        checkNotNull(minimal.markdownFile) { "markdownFile cannot be empty" }
+    override fun minimal(action: Action<MinimalPagesOptions>) {
+        val options = MinimalPagesOptionsImpl(project.name)
+        action.execute(options)
+        checkNotNull(options.markdownFile) { "markdownFile cannot be empty" }
 
         resourcesMap.put("images/dark_mode.svg", dark_mode_svg)
         resourcesMap.put("images/light_mode.svg", light_mode_svg)
@@ -66,10 +66,10 @@ open class DefaultPages(private val project: Project) : Pages {
         resourcesMap.put(
             "styles/main.css",
             getMainCss(
-                minimal.accentColor,
-                minimal.accentLightHoverColor,
-                minimal.accentDarkHoverColor,
-                minimal.headerButtons.size
+                options.accentColor,
+                options.accentLightHoverColor,
+                options.accentDarkHoverColor,
+                options.headerButtons.size
             )
         )
         resourcesMap.put("styles/pygment_trac.css", pygment_trac_css)
@@ -80,8 +80,8 @@ open class DefaultPages(private val project: Project) : Pages {
                 head {
                     meta(charset = "utf-8")
                     meta(content = "chrome=1") { httpEquiv = "X-UA-Compatible" }
-                    title(minimal.authorName?.let { "${minimal.projectName} by $it" } ?: minimal.projectName)
-                    minimal.icon?.let { link(rel = "icon", href = it) }
+                    title(options.authorName?.let { "${options.projectName} by $it" } ?: options.projectName)
+                    options.icon?.let { link(rel = "icon", href = it) }
                     link(rel = "stylesheet", href = "styles/main.css")
                     link(rel = "stylesheet", href = "styles/pygment_trac.css")
                     meta(name = "viewport", content = "width=device-width")
@@ -90,9 +90,9 @@ open class DefaultPages(private val project: Project) : Pages {
                 body {
                     div(classes = "wrapper") {
                         header {
-                            h1 { text(minimal.projectName) }
-                            minimal.projectDescription?.let { p { text(it) } }
-                            minimal.projectUrl?.let { url ->
+                            h1 { text(options.projectName) }
+                            options.projectDescription?.let { p { text(it) } }
+                            options.projectUrl?.let { url ->
                                 p(classes = "view") {
                                     a(href = url) {
                                         if ("github.com" in url) {
@@ -108,15 +108,15 @@ open class DefaultPages(private val project: Project) : Pages {
                                     }
                                 }
                             }
-                            if (minimal.headerButtons.isNotEmpty()) {
+                            if (options.headerButtons.isNotEmpty()) {
                                 ul {
-                                    minimal.headerButtons.forEach { (line1, line2, url) ->
+                                    options.headerButtons.forEach { (line1, line2, url) ->
                                         li { a(href = url) { text(line1); strong { text(line2) } } }
                                     }
                                 }
                             }
                         }
-                        section { unsafe { +htmlRenderer.render(parser.parse(minimal.markdownFile!!.readText())) } }
+                        section { unsafe { +htmlRenderer.render(parser.parse(options.markdownFile!!.readText())) } }
                         footer {
                             p {
                                 button {
@@ -126,14 +126,14 @@ open class DefaultPages(private val project: Project) : Pages {
                                 }
                             }
                             p {
-                                if (minimal.authorName != null && minimal.authorUrl != null) {
+                                if (options.authorName != null && options.authorUrl != null) {
                                     text("This project is maintained by ")
-                                    a(href = minimal.authorUrl) { text(minimal.authorName!!) }
-                                } else if (minimal.authorName != null) {
-                                    text("This project is maintained by ${minimal.authorName}")
+                                    a(href = options.authorUrl) { text(options.authorName!!) }
+                                } else if (options.authorName != null) {
+                                    text("This project is maintained by ${options.authorName}")
                                 }
                             }
-                            if (minimal.footerCredit) {
+                            if (options.footerCredit) {
                                 small {
                                     text("Hosted on GitHub Pages — Theme by ")
                                     a(href = "https://github.com/hendraanggrian/minimal-theme") { text("minimal") }

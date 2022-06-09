@@ -2,28 +2,24 @@ group = RELEASE_GROUP
 version = RELEASE_VERSION
 
 plugins {
+    `java-gradle-plugin`
     `kotlin-dsl`
     dokka
+    spotless
     `gradle-publish`
-}
-
-kotlin {
-    jvmToolchain {
-        (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(8))
-    }
 }
 
 java {
     registerFeature("minimal") {
         usingSourceSet(sourceSets.main.get())
-        capability("$RELEASE_GROUP.pages", "minimal", RELEASE_VERSION)
+        capability(RELEASE_GROUP, "pages-minimal", RELEASE_VERSION)
     }
 }
 
 gradlePlugin {
     plugins.register("pagesPlugin") {
         id = "$RELEASE_GROUP.pages"
-        implementationClass = "$RELEASE_GROUP.pages.PagesPlugin"
+        implementationClass = "$id.PagesPlugin"
         displayName = "Pages plugin"
         description = RELEASE_DESCRIPTION
     }
@@ -31,24 +27,20 @@ gradlePlugin {
 }
 
 pluginBundle {
-    website = RELEASE_GITHUB
-    vcsUrl = "$RELEASE_GITHUB.git"
+    website = RELEASE_URL
+    vcsUrl = "$RELEASE_URL.git"
     description = RELEASE_DESCRIPTION
     tags = listOf("website", "github-pages")
 }
 
+val minimalImplementation by configurations.getting
+
 dependencies {
-    "minimalImplementation"(kotlin("stdlib", VERSION_KOTLIN))
-    "minimalImplementation"(kotlinx("html-jvm", VERSION_HTML))
-    "minimalImplementation"(commonmark)
+    implementation(kotlin("stdlib", VERSION_KOTLIN))
+    minimalImplementation(kotlin("stdlib", VERSION_KOTLIN))
+    minimalImplementation(kotlinx("html-jvm", VERSION_HTML))
+    minimalImplementation(commonmark)
     testImplementation(gradleTestKit())
     testImplementation(kotlin("test-junit", VERSION_KOTLIN))
+    testImplementation(google("truth", version = VERSION_TRUTH))
 }
-
-tasks {
-    dokkaHtml {
-        outputDirectory.set(buildDir.resolve("dokka/dokka"))
-    }
-}
-
-ktlint()

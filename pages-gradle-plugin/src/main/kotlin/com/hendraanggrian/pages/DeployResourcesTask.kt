@@ -9,8 +9,7 @@ import org.gradle.api.tasks.TaskAction
 import org.gradle.kotlin.dsl.mapProperty
 
 /** Task to run when `deployResources` command is executed. */
-open class DeployResourcesTask : DefaultTask(), ResourcesDeployment {
-
+open class DeployResourcesTask : DefaultTask(), DeployResourcesSpec {
     @Input
     override val resourcesMap: MapProperty<String, String> = project.objects.mapProperty<String, String>()
         .convention(mapOf())

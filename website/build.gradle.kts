@@ -5,11 +5,11 @@ plugins {
 
 pages {
     minimal {
-        authorName = "Hendra Anggrian"
-        authorUrl = "https://github.com/hendraanggrian"
+        authorName = DEVELOPER_NAME
+        authorUrl = DEVELOPER_URL
         projectName = RELEASE_ARTIFACT
         projectDescription = RELEASE_DESCRIPTION
-        projectUrl = RELEASE_GITHUB
+        projectUrl = RELEASE_URL
         markdownFile = rootDir.resolve("docs/README.md")
         headerButtons {
             button("View", "Documentation", "dokka")
@@ -18,7 +18,7 @@ pages {
 }
 
 gitPublish {
-    repoUri.set("git@github.com:hendraanggrian/$RELEASE_ARTIFACT.git")
+    repoUri.set("git@github.com:$DEVELOPER_ID/$RELEASE_ARTIFACT.git")
     branch.set("gh-pages")
     contents.from(pages.outputDirectory, "$rootDir/$RELEASE_ARTIFACT/build/dokka")
 }

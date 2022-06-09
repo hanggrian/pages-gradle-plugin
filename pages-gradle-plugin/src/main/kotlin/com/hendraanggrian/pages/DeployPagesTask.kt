@@ -14,9 +14,8 @@ import javax.xml.transform.TransformerFactory
 import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
 
-/** Task to run when `deployWebpages` command is executed. */
-open class DeployPagesTask : DefaultTask(), PagesDeployment {
-
+/** Task to run when `deployPages` command is executed. */
+open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
     @Input
     override val webpagesMap: MapProperty<String, Document> = project.objects.mapProperty()
 

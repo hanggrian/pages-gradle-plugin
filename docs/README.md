@@ -37,20 +37,17 @@ apply plugin: 'com.hendraanggrian.pages'
 Usage
 -----
 
+On its own main dependency, the plugin does nothing. Declare a feature by invoking `requireCapability`.
+
 ### [Minimal](https://github.com/hendraanggrian/minimal-theme)
 
 At the moment, this is the only feature.
 
 ```gradle
-buildscript {
-    repositories {
-        gradlePluginPortal()
-    }
-    dependencies {
-        classpath("com.hendraanggrian:pages-gradle-plugin:$version") {
-            capabilities {
-                requireCapability("com.hendraanggrian.pages:minimal:version")
-            }
+dependencies {
+    classpath("com.hendraanggrian:pages-gradle-plugin:$version") {
+        capabilities {
+            requireCapability("com.hendraanggrian:pages-minimal")
         }
     }
 }
