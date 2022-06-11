@@ -17,10 +17,6 @@ open class DeployResourcesTask : DefaultTask(), DeployResourcesSpec {
     @OutputDirectory
     override val outputDirectory: DirectoryProperty = project.objects.directoryProperty()
 
-    init {
-        outputs.upToDateWhen { false } // always consider this task out of date
-    }
-
     @TaskAction
     fun deploy() {
         check(resourcesMap.get().isNotEmpty()) { "No pages to write" }

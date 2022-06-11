@@ -1,19 +1,14 @@
-group = RELEASE_GROUP
-version = RELEASE_VERSION
-
 plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
-    dokka
-    spotless
-    `gradle-publish`
+    id("org.jetbrains.dokka")
+    id("com.diffplug.spotless")
+    id("com.gradle.plugin-publish")
 }
 
-java {
-    registerFeature("minimal") {
-        usingSourceSet(sourceSets.main.get())
-        capability(RELEASE_GROUP, "pages-minimal", RELEASE_VERSION)
-    }
+java.registerFeature("minimal") {
+    usingSourceSet(sourceSets.main.get())
+    capability(RELEASE_GROUP, "pages-minimal", RELEASE_VERSION)
 }
 
 gradlePlugin {
@@ -36,11 +31,9 @@ pluginBundle {
 val minimalImplementation by configurations.getting
 
 dependencies {
-    implementation(kotlin("stdlib", VERSION_KOTLIN))
-    minimalImplementation(kotlin("stdlib", VERSION_KOTLIN))
-    minimalImplementation(kotlinx("html-jvm", VERSION_HTML))
-    minimalImplementation(commonmark)
+    minimalImplementation(libs.kotlinx.html.jvm)
+    minimalImplementation(libs.commonmark.ext.gfm.tables)
     testImplementation(gradleTestKit())
-    testImplementation(kotlin("test-junit", VERSION_KOTLIN))
-    testImplementation(google("truth", version = VERSION_TRUTH))
+    testImplementation(testLibs.kotlin.junit)
+    testImplementation(testLibs.truth)
 }

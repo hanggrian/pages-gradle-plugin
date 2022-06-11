@@ -22,10 +22,6 @@ open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
     @OutputDirectory
     override val outputDirectory: DirectoryProperty = project.objects.directoryProperty()
 
-    init {
-        outputs.upToDateWhen { false } // always consider this task out of date
-    }
-
     private val transformer: Transformer = TransformerFactory.newInstance().newTransformer()
 
     @TaskAction

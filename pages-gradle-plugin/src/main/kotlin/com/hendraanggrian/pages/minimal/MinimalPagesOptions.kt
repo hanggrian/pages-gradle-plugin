@@ -1,5 +1,6 @@
 package com.hendraanggrian.pages.minimal
 
+import com.hendraanggrian.pages.PagesFeatureMarker
 import org.gradle.api.Action
 import org.gradle.kotlin.dsl.invoke
 import java.io.File
@@ -8,6 +9,7 @@ import java.io.File
  * Configure minimal feature.
  * Capability notation of `com.hendraanggrian:pages-minimal` must be requested.
  */
+@PagesFeatureMarker
 interface MinimalPagesOptions {
     /**
      * Accent color of the webpage.
