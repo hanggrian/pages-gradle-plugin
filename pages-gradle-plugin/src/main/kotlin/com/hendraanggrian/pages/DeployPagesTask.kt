@@ -17,6 +17,10 @@ import javax.xml.transform.stream.StreamResult
 /** Task to run when `deployPages` command is executed. */
 open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
     @Input
+    override val resourcesMap: MapProperty<String, String> = project.objects.mapProperty<String, String>()
+        .convention(mapOf())
+
+    @Input
     override val webpagesMap: MapProperty<String, Document> = project.objects.mapProperty()
 
     @OutputDirectory
@@ -26,14 +30,27 @@ open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
 
     @TaskAction
     fun deploy() {
-        check(webpagesMap.get().isNotEmpty()) { "No pages to write" }
+        check(resourcesMap.get().isNotEmpty() && webpagesMap.get().isNotEmpty()) { "Nothing to write" }
+
+        logger.info("Writing resources:")
+        resourcesMap.get().forEach { (filepath, content) ->
+            logger.info("  $filepath")
+            val dirname = filepath.substringBefore('/')
+            val filename = filepath.substringAfter('/')
+            val targetDir = outputDirectory.asFile.get().resolve(dirname)
+            if (!targetDir.exists()) {
+                targetDir.mkdir()
+            }
+            targetDir.resolve(filename).writeText(content)
+        }
+
+        logger.info("Writing pages:")
         webpagesMap.get().forEach { (filename, document) ->
-            logger.info("Writing '$filename'...")
+            logger.info("  $filename")
             transformer.transform(
                 DOMSource(document),
                 StreamResult(FileWriter(outputDirectory.asFile.get().resolve(filename)))
             )
         }
-        logger.info("Done")
     }
 }

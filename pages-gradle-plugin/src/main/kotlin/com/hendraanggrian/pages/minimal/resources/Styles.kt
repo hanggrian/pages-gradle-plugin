@@ -366,6 +366,7 @@ fun getMainCss(accent: String, accentLightHover: String, accentDarkHover: String
         color: black;
       }
     }
+    
 """.trimIndent()
 
 val pygment_trac_css = """
@@ -438,4 +439,5 @@ val pygment_trac_css = """
     .type-csharp .highlight .nn { color: #000000 }
     .type-csharp .highlight .s { color: #A31515 }
     .type-csharp .highlight .sc { color: #A31515 }
+    
 """.trimIndent()

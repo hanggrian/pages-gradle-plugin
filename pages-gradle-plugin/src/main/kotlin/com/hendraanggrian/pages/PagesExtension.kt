@@ -7,25 +7,16 @@ import org.gradle.api.provider.MapProperty
 import org.w3c.dom.Document
 
 /** Extension instance when configuring `pages` in Gradle scripts. */
-interface PagesExtension : DeployResourcesSpec, DeployPagesSpec {
+interface PagesExtension : DeployPagesSpec {
     /** Use minimal feature. */
     fun minimal(action: Action<MinimalPagesOptions>)
 }
 
-/** A specification for generating website resources. */
-interface DeployResourcesSpec {
+/** A specification for generating website HTMLs. */
+interface DeployPagesSpec {
     /** Resources mapping with filepath as key and content as value. */
     val resourcesMap: MapProperty<String, String>
 
-    /**
-     * Webpages output directory.
-     * Default is `$projectDir/build/pages`.
-     */
-    val outputDirectory: DirectoryProperty
-}
-
-/** A specification for generating website HTMLs. */
-interface DeployPagesSpec {
     /** Webpages mapping with filename as key and content as value. */
     val webpagesMap: MapProperty<String, Document>
 

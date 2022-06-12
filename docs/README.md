@@ -1,15 +1,12 @@
 [![Plugin Portal](https://img.shields.io/maven-metadata/v?label=plugin-portal&metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Fcom%2Fhendraanggrian%2Fpages%2Fcom.hendraanggrian.pages.gradle.plugin%2Fmaven-metadata.xml)](https://plugins.gradle.org/plugin/com.hendraanggrian.pages.minimal)
 [![Travis CI](https://img.shields.io/travis/com/hendraanggrian/pages-gradle-plugin)](https://travis-ci.com/github/hendraanggrian/pages-gradle-plugin)
-[![OpenJDK](https://img.shields.io/badge/JDK-1.8+-orange)](https://openjdk.java.net/projects/jdk8)
-[![ktlint](https://img.shields.io/badge/code%20style-%E2%9D%A4-ff4081)](https://ktlint.github.io)
+[![OpenJDK](https://img.shields.io/badge/JDK-1.8+-informational)](https://openjdk.java.net/projects/jdk8)
 
-Pages Gradle Plugin
-===================
+# Pages Gradle Plugin
 
 Static webpages generator for GitHub pages.
 
-Download
---------
+## Download
 
 Using plugins DSL:
 
@@ -34,12 +31,13 @@ buildscript {
 apply plugin: 'com.hendraanggrian.pages'
 ```
 
-Usage
------
+## Usage
 
 On its own main dependency, the plugin does nothing. Declare a feature by invoking `requireCapability`.
 
 ### [Minimal](https://github.com/hendraanggrian/minimal-theme)
+
+![Minimal preview](images/preview_minimal.png)
 
 At the moment, this is the only feature.
 

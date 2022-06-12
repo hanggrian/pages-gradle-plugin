@@ -1,6 +1,7 @@
 plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
+    id("kover")
     id("org.jetbrains.dokka")
     id("com.diffplug.spotless")
     id("com.gradle.plugin-publish")
@@ -15,7 +16,7 @@ gradlePlugin {
     plugins.register("pagesPlugin") {
         id = "$RELEASE_GROUP.pages"
         implementationClass = "$id.PagesPlugin"
-        displayName = "Pages plugin"
+        displayName = "Pages Plugin"
         description = RELEASE_DESCRIPTION
     }
     testSourceSets(sourceSets.test.get())

@@ -36,10 +36,6 @@ class PagesFunctionalTest {
             """.trimIndent()
         )
         assertFails {
-            runner.withArguments(PagesPlugin.TASK_DEPLOY_RESOURCES).build()
-                .task(":${PagesPlugin.TASK_DEPLOY_RESOURCES}")
-        }
-        assertFails {
             runner.withArguments(PagesPlugin.TASK_DEPLOY_PAGES).build()
                 .task(":${PagesPlugin.TASK_DEPLOY_PAGES}")
         }

@@ -1,9 +1,21 @@
+import com.hendraanggrian.pages.PagesExtension
+
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath(plugs.pages) { features("pages-minimal") }
+    }
+}
+
+plugins.apply("com.hendraanggrian.pages")
+
 plugins {
-    id("com.hendraanggrian.pages")
     id("org.ajoberstar.git-publish")
 }
 
-pages {
+extensions.configure<PagesExtension> {
     minimal {
         authorName = DEVELOPER_NAME
         authorUrl = DEVELOPER_URL
@@ -20,7 +32,11 @@ pages {
 gitPublish {
     repoUri.set("git@github.com:$DEVELOPER_ID/$RELEASE_ARTIFACT.git")
     branch.set("gh-pages")
-    contents.from(pages.outputDirectory, "$rootDir/$RELEASE_ARTIFACT/build/dokka")
+    contents.from(
+        extensions.getByType<PagesExtension>().outputDirectory,
+        "$rootDir/docs",
+        "$rootDir/$RELEASE_ARTIFACT/build/dokka"
+    )
 }
 
 tasks {

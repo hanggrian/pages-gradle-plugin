@@ -20,6 +20,7 @@ val scale_fix_js = """
         }
       }
     }
+    
 """.trimIndent()
 
 val theme_js = """
@@ -40,4 +41,5 @@ val theme_js = """
       localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(flippedDarkMode))
       return flippedDarkMode
     }
+    
 """.trimIndent()

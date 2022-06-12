@@ -10,13 +10,11 @@ buildscript {
     }
 }
 
-group 'com.example'
-version '1.0'
-
 apply plugin: 'com.hendraanggrian.pages'
 apply plugin: 'org.ajoberstar.git-publish'
 
 pages {
+    outputDirectory.set(file("build/hihi"))
     minimal {
         icon = 'images/my_icon.svg'
         authorName = 'Hendra Anggrian'
