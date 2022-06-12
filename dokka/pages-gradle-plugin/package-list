@@ -1,0 +1,63 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.hendraanggrian.pages.internal////PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.internal/index.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.internal/-default-pages-extension/index.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/DefaultPagesExtension/#org.gradle.api.Project/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.internal/-default-pages-extension/-default-pages-extension.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/minimal/#org.gradle.api.Action[com.hendraanggrian.pages.minimal.MinimalPagesOptions]/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.internal/-default-pages-extension/minimal.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/outputDirectory/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.internal/-default-pages-extension/output-directory.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/resourcesMap/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.internal/-default-pages-extension/resources-map.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/webpagesMap/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.internal/-default-pages-extension/webpages-map.html
+$dokka.location:com.hendraanggrian.pages.minimal.resources////PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal.resources/index.html
+$dokka.location:com.hendraanggrian.pages.minimal.resources//dark_mode_svg/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal.resources/dark_mode_svg.html
+$dokka.location:com.hendraanggrian.pages.minimal.resources//getMainCss/#kotlin.String#kotlin.String#kotlin.String#kotlin.Int/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal.resources/get-main-css.html
+$dokka.location:com.hendraanggrian.pages.minimal.resources//light_mode_svg/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal.resources/light_mode_svg.html
+$dokka.location:com.hendraanggrian.pages.minimal.resources//pygment_trac_css/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal.resources/pygment_trac_css.html
+$dokka.location:com.hendraanggrian.pages.minimal.resources//scale_fix_js/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal.resources/scale_fix_js.html
+$dokka.location:com.hendraanggrian.pages.minimal.resources//theme_js/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal.resources/theme_js.html
+$dokka.location:com.hendraanggrian.pages.minimal////PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/index.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalButton///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-button/index.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalButton/MinimalButton/#kotlin.String#kotlin.String#kotlin.String/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-button/-minimal-button.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalButton/line1/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-button/line1.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalButton/line2/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-button/line2.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalButton/url/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-button/url.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalButtonsScope///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-buttons-scope/index.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalButtonsScope/button/#kotlin.String#kotlin.String#kotlin.String/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-buttons-scope/button.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-pages-options/index.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/accentColor/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-pages-options/accent-color.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/accentDarkHoverColor/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-pages-options/accent-dark-hover-color.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/accentLightHoverColor/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-pages-options/accent-light-hover-color.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/authorName/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-pages-options/author-name.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/authorUrl/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-pages-options/author-url.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/footerCredit/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-pages-options/footer-credit.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/headerButtons/#org.gradle.api.Action[com.hendraanggrian.pages.minimal.MinimalButtonsScope]/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-pages-options/header-buttons.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/icon/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-pages-options/icon.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/markdownFile/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-pages-options/markdown-file.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/projectDescription/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-pages-options/project-description.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/projectName/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-pages-options/project-name.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/projectUrl/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-pages-options/project-url.html
+$dokka.location:com.hendraanggrian.pages////PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/index.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesSpec///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-deploy-pages-spec/index.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesSpec/outputDirectory/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-deploy-pages-spec/output-directory.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesSpec/resourcesMap/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-deploy-pages-spec/resources-map.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesSpec/webpagesMap/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-deploy-pages-spec/webpages-map.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesTask///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-deploy-pages-task/index.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesTask/DeployPagesTask/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-deploy-pages-task/-deploy-pages-task.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesTask/deploy/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-deploy-pages-task/deploy.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesTask/outputDirectory/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-deploy-pages-task/output-directory.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesTask/resourcesMap/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-deploy-pages-task/resources-map.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesTask/webpagesMap/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-deploy-pages-task/webpages-map.html
+$dokka.location:com.hendraanggrian.pages/PagesExtension///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-extension/index.html
+$dokka.location:com.hendraanggrian.pages/PagesExtension/minimal/#org.gradle.api.Action[com.hendraanggrian.pages.minimal.MinimalPagesOptions]/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-extension/minimal.html
+$dokka.location:com.hendraanggrian.pages/PagesFeatureMarker///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-feature-marker/index.html
+$dokka.location:com.hendraanggrian.pages/PagesFeatureMarker/PagesFeatureMarker/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-feature-marker/-pages-feature-marker.html
+$dokka.location:com.hendraanggrian.pages/PagesPlugin.Companion///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-plugin/-companion/index.html
+$dokka.location:com.hendraanggrian.pages/PagesPlugin.Companion/GROUP/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-plugin/-companion/-g-r-o-u-p.html
+$dokka.location:com.hendraanggrian.pages/PagesPlugin.Companion/TASK_DEPLOY_PAGES/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-plugin/-companion/-t-a-s-k_-d-e-p-l-o-y_-p-a-g-e-s.html
+$dokka.location:com.hendraanggrian.pages/PagesPlugin///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-plugin/index.html
+$dokka.location:com.hendraanggrian.pages/PagesPlugin/PagesPlugin/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-plugin/-pages-plugin.html
+$dokka.location:com.hendraanggrian.pages/PagesPlugin/apply/#org.gradle.api.Project/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-plugin/apply.html
+com.hendraanggrian.pages
+com.hendraanggrian.pages.internal
+com.hendraanggrian.pages.minimal
+com.hendraanggrian.pages.minimal.resources
+
