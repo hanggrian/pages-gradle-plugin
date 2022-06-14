@@ -46,10 +46,10 @@ $dokka.location:com.hendraanggrian.pages/DeployPagesTask/deploy/#/PointingToDecl
 $dokka.location:com.hendraanggrian.pages/DeployPagesTask/outputDirectory/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-deploy-pages-task/output-directory.html
 $dokka.location:com.hendraanggrian.pages/DeployPagesTask/resourcesMap/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-deploy-pages-task/resources-map.html
 $dokka.location:com.hendraanggrian.pages/DeployPagesTask/webpagesMap/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-deploy-pages-task/webpages-map.html
+$dokka.location:com.hendraanggrian.pages/PagesDsl///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-dsl/index.html
+$dokka.location:com.hendraanggrian.pages/PagesDsl/PagesDsl/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-dsl/-pages-dsl.html
 $dokka.location:com.hendraanggrian.pages/PagesExtension///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-extension/index.html
 $dokka.location:com.hendraanggrian.pages/PagesExtension/minimal/#org.gradle.api.Action[com.hendraanggrian.pages.minimal.MinimalPagesOptions]/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-extension/minimal.html
-$dokka.location:com.hendraanggrian.pages/PagesFeatureMarker///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-feature-marker/index.html
-$dokka.location:com.hendraanggrian.pages/PagesFeatureMarker/PagesFeatureMarker/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-feature-marker/-pages-feature-marker.html
 $dokka.location:com.hendraanggrian.pages/PagesPlugin.Companion///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-plugin/-companion/index.html
 $dokka.location:com.hendraanggrian.pages/PagesPlugin.Companion/GROUP/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-plugin/-companion/-g-r-o-u-p.html
 $dokka.location:com.hendraanggrian.pages/PagesPlugin.Companion/TASK_DEPLOY_PAGES/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-plugin/-companion/-t-a-s-k_-d-e-p-l-o-y_-p-a-g-e-s.html

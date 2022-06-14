@@ -27,7 +27,8 @@
                 <p>
                     <a href="https://plugins.gradle.org/plugin/com.hendraanggrian.pages.minimal"><img alt="Plugin Portal" src="https://img.shields.io/maven-metadata/v?label=plugin-portal&amp;metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Fcom%2Fhendraanggrian%2Fpages%2Fcom.hendraanggrian.pages.gradle.plugin%2Fmaven-metadata.xml"></a>
 <a href="https://travis-ci.com/github/hendraanggrian/pages-gradle-plugin"><img alt="Travis CI" src="https://img.shields.io/travis/com/hendraanggrian/pages-gradle-plugin"></a>
-<a href="https://openjdk.java.net/projects/jdk8"><img alt="OpenJDK" src="https://img.shields.io/badge/JDK-1.8+-informational"></a>
+<a href="https://app.codecov.io/gh/hendraanggrian/pages-gradle-plugin"><img alt="Codecov" src="https://img.shields.io/codecov/c/github/hendraanggrian/pages-gradle-plugin"></a>
+<a href="https://openjdk.java.net/projects/jdk8"><img alt="OpenJDK" src="https://img.shields.io/badge/jdk-1.8+-informational"></a>
                 </p>
 
                 <h1>Pages Gradle Plugin</h1>
@@ -64,7 +65,7 @@ apply plugin: 'com.hendraanggrian.pages'
                 </p>
 
                 <h3>
-                    <a href="https://github.com/hendraanggrian/minimal-theme">Minimal</a>
+                    Feature: <a href="https://github.com/hendraanggrian/minimal-theme">Minimal</a>
                 </h3>
 
                 <p>
@@ -95,8 +96,9 @@ pages {
         authorName.set('Hendra Anggrian')
         projectName.set('My Project')
         projectDescription.set('A very awesome project')
+        markdownFile.set(file('path/to/README.md'))
         headerButtons {
-            button("Download", "Sources", "https://github.com/hendraanggrian/my-project/zipball/main")
+            button("Download", "Sources", "https://somewhere.com")
         }
     }
 }
