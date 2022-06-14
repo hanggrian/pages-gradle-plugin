@@ -1,14 +1,12 @@
 package com.hendraanggrian.pages.minimal
 
-import java.io.Serializable
-
 /**
  * Header button data class.
  * @param line1 first line of text.
  * @param line2 second line of text, with stronger emphasis.
  * @param url absolute or relative path to redirect to on button click.
  */
-data class MinimalButton(val line1: String, val line2: String, val url: String) : Serializable
+data class MinimalButton(val line1: String, val line2: String, val url: String)
 
 /** Allows to add side-by-side buttons inside header tag. */
 interface MinimalButtonsScope {

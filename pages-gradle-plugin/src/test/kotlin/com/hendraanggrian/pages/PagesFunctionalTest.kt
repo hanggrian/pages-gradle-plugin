@@ -27,7 +27,7 @@ class PagesFunctionalTest {
     }
 
     @Test
-    fun `Nothing to write`() {
+    fun nothingToWrite() {
         buildFile.writeText(
             """
             plugins {

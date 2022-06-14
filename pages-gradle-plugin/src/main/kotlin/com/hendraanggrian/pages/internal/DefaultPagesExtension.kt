@@ -45,8 +45,8 @@ import org.w3c.dom.Document
 
 open class DefaultPagesExtension(private val project: Project) : PagesExtension {
 
-    override val resourcesMap: MapProperty<String, String> = project.objects.mapProperty<String, String>()
-        .convention(mapOf())
+    override val resourcesMap: MapProperty<Pair<String, String>, String> = project.objects
+        .mapProperty<Pair<String, String>, String>().convention(mapOf())
 
     override val webpagesMap: MapProperty<String, Document> = project.objects.mapProperty<String, Document>()
         .convention(mapOf())
@@ -54,17 +54,21 @@ open class DefaultPagesExtension(private val project: Project) : PagesExtension 
     override val outputDirectory: DirectoryProperty = project.objects.directoryProperty()
         .convention(project.layout.buildDirectory.dir("pages"))
 
+    private val extensions = listOf(TablesExtension.create())
+    private val htmlRenderer = HtmlRenderer.builder().extensions(extensions).build()
+    private val parser = Parser.builder().extensions(extensions).build()
+
     override fun minimal(action: Action<MinimalPagesOptions>) {
         val options = MinimalPagesOptionsImpl(project.name)
         action.execute(options)
         checkNotNull(options.markdownFile) { "markdownFile cannot be empty" }
 
-        resourcesMap.put("images/dark_mode.svg", dark_mode_svg)
-        resourcesMap.put("images/light_mode.svg", light_mode_svg)
-        resourcesMap.put("scripts/scale.fix.js", scale_fix_js)
-        resourcesMap.put("scripts/theme.js", theme_js)
+        resourcesMap.put("images" to "dark_mode.svg", dark_mode_svg)
+        resourcesMap.put("images" to "light_mode.svg", light_mode_svg)
+        resourcesMap.put("scripts" to "scale.fix.js", scale_fix_js)
+        resourcesMap.put("scripts" to "theme.js", theme_js)
         resourcesMap.put(
-            "styles/main.css",
+            "styles" to "main.css",
             getMainCss(
                 options.accentColor,
                 options.accentLightHoverColor,
@@ -72,7 +76,7 @@ open class DefaultPagesExtension(private val project: Project) : PagesExtension 
                 options.headerButtons.size
             )
         )
-        resourcesMap.put("styles/pygment_trac.css", pygment_trac_css)
+        resourcesMap.put("styles" to "pygment_trac.css", pygment_trac_css)
 
         webpagesMap.put(
             "index.html",
@@ -146,8 +150,4 @@ open class DefaultPagesExtension(private val project: Project) : PagesExtension 
             }
         )
     }
-
-    private val extensions = listOf(TablesExtension.create())
-    private val htmlRenderer = HtmlRenderer.builder().extensions(extensions).build()
-    private val parser = Parser.builder().extensions(extensions).build()
 }

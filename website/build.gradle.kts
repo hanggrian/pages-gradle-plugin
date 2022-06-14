@@ -32,11 +32,8 @@ extensions.configure<PagesExtension> {
 gitPublish {
     repoUri.set("git@github.com:$DEVELOPER_ID/$RELEASE_ARTIFACT.git")
     branch.set("gh-pages")
-    contents.from(
-        extensions.getByType<PagesExtension>().outputDirectory,
-        "$rootDir/docs",
-        "$rootDir/$RELEASE_ARTIFACT/build/dokka"
-    )
+    contents.from(extensions.getByType<PagesExtension>().outputDirectory, "$rootDir/$RELEASE_ARTIFACT/build/dokka")
+    contents.from("$rootDir/docs").exclude("README.md")
 }
 
 tasks {

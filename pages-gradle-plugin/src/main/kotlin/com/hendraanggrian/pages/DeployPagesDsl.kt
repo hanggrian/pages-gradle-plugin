@@ -11,4 +11,4 @@ package com.hendraanggrian.pages
  */
 @DslMarker
 @Target(AnnotationTarget.CLASS)
-annotation class PagesFeatureMarker
+annotation class DeployPagesDsl

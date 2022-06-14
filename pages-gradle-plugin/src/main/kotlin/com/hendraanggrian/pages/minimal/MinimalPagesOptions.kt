@@ -1,6 +1,6 @@
 package com.hendraanggrian.pages.minimal
 
-import com.hendraanggrian.pages.PagesFeatureMarker
+import com.hendraanggrian.pages.DeployPagesDsl
 import org.gradle.api.Action
 import org.gradle.kotlin.dsl.invoke
 import java.io.File
@@ -9,7 +9,7 @@ import java.io.File
  * Configure minimal feature.
  * Capability notation of `com.hendraanggrian:pages-minimal` must be requested.
  */
-@PagesFeatureMarker
+@DeployPagesDsl
 interface MinimalPagesOptions {
     /**
      * Accent color of the webpage.
@@ -90,17 +90,14 @@ internal class MinimalPagesOptionsImpl(override var projectName: String) : Minim
     override var projectDescription: String? = null
     override var projectUrl: String? = null
     override var markdownFile: File? = null
-
-    override fun headerButtons(action: Action<MinimalButtonsScope>) = action(this)
-
     override var footerCredit: Boolean = true
 
+    internal val headerButtons: MutableCollection<MinimalButton> = mutableListOf()
+    override fun headerButtons(action: Action<MinimalButtonsScope>) = action(this)
     override fun button(line1: String, line2: String, url: String) {
         if (headerButtons.size >= 3) {
             error("Header buttons are capped at 3")
         }
         headerButtons += MinimalButton(line1, line2, url)
     }
-
-    internal val headerButtons: MutableCollection<MinimalButton> = mutableListOf()
 }
