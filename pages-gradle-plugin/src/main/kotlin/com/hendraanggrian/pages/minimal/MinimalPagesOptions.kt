@@ -1,6 +1,6 @@
 package com.hendraanggrian.pages.minimal
 
-import com.hendraanggrian.pages.DeployPagesDsl
+import com.hendraanggrian.pages.PagesConfigurationDsl
 import org.gradle.api.Action
 import org.gradle.kotlin.dsl.invoke
 import java.io.File
@@ -9,7 +9,7 @@ import java.io.File
  * Configure minimal feature.
  * Capability notation of `com.hendraanggrian:pages-minimal` must be requested.
  */
-@DeployPagesDsl
+@PagesConfigurationDsl
 interface MinimalPagesOptions {
     /**
      * Accent color of the webpage.

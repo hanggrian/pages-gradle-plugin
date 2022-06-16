@@ -1,7 +1,6 @@
-[![Plugin Portal](https://img.shields.io/maven-metadata/v?label=plugin-portal&metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Fcom%2Fhendraanggrian%2Fpages%2Fcom.hendraanggrian.pages.gradle.plugin%2Fmaven-metadata.xml)](https://plugins.gradle.org/plugin/com.hendraanggrian.pages.minimal)
-[![Travis CI](https://img.shields.io/travis/com/hendraanggrian/pages-gradle-plugin)](https://travis-ci.com/github/hendraanggrian/pages-gradle-plugin)
-[![Codecov](https://img.shields.io/codecov/c/github/hendraanggrian/pages-gradle-plugin)](https://app.codecov.io/gh/hendraanggrian/pages-gradle-plugin)
-[![OpenJDK](https://img.shields.io/badge/jdk-1.8+-informational)](https://openjdk.java.net/projects/jdk8)
+[![Plugin Portal](https://img.shields.io/maven-metadata/v?label=plugin-portal&metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Fcom%2Fhendraanggrian%2Fpages%2Fcom.hendraanggrian.pages.gradle.plugin%2Fmaven-metadata.xml)](https://plugins.gradle.org/plugin/com.hendraanggrian.pages/)
+[![Travis CI](https://img.shields.io/travis/com/hendraanggrian/pages-gradle-plugin)](https://travis-ci.com/github/hendraanggrian/pages-gradle-plugin/)
+[![OpenJDK](https://img.shields.io/badge/jdk-1.8+-informational)](https://openjdk.java.net/projects/jdk8/)
 
 # Pages Gradle Plugin
 
@@ -36,7 +35,7 @@ apply plugin: 'com.hendraanggrian.pages'
 
 On its own main dependency, the plugin does nothing. Declare a feature by invoking `requireCapability`.
 
-### Feature: [Minimal](https://github.com/hendraanggrian/minimal-theme)
+### Feature: [Minimal](https://github.com/hendraanggrian/minimal-theme/)
 
 ![Minimal preview](images/preview_minimal.png)
 

@@ -17,13 +17,13 @@ import javax.xml.transform.stream.StreamResult
 /** Task to run when `deployPages` command is executed. */
 open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
     @Input
-    override val resourcesMap: MapProperty<Pair<String, String>, String> = project.objects.mapProperty()
+    final override val resourcesMap: MapProperty<Pair<String, String>, String> = project.objects.mapProperty()
 
     @Input
-    override val webpagesMap: MapProperty<String, Document> = project.objects.mapProperty()
+    final override val webpagesMap: MapProperty<String, Document> = project.objects.mapProperty()
 
     @OutputDirectory
-    override val outputDirectory: DirectoryProperty = project.objects.directoryProperty()
+    final override val outputDirectory: DirectoryProperty = project.objects.directoryProperty()
 
     private val transformer: Transformer = TransformerFactory.newInstance().newTransformer()
 
@@ -47,10 +47,17 @@ open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
         logger.info("Writing pages:")
         webpagesMap.get().forEach { (filename, document) ->
             logger.info("  $filename")
-            transformer.transform(
-                DOMSource(document),
-                StreamResult(FileWriter(outputDir.resolve(filename)))
-            )
+            val file = outputDir.resolve(filename)
+            transformer.transform(DOMSource(document), StreamResult(FileWriter(file)))
+            file.writeText(file.readText().fixFencedCodeBlock())
         }
     }
+
+    /**
+     * kotlinx.html automatically add indent to commonmark's result.
+     * This fix reverses that behavior.
+     */
+    private fun String.fixFencedCodeBlock(): String =
+        replace("<pre>\n                    <code", "<pre><code")
+            .replace("</code>\n                </pre>", "</code></pre>")
 }

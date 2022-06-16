@@ -45,13 +45,13 @@ import org.w3c.dom.Document
 
 open class DefaultPagesExtension(private val project: Project) : PagesExtension {
 
-    override val resourcesMap: MapProperty<Pair<String, String>, String> = project.objects
+    final override val resourcesMap: MapProperty<Pair<String, String>, String> = project.objects
         .mapProperty<Pair<String, String>, String>().convention(mapOf())
 
-    override val webpagesMap: MapProperty<String, Document> = project.objects.mapProperty<String, Document>()
+    final override val webpagesMap: MapProperty<String, Document> = project.objects.mapProperty<String, Document>()
         .convention(mapOf())
 
-    override val outputDirectory: DirectoryProperty = project.objects.directoryProperty()
+    final override val outputDirectory: DirectoryProperty = project.objects.directoryProperty()
         .convention(project.layout.buildDirectory.dir("pages"))
 
     private val extensions = listOf(TablesExtension.create())

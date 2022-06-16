@@ -1,8 +1,10 @@
 package com.hendraanggrian.pages.minimal.resources
 
-private const val HEADER_UL_WIDTH = 270
+private const val HEADER_WIDTH = 270
+private const val HEADER_WRAPPED_WIDTH_PERCENTAGE = 99
 
-fun getMainCss(accent: String, accentLightHover: String, accentDarkHover: String, headerButtonSize: Int) = """
+fun getMainCss(accent: String, accentLightHover: String, accentDarkHover: String, headerButtonSize: Int): String {
+    return """
     :root {
       --background: #fafafa; /* grey_50 */
 
@@ -163,7 +165,7 @@ fun getMainCss(accent: String, accentLightHover: String, accentDarkHover: String
     }
 
     header {
-      width: ${HEADER_UL_WIDTH}px;
+      width: ${HEADER_WIDTH}px;
       float: left;
       position: fixed;
       -webkit-font-smoothing: subpixel-antialiased;
@@ -180,10 +182,14 @@ fun getMainCss(accent: String, accentLightHover: String, accentDarkHover: String
     }
 
     header li {
-      width: ${if (headerButtonSize == 0) HEADER_UL_WIDTH else HEADER_UL_WIDTH / headerButtonSize - 1}px;
+      width: ${if (headerButtonSize == 0) HEADER_WIDTH else HEADER_WIDTH / headerButtonSize - 1}px;
       float: left;
       border-right: 1px solid var(--button-border);
       height: 40px;
+    }
+
+    header li:last-child {
+      border-right: 0px;
     }
 
     header li:first-child a {
@@ -258,7 +264,7 @@ fun getMainCss(accent: String, accentLightHover: String, accentDarkHover: String
       padding: 0;
       background: var(--button-background);
       border-radius: 5px;
-      border: 1px solid #e0e0e0;
+      border: 1px solid var(--button-border);
       width: 40px;
       color: var(--button-text2);
       justify-content: center;
@@ -344,11 +350,11 @@ fun getMainCss(accent: String, accentLightHover: String, accentDarkHover: String
       }
 
       header ul {
-        width: 99%;
+        width: $HEADER_WRAPPED_WIDTH_PERCENTAGE%;
       }
 
       header li, header ul li + li + li {
-        width: 33%;
+        width: ${HEADER_WRAPPED_WIDTH_PERCENTAGE / headerButtonSize}%;
       }
 
       footer button {
@@ -367,7 +373,8 @@ fun getMainCss(accent: String, accentLightHover: String, accentDarkHover: String
       }
     }
     
-""".trimIndent()
+    """.trimIndent()
+}
 
 val pygment_trac_css = """
     .highlight  { background: #ffffff; }
