@@ -1,3 +1,5 @@
+import com.diffplug.gradle.spotless.SpotlessExtension
+
 plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
@@ -21,6 +23,8 @@ gradlePlugin {
     testSourceSets(sourceSets.test.get())
 }
 
+extensions.find<SpotlessExtension>()?.kotlin { ktlint() }
+
 pluginBundle {
     website = RELEASE_URL
     vcsUrl = "$RELEASE_URL.git"
@@ -36,4 +40,8 @@ dependencies {
     testImplementation(gradleTestKit())
     testImplementation(testLibs.kotlin.junit)
     testImplementation(testLibs.truth)
+}
+
+tasks.dokkaHtml {
+    outputDirectory.set(buildDir.resolve("dokka/dokka"))
 }
