@@ -37,29 +37,31 @@ import org.commonmark.ext.gfm.tables.TablesExtension
 import org.commonmark.parser.Parser
 import org.commonmark.renderer.html.HtmlRenderer
 import org.gradle.api.Action
-import org.gradle.api.Project
 import org.gradle.api.file.DirectoryProperty
+import org.gradle.api.file.ProjectLayout
+import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.MapProperty
 import org.gradle.kotlin.dsl.mapProperty
 import org.w3c.dom.Document
 
-open class DefaultPagesExtension(private val project: Project) : PagesExtension {
+open class DefaultPagesExtension(objects: ObjectFactory, layout: ProjectLayout, private val projectName: String) :
+    PagesExtension {
 
-    final override val resourcesMap: MapProperty<Pair<String, String>, String> = project.objects
-        .mapProperty<Pair<String, String>, String>().convention(mapOf())
+    final override val resourcesMap: MapProperty<Pair<String, String>, String> =
+        objects.mapProperty<Pair<String, String>, String>().convention(mapOf())
 
-    final override val webpagesMap: MapProperty<String, Document> = project.objects.mapProperty<String, Document>()
+    final override val webpagesMap: MapProperty<String, Document> = objects.mapProperty<String, Document>()
         .convention(mapOf())
 
-    final override val outputDirectory: DirectoryProperty = project.objects.directoryProperty()
-        .convention(project.layout.buildDirectory.dir("pages"))
+    final override val outputDirectory: DirectoryProperty = objects.directoryProperty()
+        .convention(layout.buildDirectory.dir("pages"))
 
     private val extensions = listOf(TablesExtension.create())
     private val htmlRenderer = HtmlRenderer.builder().extensions(extensions).build()
     private val parser = Parser.builder().extensions(extensions).build()
 
-    override fun minimal(action: Action<MinimalPagesOptions>) {
-        val options = MinimalPagesOptionsImpl(project.name)
+    final override fun minimal(action: Action<in MinimalPagesOptions>) {
+        val options = MinimalPagesOptionsImpl(projectName)
         action.execute(options)
         checkNotNull(options.markdownFile) { "markdownFile cannot be empty" }
 

@@ -71,7 +71,7 @@ interface MinimalPagesOptions {
     var markdownFile: File?
 
     /** Configures header buttons. Header buttons size is capped at 3. */
-    fun headerButtons(action: Action<MinimalButtonsScope>)
+    fun headerButtons(action: Action<in MinimalButtonsScope>)
 
     /**
      * Small theme credit in footer.
@@ -93,7 +93,7 @@ internal class MinimalPagesOptionsImpl(override var projectName: String) : Minim
     override var footerCredit: Boolean = true
 
     internal val headerButtons: MutableCollection<MinimalButton> = mutableListOf()
-    override fun headerButtons(action: Action<MinimalButtonsScope>) = action(this)
+    override fun headerButtons(action: Action<in MinimalButtonsScope>) = action(this)
     override fun button(line1: String, line2: String, url: String) {
         if (headerButtons.size >= 3) {
             error("Header buttons are capped at 3")

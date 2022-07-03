@@ -1,11 +1,10 @@
-import com.diffplug.gradle.spotless.SpotlessExtension
-
 plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
-    id("org.jetbrains.dokka")
-    id("com.diffplug.spotless")
-    id("com.gradle.plugin-publish")
+    alias(plugs.plugins.kotlin.jvm)
+    alias(plugs.plugins.dokka)
+    alias(plugs.plugins.spotless)
+    alias(plugs.plugins.gradle.publish)
 }
 
 java.registerFeature("minimal") {
@@ -23,7 +22,13 @@ gradlePlugin {
     testSourceSets(sourceSets.test.get())
 }
 
-extensions.find<SpotlessExtension>()?.kotlin { ktlint() }
+kotlin.jvmToolchain {
+    (this as JavaToolchainSpec).languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
+}
+
+spotless.kotlin {
+    ktlint()
+}
 
 pluginBundle {
     website = RELEASE_URL

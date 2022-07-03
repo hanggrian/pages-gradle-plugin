@@ -354,7 +354,7 @@ fun getMainCss(accent: String, accentLightHover: String, accentDarkHover: String
       }
 
       header li, header ul li + li + li {
-        width: ${HEADER_WRAPPED_WIDTH_PERCENTAGE / headerButtonSize}%;
+        width: ${if (headerButtonSize == 0) HEADER_WRAPPED_WIDTH_PERCENTAGE else HEADER_WRAPPED_WIDTH_PERCENTAGE / headerButtonSize}%;
       }
 
       footer button {

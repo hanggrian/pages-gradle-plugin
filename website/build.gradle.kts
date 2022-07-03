@@ -1,18 +1,16 @@
 import com.hendraanggrian.pages.PagesExtension
 
 buildscript {
-    repositories {
-        gradlePluginPortal()
-    }
-    dependencies {
-        classpath(plugs.pages) { features("pages-minimal") }
+    repositories.gradlePluginPortal()
+    dependencies.classpath(plugs.pages) {
+        capability("pages-minimal")
     }
 }
 
 plugins.apply("com.hendraanggrian.pages")
 
 plugins {
-    id("org.ajoberstar.git-publish")
+    alias(plugs.plugins.git.publish)
 }
 
 extensions.configure<PagesExtension> {
@@ -37,7 +35,7 @@ gitPublish {
 }
 
 tasks {
-    register("clean") {
+    register(LifecycleBasePlugin.CLEAN_TASK_NAME) {
         delete(buildDir)
     }
     gitPublishCopy {

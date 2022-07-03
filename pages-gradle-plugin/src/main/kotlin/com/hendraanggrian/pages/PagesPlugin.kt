@@ -19,7 +19,10 @@ open class PagesPlugin : Plugin<Project> {
     }
 
     override fun apply(project: Project) {
-        val pages = project.extensions.create(PagesExtension::class, "pages", DefaultPagesExtension::class, project)
+        val pages = project.extensions.create(
+            PagesExtension::class, "pages", DefaultPagesExtension::class,
+            project.objects, project.layout, project.name
+        )
         project.tasks.register<DeployPagesTask>(TASK_DEPLOY_PAGES) {
             group = GROUP
             description = "Write webpages and their resources."

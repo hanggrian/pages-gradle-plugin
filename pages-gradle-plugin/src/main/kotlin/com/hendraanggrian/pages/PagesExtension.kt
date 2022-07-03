@@ -7,5 +7,5 @@ import org.gradle.api.Action
 @PagesConfigurationDsl
 interface PagesExtension : DeployPagesSpec {
     /** Configure `minimal` feature. */
-    fun minimal(action: Action<MinimalPagesOptions>)
+    fun minimal(action: Action<in MinimalPagesOptions>)
 }
