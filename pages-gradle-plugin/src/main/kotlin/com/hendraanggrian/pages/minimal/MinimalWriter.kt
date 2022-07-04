@@ -1,10 +1,126 @@
-package com.hendraanggrian.pages.minimal.resources
+package com.hendraanggrian.pages.minimal
 
-private const val HEADER_WIDTH = 270
-private const val HEADER_WRAPPED_WIDTH_PERCENTAGE = 99
+import kotlinx.html.a
+import kotlinx.html.body
+import kotlinx.html.button
+import kotlinx.html.classes
+import kotlinx.html.div
+import kotlinx.html.dom.createHTMLDocument
+import kotlinx.html.footer
+import kotlinx.html.h1
+import kotlinx.html.head
+import kotlinx.html.header
+import kotlinx.html.html
+import kotlinx.html.id
+import kotlinx.html.li
+import kotlinx.html.link
+import kotlinx.html.meta
+import kotlinx.html.onClick
+import kotlinx.html.p
+import kotlinx.html.script
+import kotlinx.html.section
+import kotlinx.html.small
+import kotlinx.html.strong
+import kotlinx.html.title
+import kotlinx.html.ul
+import kotlinx.html.unsafe
+import org.commonmark.parser.Parser
+import org.commonmark.renderer.html.HtmlRenderer
+import org.w3c.dom.Document
 
-fun getMainCss(accent: String, accentLightHover: String, accentDarkHover: String, headerButtonSize: Int): String {
-    return """
+internal object MinimalWriter {
+    private const val HEADER_WIDTH = 270
+    private const val HEADER_WRAPPED_WIDTH_PERCENTAGE = 99
+
+    fun index(
+        options: MinimalPagesOptionsImpl,
+        htmlRenderer: HtmlRenderer,
+        parser: Parser
+    ): Document {
+        val projectTitle = options.authorName?.let { "${options.projectName} by $it" } ?: options.projectName
+        return createHTMLDocument().html {
+            head {
+                meta(charset = "utf-8")
+                meta(content = "chrome=1") { httpEquiv = "X-UA-Compatible" }
+                title(projectTitle)
+                options.icon?.let { link(rel = "icon", href = it) }
+                link(rel = "stylesheet", href = "styles/main.css")
+                link(rel = "stylesheet", href = "styles/pygment_trac.css")
+                link(
+                    rel = "stylesheet",
+                    href = "https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0"
+                )
+                meta(name = "viewport", content = "width=device-width")
+                script(src = "scripts/theme.js") { }
+                meta(name = "title", content = projectTitle)
+                options.projectDescription?.let { meta(name = "description", content = it) }
+            }
+            body {
+                div(classes = "wrapper") {
+                    header {
+                        h1 { text(options.projectName) }
+                        options.projectDescription?.let { p { text(it) } }
+                        options.projectUrl?.let { url ->
+                            p(classes = "view") {
+                                a(href = url) {
+                                    if ("github.com" in url) {
+                                        text("View the Project on GitHub ")
+                                        val parts = when {
+                                            !url.endsWith('/') -> url
+                                            else -> url.substring(0, url.lastIndex - 1)
+                                        }.split('/').reversed()
+                                        small { text("${parts[1]}/${parts[0]}") }
+                                    } else {
+                                        text("View the Project")
+                                    }
+                                }
+                            }
+                        }
+                        if (options.headerButtons.isNotEmpty()) {
+                            ul {
+                                options.headerButtons.forEach { (line1, line2, url) ->
+                                    li { a(href = url) { text(line1); strong { text(line2) } } }
+                                }
+                            }
+                        }
+                    }
+                    section { unsafe { +htmlRenderer.render(parser.parse(options.markdownFile!!.readText())) } }
+                    footer {
+                        p {
+                            button {
+                                classes = setOf("material-symbols-sharp")
+                                id = "theme-toggle"
+                                title = "Toggle dark mode"
+                                onClick = "toggleDarkMode()"
+                            }
+                        }
+                        p {
+                            if (options.authorName != null && options.authorUrl != null) {
+                                text("This project is maintained by ")
+                                a(href = options.authorUrl) { text(options.authorName!!) }
+                            } else if (options.authorName != null) {
+                                text("This project is maintained by ${options.authorName}")
+                            }
+                        }
+                        if (options.footerCredit) {
+                            small {
+                                text("Hosted on GitHub Pages — Theme by ")
+                                a(href = "https://github.com/orderedlist/") { text("orderedlist") }
+                            }
+                        }
+                    }
+                }
+                script(src = "scripts/scale.fix.js") { }
+            }
+        }
+    }
+
+    internal fun getMainCss(
+        accent: String,
+        accentLightHover: String,
+        accentDarkHover: String,
+        headerButtonSize: Int
+    ): String = """
     :root {
       --background: #fafafa; /* grey_50 */
 
@@ -29,7 +145,7 @@ fun getMainCss(accent: String, accentLightHover: String, accentDarkHover: String
       --button-text2: #212121; /* grey_900 */
       --button-text2-hover: #000000; /* grey_900 */
 
-      --theme-toggle-image: url('../images/dark_mode.svg');
+      --theme-toggle-image: 'dark_mode';
     }
 
     :root.theme-dark {
@@ -49,7 +165,7 @@ fun getMainCss(accent: String, accentLightHover: String, accentDarkHover: String
 
       --table-border: #616161; /* grey_700 */
 
-      --theme-toggle-image: url('../images/light_mode.svg');
+      --theme-toggle-image: 'light_mode';
     }
 
     body {
@@ -278,7 +394,7 @@ fun getMainCss(accent: String, accentLightHover: String, accentDarkHover: String
       background-color: var(--button-background-active);
     }
 
-    #theme-toggle {
+    #theme-toggle:after {
       content: var(--theme-toggle-image);
     }
 
@@ -375,76 +491,3 @@ fun getMainCss(accent: String, accentLightHover: String, accentDarkHover: String
     
     """.trimIndent()
 }
-
-val pygment_trac_css = """
-    .highlight  { background: #ffffff; }
-    .highlight .c { color: #999988; font-style: italic } /* Comment */
-    .highlight .err { color: #a61717; background-color: #e3d2d2 } /* Error */
-    .highlight .k { font-weight: bold } /* Keyword */
-    .highlight .o { font-weight: bold } /* Operator */
-    .highlight .cm { color: #999988; font-style: italic } /* Comment.Multiline */
-    .highlight .cp { color: #999999; font-weight: bold } /* Comment.Preproc */
-    .highlight .c1 { color: #999988; font-style: italic } /* Comment.Single */
-    .highlight .cs { color: #999999; font-weight: bold; font-style: italic } /* Comment.Special */
-    .highlight .gd { color: #000000; background-color: #ffdddd } /* Generic.Deleted */
-    .highlight .gd .x { color: #000000; background-color: #ffaaaa } /* Generic.Deleted.Specific */
-    .highlight .ge { font-style: italic } /* Generic.Emph */
-    .highlight .gr { color: #aa0000 } /* Generic.Error */
-    .highlight .gh { color: #999999 } /* Generic.Heading */
-    .highlight .gi { color: #000000; background-color: #ddffdd } /* Generic.Inserted */
-    .highlight .gi .x { color: #000000; background-color: #aaffaa } /* Generic.Inserted.Specific */
-    .highlight .go { color: #888888 } /* Generic.Output */
-    .highlight .gp { color: #555555 } /* Generic.Prompt */
-    .highlight .gs { font-weight: bold } /* Generic.Strong */
-    .highlight .gu { color: #800080; font-weight: bold; } /* Generic.Subheading */
-    .highlight .gt { color: #aa0000 } /* Generic.Traceback */
-    .highlight .kc { font-weight: bold } /* Keyword.Constant */
-    .highlight .kd { font-weight: bold } /* Keyword.Declaration */
-    .highlight .kn { font-weight: bold } /* Keyword.Namespace */
-    .highlight .kp { font-weight: bold } /* Keyword.Pseudo */
-    .highlight .kr { font-weight: bold } /* Keyword.Reserved */
-    .highlight .kt { color: #445588; font-weight: bold } /* Keyword.Type */
-    .highlight .m { color: #009999 } /* Literal.Number */
-    .highlight .s { color: #d14 } /* Literal.String */
-    .highlight .na { color: #008080 } /* Name.Attribute */
-    .highlight .nb { color: #0086B3 } /* Name.Builtin */
-    .highlight .nc { color: #445588; font-weight: bold } /* Name.Class */
-    .highlight .no { color: #008080 } /* Name.Constant */
-    .highlight .ni { color: #800080 } /* Name.Entity */
-    .highlight .ne { color: #990000; font-weight: bold } /* Name.Exception */
-    .highlight .nf { color: #990000; font-weight: bold } /* Name.Function */
-    .highlight .nn { color: #555555 } /* Name.Namespace */
-    .highlight .nt { color: #000080 } /* Name.Tag */
-    .highlight .nv { color: #008080 } /* Name.Variable */
-    .highlight .ow { font-weight: bold } /* Operator.Word */
-    .highlight .w { color: #bbbbbb } /* Text.Whitespace */
-    .highlight .mf { color: #009999 } /* Literal.Number.Float */
-    .highlight .mh { color: #009999 } /* Literal.Number.Hex */
-    .highlight .mi { color: #009999 } /* Literal.Number.Integer */
-    .highlight .mo { color: #009999 } /* Literal.Number.Oct */
-    .highlight .sb { color: #d14 } /* Literal.String.Backtick */
-    .highlight .sc { color: #d14 } /* Literal.String.Char */
-    .highlight .sd { color: #d14 } /* Literal.String.Doc */
-    .highlight .s2 { color: #d14 } /* Literal.String.Double */
-    .highlight .se { color: #d14 } /* Literal.String.Escape */
-    .highlight .sh { color: #d14 } /* Literal.String.Heredoc */
-    .highlight .si { color: #d14 } /* Literal.String.Interpol */
-    .highlight .sx { color: #d14 } /* Literal.String.Other */
-    .highlight .sr { color: #009926 } /* Literal.String.Regex */
-    .highlight .s1 { color: #d14 } /* Literal.String.Single */
-    .highlight .ss { color: #990073 } /* Literal.String.Symbol */
-    .highlight .bp { color: #999999 } /* Name.Builtin.Pseudo */
-    .highlight .vc { color: #008080 } /* Name.Variable.Class */
-    .highlight .vg { color: #008080 } /* Name.Variable.Global */
-    .highlight .vi { color: #008080 } /* Name.Variable.Instance */
-    .highlight .il { color: #009999 } /* Literal.Number.Integer.Long */
-
-    .type-csharp .highlight .k { color: #0000FF }
-    .type-csharp .highlight .kt { color: #0000FF }
-    .type-csharp .highlight .nf { color: #000000; font-weight: normal }
-    .type-csharp .highlight .nc { color: #2B91AF }
-    .type-csharp .highlight .nn { color: #000000 }
-    .type-csharp .highlight .s { color: #A31515 }
-    .type-csharp .highlight .sc { color: #A31515 }
-    
-""".trimIndent()

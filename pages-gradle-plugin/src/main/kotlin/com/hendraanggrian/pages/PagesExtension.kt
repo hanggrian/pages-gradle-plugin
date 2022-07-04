@@ -5,7 +5,10 @@ import org.gradle.api.Action
 
 /** Extension instance when configuring `pages` in Gradle scripts. */
 @PagesConfigurationDsl
-interface PagesExtension : DeployPagesSpec {
+interface PagesExtension : DeployResourcesSpec, DeployPagesSpec {
     /** Configure `minimal` feature. */
     fun minimal(action: Action<in MinimalPagesOptions>)
+
+    fun socialTags() {
+    }
 }

@@ -17,10 +17,7 @@ import javax.xml.transform.stream.StreamResult
 /** Task to run when `deployPages` command is executed. */
 open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
     @Input
-    final override val resourcesMap: MapProperty<Pair<String, String>, String> = project.objects.mapProperty()
-
-    @Input
-    final override val webpagesMap: MapProperty<String, Document> = project.objects.mapProperty()
+    final override val pagesMap: MapProperty<String, Document> = project.objects.mapProperty()
 
     @OutputDirectory
     final override val outputDirectory: DirectoryProperty = project.objects.directoryProperty()
@@ -29,23 +26,11 @@ open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
 
     @TaskAction
     fun deploy() {
-        check(resourcesMap.get().isNotEmpty() && webpagesMap.get().isNotEmpty()) { "Nothing to write" }
+        check(pagesMap.get().isNotEmpty()) { "No pages to write" }
         val outputDir = outputDirectory.asFile.get()
 
-        logger.info("Writing resources:")
-        resourcesMap.get().forEach { (file, content) ->
-            val dirname = file.first
-            val filename = file.second
-            logger.info("  $dirname/$filename")
-            val targetDir = outputDir.resolve(dirname)
-            if (!targetDir.exists()) {
-                targetDir.mkdir()
-            }
-            targetDir.resolve(filename).writeText(content)
-        }
-
         logger.info("Writing pages:")
-        webpagesMap.get().forEach { (filename, document) ->
+        pagesMap.get().forEach { (filename, document) ->
             logger.info("  $filename")
             val file = outputDir.resolve(filename)
             transformer.transform(DOMSource(document), StreamResult(FileWriter(file)))
