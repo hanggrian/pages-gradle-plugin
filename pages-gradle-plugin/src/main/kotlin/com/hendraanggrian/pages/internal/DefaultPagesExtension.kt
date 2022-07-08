@@ -1,57 +1,72 @@
 package com.hendraanggrian.pages.internal
 
+import com.hendraanggrian.pages.ContentBuilder
+import com.hendraanggrian.pages.DeployPagesSpec
 import com.hendraanggrian.pages.PagesExtension
+import com.hendraanggrian.pages.minimal.MinimalPages
 import com.hendraanggrian.pages.minimal.MinimalPagesOptions
 import com.hendraanggrian.pages.minimal.MinimalPagesOptionsImpl
-import com.hendraanggrian.pages.minimal.MinimalWriter
 import org.commonmark.ext.gfm.tables.TablesExtension
 import org.commonmark.parser.Parser
 import org.commonmark.renderer.html.HtmlRenderer
 import org.gradle.api.Action
+import org.gradle.api.Project
+import org.gradle.api.file.CopySpec
 import org.gradle.api.file.DirectoryProperty
-import org.gradle.api.file.ProjectLayout
-import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.MapProperty
 import org.gradle.api.provider.SetProperty
 import org.gradle.kotlin.dsl.mapProperty
 import org.gradle.kotlin.dsl.setProperty
 import org.w3c.dom.Document
+import java.io.File
 
-open class DefaultPagesExtension(objects: ObjectFactory, layout: ProjectLayout, private val projectName: String) :
-    PagesExtension {
+open class DefaultPagesExtension(private val project: Project) : PagesExtension, DeployPagesSpec {
 
-    final override val staticResourcesSet: SetProperty<String> = objects.setProperty<String>()
+    final override val resources: CopySpec = project.copySpec()
+
+    final override val contents: ContentBuilderImpl = ContentBuilderImpl(project)
+
+    final override val outputDirectory: DirectoryProperty = project.objects.directoryProperty()
+        .convention(project.layout.buildDirectory.dir("pages"))
+
+    final override val staticResources: SetProperty<String> = project.objects.setProperty<String>()
         .convention(emptySet())
 
-    final override val dynamicResourcesMap: MapProperty<Pair<String, String>, String> =
-        objects.mapProperty<Pair<String, String>, String>().convention(emptyMap())
+    final override val dynamicResources: MapProperty<Pair<String, String>, String> =
+        project.objects.mapProperty<Pair<String, String>, String>().convention(emptyMap())
 
-    final override val pagesMap: MapProperty<String, Document> = objects.mapProperty<String, Document>()
+    final override val webpages: MapProperty<String, Document> = project.objects.mapProperty<String, Document>()
         .convention(emptyMap())
-
-    final override val outputDirectory: DirectoryProperty = objects.directoryProperty()
-        .convention(layout.buildDirectory.dir("pages"))
 
     private val extensions = listOf(TablesExtension.create())
     private val htmlRenderer = HtmlRenderer.builder().extensions(extensions).build()
     private val parser = Parser.builder().extensions(extensions).build()
 
     final override fun minimal(action: Action<in MinimalPagesOptions>) {
-        val options = MinimalPagesOptionsImpl(projectName)
+        val options = MinimalPagesOptionsImpl(project.name)
         action.execute(options)
-        checkNotNull(options.markdownFile) { "markdownFile cannot be empty" }
-        staticResourcesSet.add("minimal/scripts/scale.fix.js")
-        staticResourcesSet.add("minimal/scripts/theme.js")
-        staticResourcesSet.add("minimal/styles/pygment_trac.css")
-        dynamicResourcesMap.put(
+        staticResources.add("minimal/scripts/scale.fix.js")
+        staticResources.add("minimal/scripts/theme.js")
+        staticResources.add("minimal/styles/pygment_trac.css")
+        dynamicResources.put(
             "styles" to "main.css",
-            MinimalWriter.getMainCss(
+            MinimalPages.getMainCss(
                 options.accentColor,
                 options.accentLightHoverColor,
                 options.accentDarkHoverColor,
-                options.headerButtons.size
+                options.buttons.size
             )
         )
-        pagesMap.put("index.html", MinimalWriter.index(options, htmlRenderer, parser))
+        contents.forEach { (markdownFile, htmlName) ->
+            webpages.put(htmlName, MinimalPages.getPage(options, markdownFile, htmlRenderer, parser))
+        }
+    }
+
+    class ContentBuilderImpl(private val project: Project) :
+        ContentBuilder,
+        MutableMap<File, String> by mutableMapOf() {
+        override fun add(markdownPath: Any, htmlName: String) {
+            put(project.file(markdownPath), htmlName)
+        }
     }
 }

@@ -4,21 +4,20 @@ buildscript {
         classpath files('../pages-gradle-plugin-0.1.jar')
         classpath 'org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.5'
         classpath 'org.commonmark:commonmark-ext-gfm-tables:0.18.2'
-        classpath 'org.ajoberstar.git-publish:gradle-git-publish:3.0.1'
     }
 }
 
 apply plugin: 'com.hendraanggrian.pages'
-apply plugin: 'org.ajoberstar.git-publish'
 
-pages.minimal {
-    icon = 'images/my_icon.svg'
-    authorName = 'Hendra Anggrian'
-    authorUrl = 'https://github.com/hendraanggrian'
-    projectDescription = 'This is an awesome example'
-    projectUrl = 'https://github.com/hendraanggrian/minimal'
-    markdownFile = file('Index.md')
-    headerButtons {
-        button('Read', 'Documentation', 'documentation.html')
+pages {
+    resources.from('src')
+    contents.index('Index.md')
+    minimal {
+        icon = 'images/my_icon.svg'
+        authorName = 'Hendra Anggrian'
+        authorUrl = 'https://github.com/hendraanggrian'
+        projectDescription = 'This is an awesome example'
+        projectUrl = 'https://github.com/hendraanggrian/minimal'
+        button('Read\nDocumentation', 'documentation.html')
     }
 }

@@ -20,7 +20,7 @@ extensions.configure<PagesExtension> {
         projectName = RELEASE_ARTIFACT
         projectDescription = RELEASE_DESCRIPTION
         projectUrl = RELEASE_URL
-        markdownFile = rootDir.resolve("docs/README.md")
+        markdownFile = rootDir.resolve("README.md")
         headerButtons {
             button("View", "Documentation", "dokka")
         }

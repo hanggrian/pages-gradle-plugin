@@ -39,12 +39,10 @@ class MinimalFeatureTest {
             }
             pages {
                 minimal {
-                    headerButtons {
-                        button("", "", "")
-                        button("", "", "")
-                        button("", "", "")
-                        button("", "", "")
-                    }
+                    button("", "")
+                    button("", "")
+                    button("", "")
+                    button("", "")
                 }
             }
             """.trimIndent()
@@ -70,6 +68,7 @@ class MinimalFeatureTest {
             }
             pages {
                 outputDirectory.set(buildDir.resolve("custom-dir"))
+                contents.index("Content.md")
                 minimal {
                     accentColor = "#ff0000"
                     accentLightHoverColor = "#00ff00"
@@ -80,12 +79,9 @@ class MinimalFeatureTest {
                     projectDescription = "Cures cancer"
                     projectUrl = "https://www.google.com"
                     footerCredit = false
-                    markdownFile = file("Content.md")
-                    headerButtons {
-                        button("Rate", "Us", "https://www.google.com")
-                        button("Leave", "Review", "https://www.google.com")
-                        button("Report", "User", "https://www.google.com")
-                    }
+                    button("Rate\nUs", "https://www.google.com")
+                    button("Leave\nReview", "https://www.google.com")
+                    button("Report\nUser", "https://www.google.com")
                 }
             }
             """.trimIndent()

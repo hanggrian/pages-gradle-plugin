@@ -38,7 +38,7 @@ Declare a feature by invoking `requireCapability`.
 
 ### Feature: [Minimal](https://github.com/hendraanggrian/minimal-theme/)
 
-![Minimal preview](images/preview_minimal.png)
+![Minimal Preview](https://raw.githubusercontent.com/hendraanggrian/minimal-theme/images/preview_main.png)
 
 At the moment, this is the only feature.
 

@@ -7,11 +7,6 @@ plugins {
     alias(plugs.plugins.gradle.publish)
 }
 
-java.registerFeature("minimal") {
-    usingSourceSet(sourceSets.main.get())
-    capability(RELEASE_GROUP, "pages-minimal", RELEASE_VERSION)
-}
-
 gradlePlugin {
     plugins.register("pagesPlugin") {
         id = "$RELEASE_GROUP.pages"
@@ -37,11 +32,9 @@ pluginBundle {
     tags = listOf("website", "github-pages")
 }
 
-val minimalImplementation by configurations.getting
-
 dependencies {
-    minimalImplementation(libs.kotlinx.html.jvm)
-    minimalImplementation(libs.commonmark.ext.gfm.tables)
+    implementation(libs.kotlinx.html.jvm)
+    implementation(libs.commonmark.ext.gfm.tables)
     testImplementation(gradleTestKit())
     testImplementation(testLibs.kotlin.junit)
     testImplementation(testLibs.truth)

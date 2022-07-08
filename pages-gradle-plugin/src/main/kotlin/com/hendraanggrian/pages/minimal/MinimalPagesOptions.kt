@@ -1,9 +1,7 @@
 package com.hendraanggrian.pages.minimal
 
+import com.hendraanggrian.pages.PageButton
 import com.hendraanggrian.pages.PagesConfigurationDsl
-import org.gradle.api.Action
-import org.gradle.kotlin.dsl.invoke
-import java.io.File
 
 /**
  * Configure minimal feature.
@@ -28,6 +26,7 @@ interface MinimalPagesOptions {
      * Default is material color `Blue A200 Light`.
      */
     var accentDarkHoverColor: String
+
     /**
      * Optional relative path to website logo.
      * E.g. `images/icon.png`.
@@ -65,13 +64,11 @@ interface MinimalPagesOptions {
     var projectUrl: String?
 
     /**
-     * The content of this markdown will be converted into `index.html`.
-     * Cannot be empty.
+     * Add header button, capped at 3.
+     * @param text button text.
+     * @param url to redirect on button click.
      */
-    var markdownFile: File?
-
-    /** Configures header buttons. Header buttons size is capped at 3. */
-    fun headerButtons(action: Action<in MinimalButtonsScope>)
+    fun button(text: String, url: String)
 
     /**
      * Small theme credit in footer.
@@ -80,7 +77,7 @@ interface MinimalPagesOptions {
     var footerCredit: Boolean
 }
 
-internal class MinimalPagesOptionsImpl(override var projectName: String) : MinimalPagesOptions, MinimalButtonsScope {
+internal class MinimalPagesOptionsImpl(override var projectName: String) : MinimalPagesOptions {
     override var accentColor: String = "#448aff"
     override var accentLightHoverColor: String = "#005ecb"
     override var accentDarkHoverColor: String = "#83b9ff"
@@ -89,15 +86,11 @@ internal class MinimalPagesOptionsImpl(override var projectName: String) : Minim
     override var authorUrl: String? = null
     override var projectDescription: String? = null
     override var projectUrl: String? = null
-    override var markdownFile: File? = null
     override var footerCredit: Boolean = true
 
-    internal val headerButtons: MutableCollection<MinimalButton> = mutableListOf()
-    override fun headerButtons(action: Action<in MinimalButtonsScope>) = action(this)
-    override fun button(line1: String, line2: String, url: String) {
-        if (headerButtons.size >= 3) {
-            error("Header buttons are capped at 3")
-        }
-        headerButtons += MinimalButton(line1, line2, url)
+    internal val buttons = mutableListOf<PageButton>()
+    override fun button(text: String, url: String) {
+        check(buttons.size < 3) { "Minimal buttons are capped at 3" }
+        buttons += PageButton(text, url)
     }
 }
