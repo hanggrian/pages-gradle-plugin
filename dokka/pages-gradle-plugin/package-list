@@ -26,9 +26,10 @@ $dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/favicon/
 $dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/fencedCodeBlockIndent/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.internal/-default-pages-extension/fenced-code-block-indent.html
 $dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/minimal/#org.gradle.api.Action[com.hendraanggrian.pages.minimal.MinimalPagesOptions]/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.internal/-default-pages-extension/minimal.html
 $dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/outputDirectory/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.internal/-default-pages-extension/output-directory.html
-$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/prism/#org.gradle.api.Action[com.hendraanggrian.pages.PrismOptions]/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.internal/-default-pages-extension/prism.html
 $dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/resources/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.internal/-default-pages-extension/resources.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/scripts/#kotlin.Array[kotlin.String]/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.internal/-default-pages-extension/scripts.html
 $dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/staticResources/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.internal/-default-pages-extension/static-resources.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/styles/#kotlin.Array[kotlin.String]/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.internal/-default-pages-extension/styles.html
 $dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/webpages/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.internal/-default-pages-extension/webpages.html
 $dokka.location:com.hendraanggrian.pages.minimal////PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/index.html
 $dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages.minimal/-minimal-pages-options/index.html
@@ -72,9 +73,10 @@ $dokka.location:com.hendraanggrian.pages/PagesExtension/contents/#org.gradle.api
 $dokka.location:com.hendraanggrian.pages/PagesExtension/favicon/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-extension/favicon.html
 $dokka.location:com.hendraanggrian.pages/PagesExtension/minimal/#org.gradle.api.Action[com.hendraanggrian.pages.minimal.MinimalPagesOptions]/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-extension/minimal.html
 $dokka.location:com.hendraanggrian.pages/PagesExtension/outputDirectory/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-extension/output-directory.html
-$dokka.location:com.hendraanggrian.pages/PagesExtension/prism/#org.gradle.api.Action[com.hendraanggrian.pages.PrismOptions]/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-extension/prism.html
 $dokka.location:com.hendraanggrian.pages/PagesExtension/resources/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-extension/resources.html
 $dokka.location:com.hendraanggrian.pages/PagesExtension/resources/#org.gradle.api.Action[org.gradle.api.file.CopySpec]/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-extension/resources.html
+$dokka.location:com.hendraanggrian.pages/PagesExtension/scripts/#kotlin.Array[kotlin.String]/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-extension/scripts.html
+$dokka.location:com.hendraanggrian.pages/PagesExtension/styles/#kotlin.Array[kotlin.String]/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-extension/styles.html
 $dokka.location:com.hendraanggrian.pages/PagesPlugin.Companion///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-plugin/-companion/index.html
 $dokka.location:com.hendraanggrian.pages/PagesPlugin.Companion/GROUP/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-plugin/-companion/-g-r-o-u-p.html
 $dokka.location:com.hendraanggrian.pages/PagesPlugin.Companion/TASK_DEPLOY_PAGES/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-plugin/-companion/-t-a-s-k_-d-e-p-l-o-y_-p-a-g-e-s.html
@@ -82,10 +84,6 @@ $dokka.location:com.hendraanggrian.pages/PagesPlugin.Companion/TASK_DEPLOY_RESOU
 $dokka.location:com.hendraanggrian.pages/PagesPlugin///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-plugin/index.html
 $dokka.location:com.hendraanggrian.pages/PagesPlugin/PagesPlugin/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-plugin/-pages-plugin.html
 $dokka.location:com.hendraanggrian.pages/PagesPlugin/apply/#org.gradle.api.Project/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-pages-plugin/apply.html
-$dokka.location:com.hendraanggrian.pages/PrismOptions///PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-prism-options/index.html
-$dokka.location:com.hendraanggrian.pages/PrismOptions/languages/#kotlin.Array[kotlin.String]/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-prism-options/languages.html
-$dokka.location:com.hendraanggrian.pages/PrismOptions/theme/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-prism-options/theme.html
-$dokka.location:com.hendraanggrian.pages/PrismOptions/version/#/PointingToDeclaration/pages-gradle-plugin/com.hendraanggrian.pages/-prism-options/version.html
 com.hendraanggrian.pages
 com.hendraanggrian.pages.cayman
 com.hendraanggrian.pages.internal
