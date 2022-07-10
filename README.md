@@ -33,34 +33,53 @@ apply plugin: 'com.hendraanggrian.pages'
 
 ## Usage
 
-On its own main dependency, the plugin does nothing.
-Declare a feature by invoking `requireCapability`.
-
-### Feature: [Minimal](https://github.com/hendraanggrian/minimal-theme/)
-
-![Minimal Preview](https://raw.githubusercontent.com/hendraanggrian/minimal-theme/images/preview_main.png)
-
-At the moment, this is the only feature.
+Configure base extension, then select one of the available themes.
 
 ```gradle
-dependencies {
-    classpath("com.hendraanggrian:pages-gradle-plugin:$version") {
-        capabilities {
-            requireCapability('com.hendraanggrian:pages-minimal')
+pages {
+    // custom local resources
+    resources {
+        from('images')
+    }
+    // map markdown files to HTML
+    contents {
+        index('README.md')
+        add('About.md', 'about.html')
+    }
+    // enables prism syntax highlighter
+    prism {
+        version = '1.28.0'
+        theme = 'dark'
+        languages = ['java', 'kotlin]
+    }
+}
+```
+
+### [Minimal Theme](https://github.com/hendraanggrian/minimal-theme/)
+
+![Minimal Theme Preview](https://raw.githubusercontent.com/hendraanggrian/minimal-theme/assets/preview_main.png)
+
+```gradle
+pages {
+    minimal {
+        authorName.set('Hendra Anggrian')
+        projectName.set('My Project')
+        projectDescription.set('A very awesome project')
+        markdownFile.set(file('path/to/README.md'))
+        headerButtons {
+            button('Download', 'Sources', 'https://somewhere.com')
         }
     }
 }
 ```
 
-Configure minimal theme by invoking `minimal` DSL.
+### [Cayman Theme](https://github.com/hendraanggrian/cayman-theme/)
+
+![Cayman Theme Preview](https://raw.githubusercontent.com/hendraanggrian/cayman-theme/assets/preview_main.png)
 
 ```gradle
-plugins {
-    id('com.hendraanggrian.pages')
-}
-
 pages {
-    minimal {
+    cayman {
         authorName.set('Hendra Anggrian')
         projectName.set('My Project')
         projectDescription.set('A very awesome project')

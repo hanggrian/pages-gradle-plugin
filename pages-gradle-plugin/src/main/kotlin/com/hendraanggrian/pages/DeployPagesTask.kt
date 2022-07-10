@@ -3,11 +3,14 @@ package com.hendraanggrian.pages
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.provider.MapProperty
+import org.gradle.api.provider.Property
 import org.gradle.api.provider.SetProperty
 import org.gradle.api.tasks.Input
+import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
 import org.gradle.kotlin.dsl.mapProperty
+import org.gradle.kotlin.dsl.property
 import org.gradle.kotlin.dsl.setProperty
 import org.w3c.dom.Document
 import java.io.File
@@ -33,6 +36,9 @@ open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
     @OutputDirectory
     final override val outputDirectory: DirectoryProperty = project.objects.directoryProperty()
 
+    @Internal
+    val fencedCodeBlockIndent: Property<Int> = project.objects.property()
+
     private val transformer: Transformer = TransformerFactory.newInstance().newTransformer()
 
     @TaskAction
@@ -41,7 +47,7 @@ open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
             staticResources.get().isNotEmpty() ||
                 dynamicResources.get().isNotEmpty() ||
                 webpages.get().isNotEmpty()
-        ) { "No pages to write" }
+        ) { "Nothing to write" }
         val outputDir = outputDirectory.asFile.get()
 
         logger.info("Copying resources:")
@@ -72,7 +78,16 @@ open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
             logger.info("  $filename")
             val file = outputDir.resolve(filename)
             transformer.transform(DOMSource(document), StreamResult(FileWriter(file)))
-            file.writeText(file.readText().fixFencedCodeBlock())
+            file.writeText(
+                buildString {
+                    appendLine("<!doctype html>")
+                    if (fencedCodeBlockIndent.isPresent) {
+                        append(file.readText().fixFencedCodeBlock(fencedCodeBlockIndent.get()))
+                    } else {
+                        append(file.readText())
+                    }
+                }
+            )
         }
     }
 
@@ -84,7 +99,10 @@ open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
      * kotlinx.html automatically add indent to commonmark's result.
      * This fix reverses that behavior.
      */
-    private fun String.fixFencedCodeBlock(): String =
-        replace("<pre>\n                    <code", "<pre><code")
-            .replace("</code>\n                </pre>", "</code></pre>")
+    private fun String.fixFencedCodeBlock(indentTimes: Int): String {
+        val indent = "    "
+        val totalIndent = buildString { repeat(indentTimes) { append(indent) } }
+        return replace("<pre>\n$totalIndent$indent<code", "<pre><code")
+            .replace("</code>\n$totalIndent</pre>", "</code></pre>")
+    }
 }

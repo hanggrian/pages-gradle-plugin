@@ -12,10 +12,11 @@ apply plugin: 'com.hendraanggrian.pages'
 pages {
     resources.from('src')
     favicon.set('images/my_icon.svg')
-    styles.add("https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css")
+    styles.add("https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism-tomorrow.min.css")
     scripts.addAll("https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js",
             "https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-groovy.min.js")
-    minimal {
+    cayman {
+        darkTheme()
         authorName = 'Hendra Anggrian'
         authorUrl = 'https://github.com/hendraanggrian'
         projectDescription = 'This is an awesome example'

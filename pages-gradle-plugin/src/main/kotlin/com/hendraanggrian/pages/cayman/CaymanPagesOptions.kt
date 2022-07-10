@@ -1,31 +1,37 @@
-package com.hendraanggrian.pages.minimal
+package com.hendraanggrian.pages.cayman
 
 import com.hendraanggrian.pages.PageButton
 import com.hendraanggrian.pages.PagesConfigurationDsl
 
 /**
- * Minimal theme configuration
- * See [minimal-theme](https://github.com/hendraanggrian/minimal-theme/) for more information/.
+ * Cayman theme configuration
+ * See [cayman-theme](https://github.com/hendraanggrian/cayman-theme/) for more information/.
  */
 @PagesConfigurationDsl
-interface MinimalPagesOptions {
+interface CaymanPagesOptions {
     /**
-     * Accent color of the webpage, used as button color.
+     * Use dark theme.
+     * Default is light.
+     */
+    fun darkTheme()
+
+    /**
+     * Accent color of the webpage.
      * Default is material color `Blue A200`.
      */
     var accentColor: String
 
     /**
-     * Accent color of the webpage, used as button color when hovered in light theme.
-     * Default is material color `Blue A200 Dark`.
+     * Primary color of the webpage, used as banner's gradient end and heading color.
+     * Default is `#159957`.
      */
-    var accentLightHoverColor: String
+    var primaryColor: String
 
     /**
-     * Accent color of the webpage, used as button color when hovered in dark theme.
-     * Default is material color `Blue A200 Light`.
+     * Secondary color of the webpage, used as banner's gradient end and heading color.
+     * Default is `#155799`.
      */
-    var accentDarkHoverColor: String
+    var secondaryColor: String
 
     /**
      * Author full name in title and footer.
@@ -58,7 +64,7 @@ interface MinimalPagesOptions {
     var projectUrl: String?
 
     /**
-     * Add header button, capped at 3.
+     * Add header button.
      * @param text button text.
      * @param url to redirect on button click.
      */
@@ -71,19 +77,23 @@ interface MinimalPagesOptions {
     var footerCredit: Boolean
 }
 
-internal class MinimalPagesOptionsImpl(override var projectName: String) : MinimalPagesOptions {
+internal class CaymanPagesOptionsImpl(override var projectName: String) : CaymanPagesOptions {
     override var accentColor: String = "#448aff"
-    override var accentLightHoverColor: String = "#005ecb"
-    override var accentDarkHoverColor: String = "#83b9ff"
+    override var primaryColor: String = "#159957"
+    override var secondaryColor: String = "#155799"
     override var authorName: String? = null
     override var authorUrl: String? = null
     override var projectDescription: String? = null
     override var projectUrl: String? = null
     override var footerCredit: Boolean = true
 
+    internal var dark: Boolean = false
+    override fun darkTheme() {
+        dark = true
+    }
+
     internal val buttons = mutableListOf<PageButton>()
     override fun button(text: String, url: String) {
-        check(buttons.size < 3) { "Minimal buttons are capped at 3" }
         buttons += PageButton(text, url)
     }
 }

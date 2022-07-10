@@ -1,6 +1,5 @@
-package com.hendraanggrian.pages.minimal
+package com.hendraanggrian.pages
 
-import com.hendraanggrian.pages.PagesPlugin
 import org.gradle.testkit.runner.GradleRunner
 import org.gradle.testkit.runner.TaskOutcome
 import org.junit.Rule
@@ -13,7 +12,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFails
 import kotlin.test.assertTrue
 
-class MinimalFeatureTest {
+class MinimalPagesTest {
     @Rule @JvmField val testProjectDir = TemporaryFolder()
     private lateinit var buildFile: File
     private lateinit var runner: GradleRunner

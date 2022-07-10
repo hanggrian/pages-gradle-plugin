@@ -35,6 +35,7 @@ open class PagesPlugin : Plugin<Project> {
             dynamicResources.set(pages.dynamicResources)
             webpages.set(pages.webpages)
             outputDirectory.set(pages.outputDirectory)
+            fencedCodeBlockIndent.set(pages.fencedCodeBlockIndent)
             dependsOn(deployResources)
         }
     }
