@@ -12,17 +12,23 @@ import org.gradle.kotlin.dsl.invoke
 /** Extension instance when configuring `pages` in Gradle scripts. */
 @PagesConfigurationDsl
 interface PagesExtension {
-    /** Custom resources that will be included in output directory. */
+    /**
+     * Custom resources that will be included in output directory.
+     * Default is empty.
+     */
     val resources: CopySpec
 
     /** Configures resources. */
     fun resources(action: Action<in CopySpec>): Unit = action(resources)
 
-    /** Webpages to generate from markdown path. */
-    val contents: ContentBuilder
+    /**
+     * Webpages to generate from markdown path.
+     * Default is project's README as index page.
+     */
+    val contents: PagesContent
 
     /** Configures contents. */
-    fun contents(action: Action<in ContentBuilder>): Unit = action(contents)
+    fun contents(action: Action<in PagesContent>): Unit = action(contents)
 
     /**
      * Optional relative path to website logo, e.g. `images/icon.png`.
@@ -49,12 +55,14 @@ interface PagesExtension {
     val outputDirectory: DirectoryProperty
 
     /**
-     * Configure `minimal` theme.
+     * Enables `minimal` theme and customizes its content with provided [action].
+     * Only one theme may be configured.
      */
     fun minimal(action: Action<in MinimalPagesOptions>)
 
     /**
-     * Configure `cayman` theme.
+     * Enables `minimal` theme and customizes its content with provided [action].
+     * Only one theme may be configured.
      */
     fun cayman(action: Action<in CaymanPagesOptions>)
 }

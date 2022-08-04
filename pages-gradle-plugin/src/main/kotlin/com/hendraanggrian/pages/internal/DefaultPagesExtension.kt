@@ -1,8 +1,8 @@
 package com.hendraanggrian.pages.internal
 
-import com.hendraanggrian.pages.ContentBuilder
-import com.hendraanggrian.pages.ContentBuilderImpl
 import com.hendraanggrian.pages.DeployPagesSpec
+import com.hendraanggrian.pages.PagesContent
+import com.hendraanggrian.pages.PagesContentImpl
 import com.hendraanggrian.pages.PagesExtension
 import com.hendraanggrian.pages.cayman.CaymanPages
 import com.hendraanggrian.pages.cayman.CaymanPagesOptions
@@ -33,7 +33,7 @@ open class DefaultPagesExtension(private val project: Project) : PagesExtension,
 
     final override val resources: CopySpec = project.copySpec()
 
-    final override val contents: ContentBuilder = ContentBuilderImpl(project)
+    final override val contents: PagesContent = PagesContentImpl(project)
 
     final override var favicon: Property<String> = project.objects.property()
 
@@ -68,7 +68,7 @@ open class DefaultPagesExtension(private val project: Project) : PagesExtension,
         staticResources.add("minimal/scripts/scale.fix.js")
         staticResources.add("minimal/scripts/theme.js")
         dynamicResources.put("styles" to "main.css", pages.mainCss)
-        (contents as ContentBuilderImpl).contents.forEach { (htmlName, markdownFile) ->
+        (contents as PagesContentImpl).contents.forEach { (htmlName, markdownFile) ->
             webpages.put(htmlName, pages.getPage(favicon.orNull, styles.orNull, scripts.orNull, markdownFile.readRaw()))
         }
         fencedCodeBlockIndent.set(4)
@@ -81,7 +81,7 @@ open class DefaultPagesExtension(private val project: Project) : PagesExtension,
         if (options.dark) staticResources.add("cayman/styles/dark.css")
         staticResources.add("cayman/styles/normalize.css")
         dynamicResources.put("styles" to "main.css", pages.mainCss)
-        (contents as ContentBuilderImpl).contents.forEach { (htmlName, markdownFile) ->
+        (contents as PagesContentImpl).contents.forEach { (htmlName, markdownFile) ->
             webpages.put(
                 htmlName,
                 pages.getPage(options.dark, favicon.orNull, styles.orNull, scripts.orNull, markdownFile.readRaw())

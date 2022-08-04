@@ -1,4 +1,4 @@
-[![Travis CI](https://img.shields.io/travis/com/jetbrains/pty4j)](https://www.travis-ci.com/github/jetbrains/pty4j/)
+[![Travis CI](https://img.shields.io/travis/com/jetbrains/pty4j)](https://travis-ci.com/github/jetbrains/pty4j/)
 [![Maven Central](https://img.shields.io/maven-central/v/org.jetbrains.kotlin/kotlin-stdlib)](https://search.maven.org/artifact/org.jetbrains.kotlin/kotlin-stdlib/)
 
 My Library

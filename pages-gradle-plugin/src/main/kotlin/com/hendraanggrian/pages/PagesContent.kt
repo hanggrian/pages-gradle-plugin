@@ -4,7 +4,7 @@ import org.gradle.api.Project
 import java.io.File
 
 /** Map markdown path to HTML filename with this interface. */
-interface ContentBuilder {
+interface PagesContent {
     /**
      * Creates webpage file from markdown file.
      * The destination is evaluated as per [org.gradle.api.Project.file].
@@ -19,7 +19,7 @@ interface ContentBuilder {
     fun index(markdownPath: Any): Unit = add(markdownPath, "index.html")
 }
 
-internal class ContentBuilderImpl(private val project: Project) : ContentBuilder {
+internal class PagesContentImpl(private val project: Project) : PagesContent {
     internal val contents = mutableMapOf<String, File>()
 
     init {

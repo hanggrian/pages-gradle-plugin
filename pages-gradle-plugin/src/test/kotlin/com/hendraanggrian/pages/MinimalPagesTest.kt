@@ -13,7 +13,8 @@ import kotlin.test.assertFails
 import kotlin.test.assertTrue
 
 class MinimalPagesTest {
-    @Rule @JvmField val testProjectDir = TemporaryFolder()
+    @Rule @JvmField
+    val testProjectDir = TemporaryFolder()
     private lateinit var buildFile: File
     private lateinit var runner: GradleRunner
 

@@ -1,5 +1,6 @@
 package com.hendraanggrian.pages
 
+import org.gradle.language.base.plugins.LifecycleBasePlugin
 import org.gradle.testkit.runner.GradleRunner
 import org.junit.Rule
 import org.junit.rules.TemporaryFolder
@@ -10,7 +11,8 @@ import kotlin.test.Test
 import kotlin.test.assertFails
 
 class PagesFunctionalTest {
-    @Rule @JvmField val testProjectDir = TemporaryFolder()
+    @Rule @JvmField
+    val testProjectDir = TemporaryFolder()
     private lateinit var buildFile: File
     private lateinit var runner: GradleRunner
 
@@ -38,6 +40,25 @@ class PagesFunctionalTest {
         assertFails {
             runner.withArguments(PagesPlugin.TASK_DEPLOY_PAGES).build()
                 .task(":${PagesPlugin.TASK_DEPLOY_PAGES}")
+        }
+    }
+
+    @Test
+    fun multipleThemes() {
+        buildFile.writeText(
+            """
+            plugins {
+                id("com.hendraanggrian.pages")
+                pages {
+                    minimal { }
+                    cayman { }
+                }
+            }
+            """.trimIndent()
+        )
+        assertFails {
+            runner.withArguments(LifecycleBasePlugin.CHECK_TASK_NAME).build()
+                .task(":${LifecycleBasePlugin.CHECK_TASK_NAME}")
         }
     }
 }

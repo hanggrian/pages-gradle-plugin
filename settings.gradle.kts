@@ -2,10 +2,10 @@ include("pages-gradle-plugin")
 include("website")
 includeDir("samples")
 
-fun includeDir(dir: String) = file(dir)
-    .listFiles()
+fun includeDir(dir: String) = include(*file(dir).listFiles()
     .filter { it.isDirectory }
-    .forEach { include("$dir:${it.name}") }
+    .map { "$dir:${it.name}" }
+    .toTypedArray())
 
 dependencyResolutionManagement {
     versionCatalogs {
@@ -17,8 +17,8 @@ dependencyResolutionManagement {
             plugin("kotlin-jvm", "org.jetbrains.kotlin.jvm").version(kotlinVersion)
             plugin("kotlin-kapt", "org.jetbrains.kotlin.kapt").version(kotlinVersion)
             plugin("dokka", "org.jetbrains.dokka").version(kotlinVersion)
-            plugin("spotless", "com.diffplug.spotless").version("6.7.2")
-            plugin("gradle-publish", "com.gradle.plugin-publish").version("1.0.0-rc-3")
+            plugin("spotless", "com.diffplug.spotless").version("6.8.0")
+            plugin("gradle-publish", "com.gradle.plugin-publish").version("1.0.0")
             plugin("git-publish", "org.ajoberstar.git-publish").version("3.0.1")
             plugin("pages", "com.hendraanggrian.pages").version("0.1")
         }
