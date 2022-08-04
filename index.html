@@ -8,7 +8,7 @@
         <meta content="chrome=1" http-equiv="X-UA-Compatible">
         <link href="styles/main.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" rel="stylesheet">
-        <link href="styles/prism.css" rel="stylesheet">
+        <link href="styles/prism-tomorrow.min.css" rel="stylesheet">
         <script src="scripts/theme.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-groovy.min.js"></script>
         <!--Primary meta tags-->
         <meta content="pages-gradle-plugin" name="title">
@@ -20,7 +20,7 @@
                 <h1>pages-gradle-plugin</h1>
                 <p>Static webpages generator for GitHub pages</p>
                 <p class="view">
-                    <a href="https://github.com/hendraanggrian/pages-gradle-plugin/">View the Project on GitHub <small>hendraanggrian/pages-gradle-plugi</small></a>
+                    <a href="https://github.com/hendraanggrian/pages-gradle-plugin/">View the Project on GitHub <small>hendraanggrian/pages-gradle-plugin</small></a>
                 </p>
                 <ul>
                     <li>
@@ -43,14 +43,14 @@
 
                 <p>Using plugins DSL:</p>
 
-                <pre><code class="language-groovy">plugins {
+                <pre><code class="language-gradle">plugins {
     id('com.hendraanggrian.pages') version "$version"
 }
 </code></pre>
 
                 <p>Using legacy plugin application:</p>
 
-                <pre><code class="language-groovy">buildscript {
+                <pre><code class="language-gradle">buildscript {
     repositories {
         gradlePluginPortal()
     }
@@ -66,7 +66,7 @@ apply plugin: 'com.hendraanggrian.pages'
 
                 <p>Configure base extension, then select one of the available themes.</p>
 
-                <pre><code class="language-groovy">pages {
+                <pre><code class="language-gradle">pages {
     // custom local resources
     resources {
         from('images')
@@ -90,10 +90,10 @@ apply plugin: 'com.hendraanggrian.pages'
                 </h3>
 
                 <p>
-                    <img alt="Minimal Theme Preview" src="https://raw.githubusercontent.com/hendraanggrian/minimal-theme/assets/preview_main.png">
+                    <img alt="Minimal Theme Preview" src="https://github.com/hendraanggrian/minimal-theme/raw/assets/preview_main.png">
                 </p>
 
-                <pre><code class="language-groovy">pages {
+                <pre><code class="language-gradle">pages {
     minimal {
         authorName.set('Hendra Anggrian')
         projectName.set('My Project')
@@ -111,10 +111,10 @@ apply plugin: 'com.hendraanggrian.pages'
                 </h3>
 
                 <p>
-                    <img alt="Cayman Theme Preview" src="https://raw.githubusercontent.com/hendraanggrian/cayman-theme/assets/preview_main.png">
+                    <img alt="Cayman Theme Preview" src="https://github.com/hendraanggrian/cayman-theme/raw/assets/preview_main.png">
                 </p>
 
-                <pre><code class="language-groovy">pages {
+                <pre><code class="language-gradle">pages {
     cayman {
         authorName.set('Hendra Anggrian')
         projectName.set('My Project')
