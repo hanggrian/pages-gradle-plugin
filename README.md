@@ -57,7 +57,7 @@ pages {
 
 ### [Minimal Theme](https://github.com/hendraanggrian/minimal-theme/)
 
-![Minimal Theme Preview](https://raw.githubusercontent.com/hendraanggrian/minimal-theme/assets/preview_main.png)
+![Minimal theme preview.](https://github.com/hendraanggrian/minimal-theme/raw/assets/preview_main.png)
 
 ```gradle
 pages {
@@ -75,7 +75,7 @@ pages {
 
 ### [Cayman Theme](https://github.com/hendraanggrian/cayman-theme/)
 
-![Cayman Theme Preview](https://raw.githubusercontent.com/hendraanggrian/cayman-theme/assets/preview_main.png)
+![Cayman theme preview.](https://github.com/hendraanggrian/cayman-theme/raw/assets/preview_main.png)
 
 ```gradle
 pages {

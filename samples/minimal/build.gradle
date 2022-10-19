@@ -1,8 +1,8 @@
 buildscript {
     repositories.mavenCentral()
     dependencies {
-        classpath files('../pages-gradle-plugin-0.1.jar')
-        classpath 'org.jetbrains.kotlinx:kotlinx-html-jvm:0.7.5'
+        classpath files('../pages-gradle-plugin-0.2.jar')
+        classpath 'org.jetbrains.kotlinx:kotlinx-html-jvm:0.8.0'
         classpath 'org.commonmark:commonmark-ext-gfm-tables:0.18.2'
     }
 }
@@ -17,9 +17,9 @@ pages {
             "https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-groovy.min.js")
     minimal {
         authorName = 'Hendra Anggrian'
-        authorUrl = 'https://github.com/hendraanggrian'
+        authorUrl = 'https://github.com/hendraanggrian/'
         projectDescription = 'This is an awesome example'
-        projectUrl = 'https://github.com/hendraanggrian/minimal'
+        projectUrl = 'https://github.com/hendraanggrian/minimal-theme/'
         button('Read\nDocumentation', 'documentation.html')
     }
 }

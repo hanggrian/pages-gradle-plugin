@@ -33,91 +33,92 @@ internal class MinimalPages(private val options: MinimalPagesOptionsImpl) {
         const val HEADER_WRAPPED_WIDTH_PERCENTAGE = 99
     }
 
-    fun getPage(favicon: String?, styles: List<String>?, scripts: List<String>?, content: String): Document =
-        createHTMLDocument().html {
-            lang = "en-us"
-            head {
-                meta(charset = "utf-8")
-                title(options.projectName)
-                favicon?.let { link(rel = "icon", href = it) }
-                meta(name = "viewport", content = "width=device-width")
-                meta(content = "chrome=1") { httpEquiv = "X-UA-Compatible" }
-                link(rel = "stylesheet", href = "styles/main.css")
-                link(
-                    rel = "stylesheet",
-                    href = "https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0"
-                )
-                styles?.forEach { link(rel = "stylesheet", href = it) }
-                script(src = "scripts/theme.js") { }
-                scripts?.forEach { script(src = it) { } }
-                comment("Primary meta tags")
-                meta(name = "title", content = options.projectName)
-                options.projectDescription?.let { meta(name = "description", content = it) }
-            }
-            body {
-                div(classes = "wrapper") {
-                    header {
-                        h1 { text(options.projectName) }
-                        options.projectDescription?.let { p { text(it) } }
-                        options.projectUrl?.let { url ->
-                            p(classes = "view") {
-                                a(href = url) {
-                                    if ("github.com" in url) {
-                                        text("View the Project on GitHub ")
-                                        val parts = when {
-                                            !url.endsWith('/') -> url
-                                            else -> url.substring(0, url.lastIndex - 1)
-                                        }.split('/').reversed()
-                                        small { text("${parts[1]}/${parts[0]}") }
-                                    } else {
-                                        text("View the Project")
-                                    }
-                                }
-                            }
-                        }
-                        if (options.buttons.isNotEmpty()) {
-                            ul {
-                                options.buttons.forEach { (text, url) ->
-                                    li {
-                                        a(href = url) {
-                                            text(text.substringBefore('\n')); strong { text(text.substringAfter('\n')) }
-                                        }
-                                    }
+    fun getPage(favicon: String?, styles: List<String>?, scripts: List<String>?, content: String):
+        Document = createHTMLDocument().html {
+        lang = "en"
+        head {
+            meta(charset = "utf-8")
+            title(options.projectName)
+            favicon?.let { link(rel = "icon", href = it) }
+            meta(name = "viewport", content = "width=device-width")
+            meta(content = "chrome=1") { httpEquiv = "X-UA-Compatible" }
+            link(rel = "stylesheet", href = "styles/main.css")
+            link(
+                rel = "stylesheet",
+                href = "https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0"
+            )
+            styles?.forEach { link(rel = "stylesheet", href = it) }
+            script(src = "scripts/theme.js") { }
+            scripts?.forEach { script(src = it) { } }
+            comment("Primary meta tags")
+            meta(name = "title", content = options.projectName)
+            options.projectDescription?.let { meta(name = "description", content = it) }
+        }
+        body {
+            div(classes = "wrapper") {
+                header {
+                    h1 { text(options.projectName) }
+                    options.projectDescription?.let { p { text(it) } }
+                    options.projectUrl?.let { url ->
+                        p(classes = "view") {
+                            a(href = url) {
+                                if ("github.com" in url) {
+                                    text("View the Project on GitHub ")
+                                    val parts = when {
+                                        !url.endsWith('/') -> url
+                                        else -> url.substringBeforeLast('/')
+                                    }.split('/').reversed()
+                                    small { text("${parts[1]}/${parts[0]}") }
+                                } else {
+                                    text("View the Project")
                                 }
                             }
                         }
                     }
-                    section { unsafe { +content } }
-                    footer {
-                        p {
-                            button {
-                                classes = setOf("material-symbols-sharp")
-                                id = "theme-toggle"
-                                title = "Toggle dark mode"
-                                onClick = "toggleDarkMode()"
-                            }
-                        }
-                        p {
-                            if (options.authorName != null) {
-                                text("This project is maintained by ")
-                                if (options.authorUrl != null) {
-                                    a(href = options.authorUrl) { text(options.authorName!!) }
-                                } else {
-                                    text(options.authorName!!)
+                    if (options.buttons.isNotEmpty()) {
+                        ul {
+                            options.buttons.forEach { (text, url) ->
+                                li {
+                                    a(href = url) {
+                                        text(text.substringBefore('\n'))
+                                        strong { text(text.substringAfter('\n')) }
+                                    }
                                 }
-                            }
-                        }
-                        if (options.footerCredit) {
-                            small {
-                                text("Hosted on GitHub Pages — Theme by ")
-                                a(href = "https://github.com/orderedlist/") { text("orderedlist") }
                             }
                         }
                     }
                 }
-                script(src = "scripts/scale.fix.js") { }
+                section { unsafe { +content } }
+                footer {
+                    p {
+                        button {
+                            classes = setOf("material-symbols-sharp")
+                            id = "theme-toggle"
+                            title = "Toggle dark mode"
+                            onClick = "toggleDarkMode()"
+                        }
+                    }
+                    p {
+                        if (options.authorName != null) {
+                            text("This project is maintained by ")
+                            if (options.authorUrl != null) {
+                                a(href = options.authorUrl) { text(options.authorName!!) }
+                            } else {
+                                text(options.authorName!!)
+                            }
+                        }
+                    }
+                    if (options.footerCredit) {
+                        small {
+                            text("Hosted on GitHub Pages — Theme by ")
+                            a(href = "https://github.com/orderedlist/") { text("orderedlist") }
+                        }
+                    }
+                }
             }
+            script(src = "scripts/scale.fix.js") { }
         }
+    }
 
     val mainCss: String
         get() {

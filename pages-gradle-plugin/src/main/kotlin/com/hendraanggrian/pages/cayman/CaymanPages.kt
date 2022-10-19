@@ -28,7 +28,7 @@ internal class CaymanPages(private val options: CaymanPagesOptionsImpl) {
         content: String
     ): Document =
         createHTMLDocument().html {
-            lang = "en-us"
+            lang = "en"
             head {
                 meta(charset = "utf-8")
                 title(options.projectName)
@@ -77,7 +77,9 @@ internal class CaymanPages(private val options: CaymanPagesOptionsImpl) {
                         if (options.footerCredit) {
                             span(classes = "site-footer-credits") {
                                 text("Hosted on GitHub Pages — Theme by ")
-                                a(href = "https://github.com/jasonlong/cayman-theme/") { text("jasonlong") }
+                                a(href = "https://github.com/jasonlong/cayman-theme/") {
+                                    text("jasonlong")
+                                }
                             }
                         }
                     }
@@ -117,7 +119,7 @@ internal class CaymanPages(private val options: CaymanPagesOptionsImpl) {
               background-color: var(--background);
               padding: 0;
               margin: 0;
-              font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+              font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
               font-size: 16px;
               line-height: 1.5;
               color: var(--text-body); }
@@ -238,7 +240,7 @@ internal class CaymanPages(private val options: CaymanPagesOptionsImpl) {
                 margin-bottom: 1em; }
               .main-content code {
                 padding: 2px 4px;
-                font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+                font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
                 font-size: 0.9rem;
                 color: var(--code-text);
                 background-color: var(--code-background);
@@ -247,7 +249,7 @@ internal class CaymanPages(private val options: CaymanPagesOptionsImpl) {
                 padding: 0.8rem;
                 margin-top: 0;
                 margin-bottom: 1rem;
-                font: 1rem Consolas, "Liberation Mono", Menlo, Courier, monospace;
+                font: 1rem Consolas, 'Liberation Mono', Menlo, Courier, monospace;
                 color: var(--code-text);
                 word-wrap: normal;
                 background-color: var(--code-background);

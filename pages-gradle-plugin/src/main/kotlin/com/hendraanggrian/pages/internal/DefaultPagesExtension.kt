@@ -52,8 +52,9 @@ open class DefaultPagesExtension(private val project: Project) : PagesExtension,
     final override val dynamicResources: MapProperty<Pair<String, String>, String> = project.objects
         .mapProperty<Pair<String, String>, String>().convention(emptyMap())
 
-    final override val webpages: MapProperty<String, Document> = project.objects.mapProperty<String, Document>()
-        .convention(emptyMap())
+    final override val webpages: MapProperty<String, Document> =
+        project.objects.mapProperty<String, Document>()
+            .convention(emptyMap())
 
     val fencedCodeBlockIndent: Property<Int> = project.objects.property<Int>()
         .convention(0)
@@ -69,7 +70,10 @@ open class DefaultPagesExtension(private val project: Project) : PagesExtension,
         staticResources.add("minimal/scripts/theme.js")
         dynamicResources.put("styles" to "main.css", pages.mainCss)
         (contents as PagesContentImpl).contents.forEach { (htmlName, markdownFile) ->
-            webpages.put(htmlName, pages.getPage(favicon.orNull, styles.orNull, scripts.orNull, markdownFile.readRaw()))
+            webpages.put(
+                htmlName,
+                pages.getPage(favicon.orNull, styles.orNull, scripts.orNull, markdownFile.readRaw())
+            )
         }
         fencedCodeBlockIndent.set(4)
     }
@@ -84,15 +88,24 @@ open class DefaultPagesExtension(private val project: Project) : PagesExtension,
         (contents as PagesContentImpl).contents.forEach { (htmlName, markdownFile) ->
             webpages.put(
                 htmlName,
-                pages.getPage(options.dark, favicon.orNull, styles.orNull, scripts.orNull, markdownFile.readRaw())
+                pages.getPage(
+                    options.dark,
+                    favicon.orNull,
+                    styles.orNull,
+                    scripts.orNull,
+                    markdownFile.readRaw()
+                )
             )
         }
         fencedCodeBlockIndent.set(3)
     }
 
     private fun checkTheme() =
-        check(staticResources.get().isEmpty() && dynamicResources.get().isEmpty() && webpages.get().isEmpty()) {
-            "Only one theme can be selected"
+        check(
+            staticResources.get().isEmpty() && dynamicResources.get().isEmpty() && webpages.get()
+                .isEmpty()
+        ) {
+            "Only one theme can be selected."
         }
 
     private fun File.readRaw() = htmlRenderer.render(parser.parse(readText()))

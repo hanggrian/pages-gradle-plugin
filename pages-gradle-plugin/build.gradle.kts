@@ -1,10 +1,10 @@
 plugins {
     `java-gradle-plugin`
     `kotlin-dsl`
-    alias(plugs.plugins.kotlin.jvm)
-    alias(plugs.plugins.dokka)
-    alias(plugs.plugins.spotless)
-    alias(plugs.plugins.gradle.publish)
+    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.dokka)
+    alias(libs.plugins.spotless)
+    alias(libs.plugins.gradle.publish)
 }
 
 gradlePlugin {
@@ -18,7 +18,7 @@ gradlePlugin {
 }
 
 kotlin.jvmToolchain {
-    languageVersion.set(JavaLanguageVersion.of(sdk.versions.jdk.get()))
+    languageVersion.set(JavaLanguageVersion.of(libs.versions.jdk.get()))
 }
 
 spotless.kotlin {
@@ -36,8 +36,8 @@ dependencies {
     implementation(libs.kotlinx.html.jvm)
     implementation(libs.commonmark.ext.gfm.tables)
     testImplementation(gradleTestKit())
-    testImplementation(testLibs.kotlin.junit)
-    testImplementation(testLibs.truth)
+    testImplementation(libs.kotlin.test.junit)
+    testImplementation(libs.truth)
 }
 
 tasks.dokkaHtml {

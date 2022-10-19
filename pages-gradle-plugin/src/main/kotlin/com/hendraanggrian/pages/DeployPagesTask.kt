@@ -28,7 +28,8 @@ open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
     final override val staticResources: SetProperty<String> = project.objects.setProperty()
 
     @Input
-    final override val dynamicResources: MapProperty<Pair<String, String>, String> = project.objects.mapProperty()
+    final override val dynamicResources: MapProperty<Pair<String, String>, String> =
+        project.objects.mapProperty()
 
     @Input
     final override val webpages: MapProperty<String, Document> = project.objects.mapProperty()
@@ -47,13 +48,13 @@ open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
             staticResources.get().isNotEmpty() ||
                 dynamicResources.get().isNotEmpty() ||
                 webpages.get().isNotEmpty()
-        ) { "Nothing to write" }
+        ) { "Nothing to write." }
         val outputDir = outputDirectory.asFile.get()
 
         logger.info("Copying resources:")
         staticResources.get().forEach { filepath ->
             val filepathWithoutRoot = filepath.substringAfter('/')
-            logger.info("  $filepathWithoutRoot")
+            logger.info("  - $filepathWithoutRoot")
             val targetFile = outputDir.resolve(filepathWithoutRoot)
             targetFile.parentFile.prepare()
             Files.copy(
@@ -67,7 +68,7 @@ open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
         dynamicResources.get().forEach { (file, content) ->
             val dirname = file.first
             val filename = file.second
-            logger.info("  $dirname/$filename")
+            logger.info("  - $dirname/$filename")
             val targetDir = outputDir.resolve(dirname)
             targetDir.prepare()
             targetDir.resolve(filename).writeText(content)
@@ -75,7 +76,7 @@ open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
 
         logger.info("Writing pages:")
         webpages.get().forEach { (filename, document) ->
-            logger.info("  $filename")
+            logger.info("  - $filename")
             val file = outputDir.resolve(filename)
             transformer.transform(DOMSource(document), StreamResult(FileWriter(file)))
             file.writeText(
@@ -96,8 +97,8 @@ open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
     }
 
     /**
-     * kotlinx.html automatically add indent to commonmark's result.
-     * This fix reverses that behavior.
+     * kotlinx.html automatically add indent to commonmark's result. This fix reverses that
+     * behavior.
      */
     private fun String.fixFencedCodeBlock(indentTimes: Int): String {
         val indent = "    "

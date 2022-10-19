@@ -20,8 +20,12 @@ open class PagesPlugin : Plugin<Project> {
     }
 
     override fun apply(project: Project) {
-        val pages = project.extensions.create(PagesExtension::class, "pages", DefaultPagesExtension::class, project)
-            as DefaultPagesExtension
+        val pages = project.extensions.create(
+            PagesExtension::class,
+            "pages",
+            DefaultPagesExtension::class,
+            project
+        ) as DefaultPagesExtension
         val deployResources = project.tasks.register<Copy>(TASK_DEPLOY_RESOURCES) {
             group = GROUP
             description = "Copy local resources."

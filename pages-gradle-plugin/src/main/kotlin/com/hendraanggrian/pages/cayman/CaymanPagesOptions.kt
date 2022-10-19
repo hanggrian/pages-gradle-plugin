@@ -4,76 +4,59 @@ import com.hendraanggrian.pages.PageButton
 import com.hendraanggrian.pages.PagesConfigurationDsl
 
 /**
- * Cayman theme configuration
- * See [cayman-theme](https://github.com/hendraanggrian/cayman-theme/) for more information/.
+ * Cayman theme configuration. See [cayman-theme](https://github.com/hendraanggrian/cayman-theme/)
+ * for more information/.
  */
 @PagesConfigurationDsl
 interface CaymanPagesOptions {
-    /**
-     * Use dark theme.
-     * Default is light.
-     */
+    /** Use dark theme. Default is light. */
     fun darkTheme()
 
-    /**
-     * Accent color of the webpage.
-     * Default is material color `Blue A200`.
-     */
+    /** Accent color of the webpage. Default is material color `Blue A200`. */
     var accentColor: String
 
     /**
-     * Primary color of the webpage, used as banner's gradient end and heading color.
-     * Default is `#159957`.
+     * Primary color of the webpage, used as banner's gradient end and heading color. Default
+     * is `#159957`.
      */
     var primaryColor: String
 
     /**
-     * Secondary color of the webpage, used as banner's gradient end and heading color.
-     * Default is `#155799`.
+     * Secondary color of the webpage, used as banner's gradient end and heading color. Default
+     * is `#155799`.
      */
     var secondaryColor: String
 
     /**
-     * Author full name in title and footer.
-     * If left empty, corresponding tag in footer is removed but title will still show project name.
+     * Author full name in title and footer. If left empty, corresponding tag in footer is removed
+     * but title will still show project name.
      */
     var authorName: String?
 
     /**
-     * Author website url in footer.
-     * If left empty, author information in footer will not be clickable.
+     * Author website url in footer. If left empty, author information in footer will not be
+     * clickable.
      */
     var authorUrl: String?
 
-    /**
-     * Project full name in header.
-     * If left empty, module name will be used.
-     */
+    /** Project full name in header. If left empty, module name will be used. */
     var projectName: String
 
-    /**
-     * Project description in header.
-     * If left empty, corresponding tag in header is removed.
-     */
+    /** Project description in header. If left empty, corresponding tag in header is removed. */
     var projectDescription: String?
 
-    /**
-     * Project website url in header.
-     * If left empty, corresponding tag in header is removed.
-     */
+    /** Project website url in header. If left empty, corresponding tag in header is removed. */
     var projectUrl: String?
 
     /**
      * Add header button.
+     *
      * @param text button text.
      * @param url to redirect on button click.
      */
     fun button(text: String, url: String)
 
-    /**
-     * Small theme credit in footer.
-     * Enabled by default.
-     */
+    /** Small theme credit in footer. Enabled by default. */
     var footerCredit: Boolean
 }
 

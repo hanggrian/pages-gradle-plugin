@@ -6,15 +6,15 @@ import java.io.File
 /** Map markdown path to HTML filename with this interface. */
 interface PagesContent {
     /**
-     * Creates webpage file from markdown file.
-     * The destination is evaluated as per [org.gradle.api.Project.file].
+     * Creates webpage file from markdown file. The destination is evaluated as
+     * per [org.gradle.api.Project.file].
      */
     fun add(markdownPath: Any, htmlName: String)
 
     /**
-     * Creates `index.html` from markdown file.
-     * The destination is evaluated as per [org.gradle.api.Project.file].
-     * Default is `README.md` on root, `docs` or `.github` directory.
+     * Creates `index.html` from markdown file. The destination is evaluated as
+     * per [org.gradle.api.Project.file]. Default is `README.md` on root, `docs` or `.github`
+     * directory.
      */
     fun index(markdownPath: Any): Unit = add(markdownPath, "index.html")
 }
