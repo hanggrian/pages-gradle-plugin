@@ -1,4 +1,12 @@
-include("pages-gradle-plugin")
+pluginManagement.repositories {
+    gradlePluginPortal()
+    mavenCentral()
+}
+dependencyResolutionManagement.repositories.mavenCentral()
+
+rootProject.name = "pages-gradle-plugin"
+
+include("pages")
 include("website")
 includeDir("samples")
 
