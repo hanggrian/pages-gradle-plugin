@@ -1,1 +1,1 @@
-sourceset_dependencies='{":pages-gradle-plugin:dokkaHtml/main":[]}'
+sourceset_dependencies='{":pages:dokkaHtml/main":[]}'

@@ -1,0 +1,87 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.hendraanggrian.pages.cayman////PointingToDeclaration/pages/com.hendraanggrian.pages.cayman/index.html
+$dokka.location:com.hendraanggrian.pages.cayman/CaymanPagesOptions///PointingToDeclaration/pages/com.hendraanggrian.pages.cayman/-cayman-pages-options/index.html
+$dokka.location:com.hendraanggrian.pages.cayman/CaymanPagesOptions/accentColor/#/PointingToDeclaration/pages/com.hendraanggrian.pages.cayman/-cayman-pages-options/accent-color.html
+$dokka.location:com.hendraanggrian.pages.cayman/CaymanPagesOptions/authorName/#/PointingToDeclaration/pages/com.hendraanggrian.pages.cayman/-cayman-pages-options/author-name.html
+$dokka.location:com.hendraanggrian.pages.cayman/CaymanPagesOptions/authorUrl/#/PointingToDeclaration/pages/com.hendraanggrian.pages.cayman/-cayman-pages-options/author-url.html
+$dokka.location:com.hendraanggrian.pages.cayman/CaymanPagesOptions/button/#kotlin.String#kotlin.String/PointingToDeclaration/pages/com.hendraanggrian.pages.cayman/-cayman-pages-options/button.html
+$dokka.location:com.hendraanggrian.pages.cayman/CaymanPagesOptions/darkTheme/#/PointingToDeclaration/pages/com.hendraanggrian.pages.cayman/-cayman-pages-options/dark-theme.html
+$dokka.location:com.hendraanggrian.pages.cayman/CaymanPagesOptions/footerCredit/#/PointingToDeclaration/pages/com.hendraanggrian.pages.cayman/-cayman-pages-options/footer-credit.html
+$dokka.location:com.hendraanggrian.pages.cayman/CaymanPagesOptions/primaryColor/#/PointingToDeclaration/pages/com.hendraanggrian.pages.cayman/-cayman-pages-options/primary-color.html
+$dokka.location:com.hendraanggrian.pages.cayman/CaymanPagesOptions/projectDescription/#/PointingToDeclaration/pages/com.hendraanggrian.pages.cayman/-cayman-pages-options/project-description.html
+$dokka.location:com.hendraanggrian.pages.cayman/CaymanPagesOptions/projectName/#/PointingToDeclaration/pages/com.hendraanggrian.pages.cayman/-cayman-pages-options/project-name.html
+$dokka.location:com.hendraanggrian.pages.cayman/CaymanPagesOptions/projectUrl/#/PointingToDeclaration/pages/com.hendraanggrian.pages.cayman/-cayman-pages-options/project-url.html
+$dokka.location:com.hendraanggrian.pages.cayman/CaymanPagesOptions/secondaryColor/#/PointingToDeclaration/pages/com.hendraanggrian.pages.cayman/-cayman-pages-options/secondary-color.html
+$dokka.location:com.hendraanggrian.pages.internal////PointingToDeclaration/pages/com.hendraanggrian.pages.internal/index.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension///PointingToDeclaration/pages/com.hendraanggrian.pages.internal/-default-pages-extension/index.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/DefaultPagesExtension/#org.gradle.api.Project/PointingToDeclaration/pages/com.hendraanggrian.pages.internal/-default-pages-extension/-default-pages-extension.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/cayman/#org.gradle.api.Action[com.hendraanggrian.pages.cayman.CaymanPagesOptions]/PointingToDeclaration/pages/com.hendraanggrian.pages.internal/-default-pages-extension/cayman.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/contents/#/PointingToDeclaration/pages/com.hendraanggrian.pages.internal/-default-pages-extension/contents.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/dynamicResources/#/PointingToDeclaration/pages/com.hendraanggrian.pages.internal/-default-pages-extension/dynamic-resources.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/favicon/#/PointingToDeclaration/pages/com.hendraanggrian.pages.internal/-default-pages-extension/favicon.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/fencedCodeBlockIndent/#/PointingToDeclaration/pages/com.hendraanggrian.pages.internal/-default-pages-extension/fenced-code-block-indent.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/minimal/#org.gradle.api.Action[com.hendraanggrian.pages.minimal.MinimalPagesOptions]/PointingToDeclaration/pages/com.hendraanggrian.pages.internal/-default-pages-extension/minimal.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/outputDirectory/#/PointingToDeclaration/pages/com.hendraanggrian.pages.internal/-default-pages-extension/output-directory.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/resources/#/PointingToDeclaration/pages/com.hendraanggrian.pages.internal/-default-pages-extension/resources.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/scripts/#/PointingToDeclaration/pages/com.hendraanggrian.pages.internal/-default-pages-extension/scripts.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/staticResources/#/PointingToDeclaration/pages/com.hendraanggrian.pages.internal/-default-pages-extension/static-resources.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/styles/#/PointingToDeclaration/pages/com.hendraanggrian.pages.internal/-default-pages-extension/styles.html
+$dokka.location:com.hendraanggrian.pages.internal/DefaultPagesExtension/webpages/#/PointingToDeclaration/pages/com.hendraanggrian.pages.internal/-default-pages-extension/webpages.html
+$dokka.location:com.hendraanggrian.pages.minimal////PointingToDeclaration/pages/com.hendraanggrian.pages.minimal/index.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions///PointingToDeclaration/pages/com.hendraanggrian.pages.minimal/-minimal-pages-options/index.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/accentColor/#/PointingToDeclaration/pages/com.hendraanggrian.pages.minimal/-minimal-pages-options/accent-color.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/accentDarkHoverColor/#/PointingToDeclaration/pages/com.hendraanggrian.pages.minimal/-minimal-pages-options/accent-dark-hover-color.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/accentLightHoverColor/#/PointingToDeclaration/pages/com.hendraanggrian.pages.minimal/-minimal-pages-options/accent-light-hover-color.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/authorName/#/PointingToDeclaration/pages/com.hendraanggrian.pages.minimal/-minimal-pages-options/author-name.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/authorUrl/#/PointingToDeclaration/pages/com.hendraanggrian.pages.minimal/-minimal-pages-options/author-url.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/button/#kotlin.String#kotlin.String/PointingToDeclaration/pages/com.hendraanggrian.pages.minimal/-minimal-pages-options/button.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/footerCredit/#/PointingToDeclaration/pages/com.hendraanggrian.pages.minimal/-minimal-pages-options/footer-credit.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/projectDescription/#/PointingToDeclaration/pages/com.hendraanggrian.pages.minimal/-minimal-pages-options/project-description.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/projectName/#/PointingToDeclaration/pages/com.hendraanggrian.pages.minimal/-minimal-pages-options/project-name.html
+$dokka.location:com.hendraanggrian.pages.minimal/MinimalPagesOptions/projectUrl/#/PointingToDeclaration/pages/com.hendraanggrian.pages.minimal/-minimal-pages-options/project-url.html
+$dokka.location:com.hendraanggrian.pages////PointingToDeclaration/pages/com.hendraanggrian.pages/index.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesSpec///PointingToDeclaration/pages/com.hendraanggrian.pages/-deploy-pages-spec/index.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesSpec/dynamicResources/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-deploy-pages-spec/dynamic-resources.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesSpec/outputDirectory/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-deploy-pages-spec/output-directory.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesSpec/staticResources/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-deploy-pages-spec/static-resources.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesSpec/webpages/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-deploy-pages-spec/webpages.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesTask///PointingToDeclaration/pages/com.hendraanggrian.pages/-deploy-pages-task/index.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesTask/DeployPagesTask/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-deploy-pages-task/-deploy-pages-task.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesTask/deploy/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-deploy-pages-task/deploy.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesTask/dynamicResources/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-deploy-pages-task/dynamic-resources.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesTask/fencedCodeBlockIndent/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-deploy-pages-task/fenced-code-block-indent.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesTask/outputDirectory/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-deploy-pages-task/output-directory.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesTask/staticResources/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-deploy-pages-task/static-resources.html
+$dokka.location:com.hendraanggrian.pages/DeployPagesTask/webpages/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-deploy-pages-task/webpages.html
+$dokka.location:com.hendraanggrian.pages/PageButton///PointingToDeclaration/pages/com.hendraanggrian.pages/-page-button/index.html
+$dokka.location:com.hendraanggrian.pages/PageButton/PageButton/#kotlin.String#kotlin.String/PointingToDeclaration/pages/com.hendraanggrian.pages/-page-button/-page-button.html
+$dokka.location:com.hendraanggrian.pages/PageButton/text/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-page-button/text.html
+$dokka.location:com.hendraanggrian.pages/PageButton/url/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-page-button/url.html
+$dokka.location:com.hendraanggrian.pages/PagesConfigurationDsl///PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-configuration-dsl/index.html
+$dokka.location:com.hendraanggrian.pages/PagesContent///PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-content/index.html
+$dokka.location:com.hendraanggrian.pages/PagesContent/add/#kotlin.Any#kotlin.String/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-content/add.html
+$dokka.location:com.hendraanggrian.pages/PagesContent/index/#kotlin.Any/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-content/--index--.html
+$dokka.location:com.hendraanggrian.pages/PagesExtension///PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-extension/index.html
+$dokka.location:com.hendraanggrian.pages/PagesExtension/cayman/#org.gradle.api.Action[com.hendraanggrian.pages.cayman.CaymanPagesOptions]/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-extension/cayman.html
+$dokka.location:com.hendraanggrian.pages/PagesExtension/contents/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-extension/contents.html
+$dokka.location:com.hendraanggrian.pages/PagesExtension/contents/#org.gradle.api.Action[com.hendraanggrian.pages.PagesContent]/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-extension/contents.html
+$dokka.location:com.hendraanggrian.pages/PagesExtension/favicon/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-extension/favicon.html
+$dokka.location:com.hendraanggrian.pages/PagesExtension/minimal/#org.gradle.api.Action[com.hendraanggrian.pages.minimal.MinimalPagesOptions]/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-extension/minimal.html
+$dokka.location:com.hendraanggrian.pages/PagesExtension/outputDirectory/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-extension/output-directory.html
+$dokka.location:com.hendraanggrian.pages/PagesExtension/resources/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-extension/resources.html
+$dokka.location:com.hendraanggrian.pages/PagesExtension/resources/#org.gradle.api.Action[org.gradle.api.file.CopySpec]/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-extension/resources.html
+$dokka.location:com.hendraanggrian.pages/PagesExtension/scripts/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-extension/scripts.html
+$dokka.location:com.hendraanggrian.pages/PagesExtension/styles/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-extension/styles.html
+$dokka.location:com.hendraanggrian.pages/PagesPlugin.Companion///PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-plugin/-companion/index.html
+$dokka.location:com.hendraanggrian.pages/PagesPlugin.Companion/GROUP/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-plugin/-companion/-g-r-o-u-p.html
+$dokka.location:com.hendraanggrian.pages/PagesPlugin.Companion/TASK_DEPLOY_PAGES/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-plugin/-companion/-t-a-s-k_-d-e-p-l-o-y_-p-a-g-e-s.html
+$dokka.location:com.hendraanggrian.pages/PagesPlugin.Companion/TASK_DEPLOY_RESOURCES/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-plugin/-companion/-t-a-s-k_-d-e-p-l-o-y_-r-e-s-o-u-r-c-e-s.html
+$dokka.location:com.hendraanggrian.pages/PagesPlugin///PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-plugin/index.html
+$dokka.location:com.hendraanggrian.pages/PagesPlugin/PagesPlugin/#/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-plugin/-pages-plugin.html
+$dokka.location:com.hendraanggrian.pages/PagesPlugin/apply/#org.gradle.api.Project/PointingToDeclaration/pages/com.hendraanggrian.pages/-pages-plugin/apply.html
+com.hendraanggrian.pages
+com.hendraanggrian.pages.cayman
+com.hendraanggrian.pages.internal
+com.hendraanggrian.pages.minimal
+
