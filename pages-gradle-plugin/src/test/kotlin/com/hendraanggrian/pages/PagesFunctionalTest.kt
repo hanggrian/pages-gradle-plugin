@@ -1,6 +1,7 @@
 package com.hendraanggrian.pages
 
-import org.gradle.language.base.plugins.LifecycleBasePlugin
+import com.hendraanggrian.pages.PagesPlugin.Companion.TASK_DEPLOY_PAGES
+import org.gradle.language.base.plugins.LifecycleBasePlugin.CHECK_TASK_NAME
 import org.gradle.testkit.runner.GradleRunner
 import org.junit.Rule
 import org.junit.rules.TemporaryFolder
@@ -37,10 +38,7 @@ class PagesFunctionalTest {
             }
             """.trimIndent()
         )
-        assertFails {
-            runner.withArguments(PagesPlugin.TASK_DEPLOY_PAGES).build()
-                .task(":${PagesPlugin.TASK_DEPLOY_PAGES}")
-        }
+        assertFails { runner.withArguments(TASK_DEPLOY_PAGES).build().task(":$TASK_DEPLOY_PAGES") }
     }
 
     @Test
@@ -56,9 +54,6 @@ class PagesFunctionalTest {
             }
             """.trimIndent()
         )
-        assertFails {
-            runner.withArguments(LifecycleBasePlugin.CHECK_TASK_NAME).build()
-                .task(":${LifecycleBasePlugin.CHECK_TASK_NAME}")
-        }
+        assertFails { runner.withArguments(CHECK_TASK_NAME).build().task(":$CHECK_TASK_NAME") }
     }
 }

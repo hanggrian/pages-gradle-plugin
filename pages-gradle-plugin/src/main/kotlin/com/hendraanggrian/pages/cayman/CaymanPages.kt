@@ -19,7 +19,6 @@ import kotlinx.html.unsafe
 import org.w3c.dom.Document
 
 internal class CaymanPages(private val options: CaymanPagesOptionsImpl) {
-
     fun getPage(
         darkTheme: Boolean,
         favicon: String?,
@@ -94,27 +93,27 @@ internal class CaymanPages(private val options: CaymanPagesOptionsImpl) {
               --secondary: ${options.secondaryColor};
               --accent: ${options.accentColor};
               box-sizing: border-box; }
-            
+
             :root {
               --background: #fafafa; /* Grey 50 */
-            
+
               --button-text: rgba(255, 255, 255, 0.7);
               --button-text-hover: rgba(255, 255, 255, 0.8);
               --button-background: rgba(255, 255, 255, 0.08);
               --button-background-hover: rgba(255, 255, 255, 0.2);
               --button-border: rgba(255, 255, 255, 0.2);
               --button-border-hover: rgba(255, 255, 255, 0.3);
-            
+
               --text-heavy-inverse: #fafafa; /* Grey 50 */
               --text-body: #455a64; /* Blue Grey 700 */
               --text-caption: #607d8b; /* Blue Grey 500 */
-            
+
               --code-text: #455a64; /* Blue Grey 700 */
               --code-background: #eceff1; /* Blue Grey 50 */
               --code-border: #cfd8dc; /* Blue Grey 100 */
-            
+
               --border: #cfd8dc; /* Blue Grey 100 */ }
-            
+
             body {
               background-color: var(--background);
               padding: 0;
@@ -123,13 +122,13 @@ internal class CaymanPages(private val options: CaymanPagesOptionsImpl) {
               font-size: 16px;
               line-height: 1.5;
               color: var(--text-body); }
-            
+
             a {
               color: var(--accent);
               text-decoration: none; }
               a:hover {
                 text-decoration: underline; }
-            
+
             .btn {
               display: inline-block;
               margin-bottom: 1rem;
@@ -163,7 +162,7 @@ internal class CaymanPages(private val options: CaymanPagesOptionsImpl) {
                   .btn + .btn {
                     margin-top: 1rem;
                     margin-left: 0; } }
-            
+
             .page-header {
               color: var(--text-heavy-inverse);
               text-align: center;
@@ -178,7 +177,7 @@ internal class CaymanPages(private val options: CaymanPagesOptionsImpl) {
               @media screen and (max-width: 42em) {
                 .page-header {
                   padding: 2rem 1rem; } }
-            
+
             .project-name {
               margin-top: 0;
               margin-bottom: 0.1rem; }
@@ -191,7 +190,7 @@ internal class CaymanPages(private val options: CaymanPagesOptionsImpl) {
               @media screen and (max-width: 42em) {
                 .project-name {
                   font-size: 1.75rem; } }
-            
+
             .project-tagline {
               margin-bottom: 2rem;
               font-weight: normal;
@@ -205,7 +204,7 @@ internal class CaymanPages(private val options: CaymanPagesOptionsImpl) {
               @media screen and (max-width: 42em) {
                 .project-tagline {
                   font-size: 1rem; } }
-            
+
             .main-content {
               word-wrap: break-word; }
               .main-content :first-child {
@@ -333,7 +332,7 @@ internal class CaymanPages(private val options: CaymanPagesOptionsImpl) {
                 margin: 1rem 0;
                 background-color: var(--border);
                 border: 0; }
-            
+
             .site-footer {
               padding-top: 2rem;
               margin-top: 2rem;
@@ -347,11 +346,11 @@ internal class CaymanPages(private val options: CaymanPagesOptionsImpl) {
               @media screen and (max-width: 42em) {
                 .site-footer {
                   font-size: 0.9rem; } }
-            
+
             .site-footer-owner {
               display: block;
               font-weight: bold; }
-            
+
             .site-footer-credits {
               color: var(--text-caption); }
 

@@ -1,7 +1,8 @@
 package com.hendraanggrian.pages
 
+import com.hendraanggrian.pages.PagesPlugin.Companion.TASK_DEPLOY_PAGES
 import org.gradle.testkit.runner.GradleRunner
-import org.gradle.testkit.runner.TaskOutcome
+import org.gradle.testkit.runner.TaskOutcome.SUCCESS
 import org.junit.Rule
 import org.junit.rules.TemporaryFolder
 import java.io.File
@@ -9,9 +10,10 @@ import java.io.IOException
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFails
 import kotlin.test.assertTrue
 
-class CaymanPagesTest {
+class MinimalPagesTest {
     @Rule @JvmField
     val testProjectDir = TemporaryFolder()
     private lateinit var buildFile: File
@@ -21,12 +23,32 @@ class CaymanPagesTest {
     @Throws(IOException::class)
     fun setup() {
         testProjectDir.newFile("settings.gradle.kts")
-            .writeText("rootProject.name = \"minimal-feature-test\"")
+            .writeText("rootProject.name = \"minimal-test\"")
         buildFile = testProjectDir.newFile("build.gradle.kts")
         runner = GradleRunner.create()
             .withPluginClasspath()
             .withProjectDir(testProjectDir.root)
             .withTestKitDir(testProjectDir.newFolder())
+    }
+
+    @Test
+    fun tooManyHeaderButtons() {
+        buildFile.writeText(
+            """
+            plugins {
+                id("com.hendraanggrian.pages")
+            }
+            pages {
+                minimal {
+                    button("", "")
+                    button("", "")
+                    button("", "")
+                    button("", "")
+                }
+            }
+            """.trimIndent()
+        )
+        assertFails { runner.withArguments(TASK_DEPLOY_PAGES).build().task(":$TASK_DEPLOY_PAGES") }
     }
 
     @Test
@@ -45,10 +67,10 @@ class CaymanPagesTest {
             pages {
                 outputDirectory.set(buildDir.resolve("custom-dir"))
                 contents.index("Content.md")
-                cayman {
+                minimal {
                     accentColor = "#ff0000"
-                    primaryColor = "#00ff00"
-                    secondaryColor = "#0000ff"
+                    accentLightHoverColor = "#00ff00"
+                    accentDarkHoverColor = "#0000ff"
                     authorName = "Cool Dude"
                     authorUrl = "https://www.google.com"
                     projectName = "Cool Stuff"
@@ -63,9 +85,8 @@ class CaymanPagesTest {
             """.trimIndent()
         )
         assertEquals(
-            TaskOutcome.SUCCESS,
-            runner.withArguments(PagesPlugin.TASK_DEPLOY_PAGES).build()
-                .task(":${PagesPlugin.TASK_DEPLOY_PAGES}")!!.outcome
+            SUCCESS,
+            runner.withArguments(TASK_DEPLOY_PAGES).build().task(":$TASK_DEPLOY_PAGES")!!.outcome
         )
         testProjectDir.root.resolve("build/custom-dir/index.html").readText().let {
             assertTrue("Cool Dude" in it)

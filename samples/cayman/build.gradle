@@ -2,8 +2,8 @@ buildscript {
     repositories.mavenCentral()
     dependencies {
         classpath files('../pages-gradle-plugin-0.2.jar')
-        classpath 'org.jetbrains.kotlinx:kotlinx-html-jvm:0.8.0'
-        classpath 'org.commonmark:commonmark-ext-gfm-tables:0.18.2'
+        classpath libs.kotlinx.html.jvm
+        classpath libs.commonmark.ext.gfm.tables
     }
 }
 
@@ -12,9 +12,9 @@ apply plugin: 'com.hendraanggrian.pages'
 pages {
     resources.from('src')
     favicon.set('images/my_icon.svg')
-    styles.add("https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism-tomorrow.min.css")
-    scripts.addAll("https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js",
-            "https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-groovy.min.js")
+    styles.add("https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css")
+    scripts.addAll("https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
+            "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-groovy.min.js")
     cayman {
         darkTheme()
         authorName = 'Hendra Anggrian'

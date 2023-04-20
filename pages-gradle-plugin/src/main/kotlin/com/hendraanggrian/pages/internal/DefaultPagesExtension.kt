@@ -30,7 +30,6 @@ import org.w3c.dom.Document
 import java.io.File
 
 open class DefaultPagesExtension(private val project: Project) : PagesExtension, DeployPagesSpec {
-
     final override val resources: CopySpec = project.copySpec()
 
     final override val contents: PagesContent = PagesContentImpl(project)

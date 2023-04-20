@@ -17,7 +17,6 @@ import java.io.File
 import java.io.FileWriter
 import java.nio.file.Files
 import java.nio.file.StandardCopyOption
-import javax.xml.transform.Transformer
 import javax.xml.transform.TransformerFactory
 import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
@@ -40,7 +39,7 @@ open class DeployPagesTask : DefaultTask(), DeployPagesSpec {
     @Internal
     val fencedCodeBlockIndent: Property<Int> = project.objects.property()
 
-    private val transformer: Transformer = TransformerFactory.newInstance().newTransformer()
+    private val transformer = TransformerFactory.newInstance().newTransformer()
 
     @TaskAction
     fun deploy() {
