@@ -1,6 +1,6 @@
 package com.hendraanggrian.pages
 
-import com.hendraanggrian.pages.internal.DefaultPagesExtension
+import com.hendraanggrian.pages.internal.DefaultPageExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.tasks.Copy
@@ -23,16 +23,16 @@ open class PagesPlugin : Plugin<Project> {
         val pages = project.extensions.create(
             PagesExtension::class,
             "pages",
-            DefaultPagesExtension::class,
+            DefaultPageExtension::class,
             project
-        ) as DefaultPagesExtension
+        ) as DefaultPageExtension
         val deployResources = project.tasks.register<Copy>(TASK_DEPLOY_RESOURCES) {
             group = GROUP
             description = "Copy local resources."
             with(pages.resources)
             into(pages.outputDirectory)
         }
-        project.tasks.register<DeployPagesTask>(TASK_DEPLOY_PAGES) {
+        project.tasks.register<DeployPageTask>(TASK_DEPLOY_PAGES) {
             group = GROUP
             description = "Write webpages and their resources."
             staticResources.set(pages.staticResources)

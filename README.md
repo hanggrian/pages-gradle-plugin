@@ -55,13 +55,26 @@ pages {
 }
 ```
 
-### [Minimal Theme](https://github.com/hendraanggrian/minimal-theme/)
+### [Materialist Theme](https://github.com/hendraanggrian/materialist-theme/)
 
-![Minimal theme preview.](https://github.com/hendraanggrian/minimal-theme/raw/assets/preview_main.png)
+![Materialist theme preview.](https://github.com/hendraanggrian/materialist-theme/raw/assets/preview_main.png)
 
 ```gradle
 pages {
-    minimal {
+    materialist {
+        darkMode.set(true)
+    }
+}
+```
+
+### [Cayman Theme](https://github.com/hendraanggrian/cayman-dark-theme/)
+
+![Cayman theme preview.](https://github.com/hendraanggrian/cayman-dark-theme/raw/assets/preview_main.png)
+
+```gradle
+pages {
+    cayman {
+        darkMode.set(true)
         authorName.set('Hendra Anggrian')
         projectName.set('My Project')
         projectDescription.set('A very awesome project')
@@ -73,13 +86,13 @@ pages {
 }
 ```
 
-### [Cayman Theme](https://github.com/hendraanggrian/cayman-theme/)
+### [Minimal Theme](https://github.com/hendraanggrian/minimal-dark-theme/)
 
-![Cayman theme preview.](https://github.com/hendraanggrian/cayman-theme/raw/assets/preview_main.png)
+![Minimal theme preview.](https://github.com/hendraanggrian/minimal-dark-theme/raw/assets/preview_main.png)
 
 ```gradle
 pages {
-    cayman {
+    minimal {
         authorName.set('Hendra Anggrian')
         projectName.set('My Project')
         projectDescription.set('A very awesome project')

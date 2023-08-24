@@ -1,18 +1,17 @@
 package com.hendraanggrian.pages.minimal
 
+import com.hendraanggrian.pages.PagesExtension
+import com.hendraanggrian.pages.WebsiteFactory
+import kotlinx.html.BODY
+import kotlinx.html.HEAD
 import kotlinx.html.a
-import kotlinx.html.body
 import kotlinx.html.button
 import kotlinx.html.classes
 import kotlinx.html.div
-import kotlinx.html.dom.createHTMLDocument
 import kotlinx.html.footer
 import kotlinx.html.h1
-import kotlinx.html.head
 import kotlinx.html.header
-import kotlinx.html.html
 import kotlinx.html.id
-import kotlinx.html.lang
 import kotlinx.html.li
 import kotlinx.html.link
 import kotlinx.html.meta
@@ -25,113 +24,116 @@ import kotlinx.html.strong
 import kotlinx.html.title
 import kotlinx.html.ul
 import kotlinx.html.unsafe
-import org.w3c.dom.Document
 
-internal class MinimalPages(private val options: MinimalPagesOptionsImpl) {
+internal class MinimalThemeFactory(extension: PagesExtension, options: MinimalOptionsImpl) :
+    WebsiteFactory(extension, options.buttons), MinimalOptions by options {
+
     private companion object {
         const val HEADER_WIDTH = 270
         const val HEADER_WRAPPED_WIDTH_PERCENTAGE = 99
     }
 
-    fun getPage(favicon: String?, styles: List<String>?, scripts: List<String>?, content: String):
-        Document = createHTMLDocument().html {
-        lang = "en"
-        head {
-            meta(charset = "utf-8")
-            title(options.projectName)
-            favicon?.let { link(rel = "icon", href = it) }
-            meta(name = "viewport", content = "width=device-width")
-            meta(content = "chrome=1") { httpEquiv = "X-UA-Compatible" }
-            link(rel = "stylesheet", href = "styles/main.css")
-            link(
-                rel = "stylesheet",
-                href = "https://fonts.googleapis.com/" +
-                    "css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0"
-            )
-            styles?.forEach { link(rel = "stylesheet", href = it) }
-            script(src = "scripts/theme.js") { }
-            scripts?.forEach { script(src = it) { } }
-            comment("Primary meta tags")
-            meta(name = "title", content = options.projectName)
-            options.projectDescription?.let { meta(name = "description", content = it) }
+    override fun HEAD.onCreateHead() {
+        title(projectName)
+        if (favicon.isPresent) {
+            link(rel = "icon", href = favicon.get())
         }
-        body {
-            div(classes = "wrapper") {
-                header {
-                    h1 { text(options.projectName) }
-                    options.projectDescription?.let { p { text(it) } }
-                    options.projectUrl?.let { url ->
-                        p(classes = "view") {
-                            a(href = url) {
-                                if ("github.com" in url) {
-                                    text("View the Project on GitHub ")
-                                    val parts = when {
-                                        !url.endsWith('/') -> url
-                                        else -> url.substringBeforeLast('/')
-                                    }.split('/').reversed()
-                                    small { text("${parts[1]}/${parts[0]}") }
-                                } else {
-                                    text("View the Project")
-                                }
-                            }
-                        }
-                    }
-                    if (options.buttons.isNotEmpty()) {
-                        ul {
-                            options.buttons.forEach { (text, url) ->
-                                li {
-                                    a(href = url) {
-                                        text(text.substringBefore('\n'))
-                                        strong { text(text.substringAfter('\n')) }
-                                    }
-                                }
+        meta(name = "viewport", content = "width=device-width")
+        meta(content = "chrome=1") { httpEquiv = "X-UA-Compatible" }
+        link(rel = "stylesheet", href = "styles/main.css")
+        link(
+            rel = "stylesheet",
+            href = "https://fonts.googleapis.com/" +
+                "css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0"
+        )
+        if (styles.isPresent) {
+            styles.get().forEach { link(rel = "stylesheet", href = it) }
+        }
+        script(src = "scripts/theme.js") { }
+        if (scripts.isPresent) {
+            scripts.get().forEach { script(src = it) { } }
+        }
+        comment("Primary meta tags")
+        meta(name = "title", content = projectName)
+        projectDescription?.let { meta(name = "description", content = it) }
+    }
+
+    override fun BODY.onCreateBody(content: String) {
+        div(classes = "wrapper") {
+            header {
+                h1 { text(projectName) }
+                projectDescription?.let { p { text(it) } }
+                projectUrl?.let { url ->
+                    p(classes = "view") {
+                        a(href = url) {
+                            if ("github.com" in url) {
+                                text("View the Project on GitHub ")
+                                val parts = when {
+                                    !url.endsWith('/') -> url
+                                    else -> url.substringBeforeLast('/')
+                                }.split('/').reversed()
+                                small { text("${parts[1]}/${parts[0]}") }
+                            } else {
+                                text("View the Project")
                             }
                         }
                     }
                 }
-                section { unsafe { +content } }
-                footer {
-                    p {
-                        button {
-                            classes = setOf("material-symbols-sharp")
-                            id = "theme-toggle"
-                            title = "Toggle dark mode"
-                            onClick = "toggleDarkMode()"
-                        }
-                    }
-                    p {
-                        if (options.authorName != null) {
-                            text("This project is maintained by ")
-                            if (options.authorUrl != null) {
-                                a(href = options.authorUrl) { text(options.authorName!!) }
-                            } else {
-                                text(options.authorName!!)
+                if (buttons.isNotEmpty()) {
+                    ul {
+                        buttons.forEach { (text, url) ->
+                            li {
+                                a(href = url) {
+                                    text(text.substringBefore('\n'))
+                                    strong { text(text.substringAfter('\n')) }
+                                }
                             }
-                        }
-                    }
-                    if (options.footerCredit) {
-                        small {
-                            text("Hosted on GitHub Pages — Theme by ")
-                            a(href = "https://github.com/orderedlist/") { text("orderedlist") }
                         }
                     }
                 }
             }
-            script(src = "scripts/scale.fix.js") { }
+            section { unsafe { +content } }
+            footer {
+                p {
+                    button {
+                        classes = setOf("material-symbols-sharp")
+                        id = "theme-toggle"
+                        title = "Toggle dark mode"
+                        onClick = "toggleDarkMode()"
+                    }
+                }
+                p {
+                    if (authorName != null) {
+                        text("This project is maintained by ")
+                        if (authorUrl != null) {
+                            a(href = authorUrl) { text(authorName!!) }
+                        } else {
+                            text(authorName!!)
+                        }
+                    }
+                }
+                if (footerCredit) {
+                    small {
+                        text("Hosted on GitHub Pages — Theme by ")
+                        a(href = "https://github.com/orderedlist/") { text("orderedlist") }
+                    }
+                }
+            }
         }
+        script(src = "scripts/scale.fix.js") { }
     }
 
     val mainCss: String
         get() {
-            val buttonsSize = options.buttons.size
+            val buttonsSize = buttons.size
             return """
                 * {
-                  --accent: ${options.accentColor}; }
+                  --accent: $accentColor; }
 
                 :root {
                   --background: #fafafa; /* grey_50 */
 
-                  --accent-hover: ${options.accentLightHoverColor};
+                  --accent-hover: $accentLightHoverColor;
 
                   --button-background: #f5f5f5; /* Grey 100 */
                   --button-background-active: #c2c2c2; /* Grey 100 Dark */
@@ -157,7 +159,7 @@ internal class MinimalPages(private val options: MinimalPagesOptionsImpl) {
                 :root.theme-dark {
                   --background: #212121; /* grey_900*/
 
-                  --accent-hover: ${options.accentDarkHoverColor};
+                  --accent-hover: $accentDarkHoverColor;
 
                   --button-background: #424242; /* Grey 800 */
                   --button-background-active: #6d6d6d; /* Grey 800 Light */

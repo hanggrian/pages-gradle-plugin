@@ -10,10 +10,9 @@ import java.io.IOException
 import kotlin.test.BeforeTest
 import kotlin.test.Test
 import kotlin.test.assertEquals
-import kotlin.test.assertFails
 import kotlin.test.assertTrue
 
-class MinimalPagesTest {
+class MinimalThemeFactoryTest {
     @Rule @JvmField
     val testProjectDir = TemporaryFolder()
     private lateinit var buildFile: File
@@ -32,26 +31,6 @@ class MinimalPagesTest {
     }
 
     @Test
-    fun tooManyHeaderButtons() {
-        buildFile.writeText(
-            """
-            plugins {
-                id("com.hendraanggrian.pages")
-            }
-            pages {
-                minimal {
-                    button("", "")
-                    button("", "")
-                    button("", "")
-                    button("", "")
-                }
-            }
-            """.trimIndent()
-        )
-        assertFails { runner.withArguments(TASK_DEPLOY_PAGES).build().task(":$TASK_DEPLOY_PAGES") }
-    }
-
-    @Test
     fun fullConfiguration() {
         testProjectDir.newFile("Content.md").writeText(
             """
@@ -66,7 +45,7 @@ class MinimalPagesTest {
             }
             pages {
                 outputDirectory.set(buildDir.resolve("custom-dir"))
-                contents.index("Content.md")
+                content.put("index.html", file("Content.md"))
                 minimal {
                     accentColor = "#ff0000"
                     accentLightHoverColor = "#00ff00"

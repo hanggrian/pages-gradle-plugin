@@ -1,6 +1,6 @@
 pluginManagement.repositories {
-    gradlePluginPortal()
     mavenCentral()
+    gradlePluginPortal()
 }
 dependencyResolutionManagement.repositories {
     mavenCentral()
@@ -13,7 +13,7 @@ include("pages-gradle-plugin")
 include("website")
 includeDir("samples")
 
-fun includeDir(dir: String) = file(dir)
-    .listFiles()!!
+fun includeDir(dir: String) = include(*file(dir).listFiles()!!
     .filter { it.isDirectory }
-    .forEach { include("$dir:${it.name}") }
+    .map { "$dir:${it.name}" }
+    .toTypedArray())

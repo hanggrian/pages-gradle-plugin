@@ -12,7 +12,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-class CaymanPagesTest {
+class CaymanThemeFactoryTest {
     @Rule @JvmField
     val testProjectDir = TemporaryFolder()
     private lateinit var buildFile: File
@@ -45,7 +45,7 @@ class CaymanPagesTest {
             }
             pages {
                 outputDirectory.set(buildDir.resolve("custom-dir"))
-                contents.index("Content.md")
+                content.put("index.html", file("Content.md"))
                 cayman {
                     accentColor = "#ff0000"
                     primaryColor = "#00ff00"

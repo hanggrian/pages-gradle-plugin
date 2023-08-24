@@ -1,14 +1,13 @@
 package com.hendraanggrian.pages.cayman
 
+import com.hendraanggrian.pages.PagesExtension
+import com.hendraanggrian.pages.WebsiteFactory
+import kotlinx.html.BODY
+import kotlinx.html.HEAD
 import kotlinx.html.a
-import kotlinx.html.body
-import kotlinx.html.dom.createHTMLDocument
 import kotlinx.html.footer
 import kotlinx.html.h1
 import kotlinx.html.h2
-import kotlinx.html.head
-import kotlinx.html.html
-import kotlinx.html.lang
 import kotlinx.html.link
 import kotlinx.html.meta
 import kotlinx.html.script
@@ -16,82 +15,81 @@ import kotlinx.html.section
 import kotlinx.html.span
 import kotlinx.html.title
 import kotlinx.html.unsafe
-import org.w3c.dom.Document
 
-internal class CaymanPages(private val options: CaymanPagesOptionsImpl) {
-    fun getPage(
-        darkTheme: Boolean,
-        favicon: String?,
-        styles: List<String>?,
-        scripts: List<String>?,
-        content: String
-    ): Document =
-        createHTMLDocument().html {
-            lang = "en"
-            head {
-                meta(charset = "utf-8")
-                title(options.projectName)
-                favicon?.let { link(rel = "icon", href = it) }
-                meta(name = "viewport", content = "width=device-width, initial-scale=1")
-                meta(name = "theme-color", content = options.primaryColor)
-                link(rel = "stylesheet", href = "styles/main.css")
-                if (darkTheme) link(rel = "stylesheet", href = "styles/dark.css")
-                link(rel = "stylesheet", href = "styles/normalize.css")
-                link(
-                    rel = "stylesheet",
-                    href = "https://fonts.googleapis.com/css?family=Open+Sans:400,700"
-                )
-                styles?.forEach { link(rel = "stylesheet", href = it) }
-                scripts?.forEach { script(src = it) { } }
-                comment("Primary meta tags")
-                meta(name = "title", content = options.projectName)
-                options.projectDescription?.let { meta(name = "description", content = it) }
+internal class CaymanThemeFactory(extension: PagesExtension, options: CaymanOptionsImpl) :
+    WebsiteFactory(extension, options.buttons), CaymanOptions by options {
+
+    override fun HEAD.onCreateHead() {
+        title(projectName)
+        if (favicon.isPresent) {
+            link(rel = "icon", href = favicon.get())
+        }
+        meta(name = "viewport", content = "width=device-width, initial-scale=1")
+        meta(name = "theme-color", content = primaryColor)
+        link(rel = "stylesheet", href = "styles/main.css")
+        if (darkMode) {
+            link(rel = "stylesheet", href = "styles/dark.css")
+        }
+        link(rel = "stylesheet", href = "styles/normalize.css")
+        link(
+            rel = "stylesheet",
+            href = "https://fonts.googleapis.com/css?family=Open+Sans:400,700"
+        )
+        if (styles.isPresent) {
+            styles.get().forEach { link(rel = "stylesheet", href = it) }
+        }
+        if (scripts.isPresent) {
+            styles.get().forEach { script(src = it) { } }
+        }
+        comment("Primary meta tags")
+        meta(name = "title", content = projectName)
+        projectDescription?.let { meta(name = "description", content = it) }
+    }
+
+    override fun BODY.onCreateBody(content: String) {
+        section(classes = "page-header") {
+            h1(classes = "project-name") { text(projectName) }
+            projectDescription?.let { h2(classes = "project-tagline") { text(it) } }
+            buttons.forEach { (text, url) ->
+                a(classes = "btn", href = url) { text(text) }
             }
-            body {
-                section(classes = "page-header") {
-                    h1(classes = "project-name") { text(options.projectName) }
-                    options.projectDescription?.let { h2(classes = "project-tagline") { text(it) } }
-                    options.buttons.forEach { (text, url) ->
-                        a(classes = "btn", href = url) { text(text) }
+        }
+        section(classes = "main-content") {
+            unsafe { +content }
+            footer(classes = "site-footer") {
+                span(classes = "site-footer-owner") {
+                    if (authorName != null) {
+                        if (projectUrl != null) {
+                            a(href = projectUrl) { text(projectName) }
+                        } else {
+                            text("This project")
+                        }
+                        text(" is maintained by ")
+                        if (authorUrl != null) {
+                            a(href = authorUrl) { text(authorName!!) }
+                        } else {
+                            text(authorName!!)
+                        }
                     }
                 }
-                section(classes = "main-content") {
-                    unsafe { +content }
-                    footer(classes = "site-footer") {
-                        span(classes = "site-footer-owner") {
-                            if (options.authorName != null) {
-                                if (options.projectUrl != null) {
-                                    a(href = options.projectUrl) { text(options.projectName) }
-                                } else {
-                                    text("This project")
-                                }
-                                text(" is maintained by ")
-                                if (options.authorUrl != null) {
-                                    a(href = options.authorUrl) { text(options.authorName!!) }
-                                } else {
-                                    text(options.authorName!!)
-                                }
-                            }
-                        }
-                        if (options.footerCredit) {
-                            span(classes = "site-footer-credits") {
-                                text("Hosted on GitHub Pages — Theme by ")
-                                a(href = "https://github.com/jasonlong/cayman-theme/") {
-                                    text("jasonlong")
-                                }
-                            }
+                if (footerCredit) {
+                    span(classes = "site-footer-credits") {
+                        text("Hosted on GitHub Pages — Theme by ")
+                        a(href = "https://github.com/jasonlong/cayman-theme/") {
+                            text("jasonlong")
                         }
                     }
                 }
             }
         }
+    }
 
     val mainCss: String
         get() = """
             * {
-              --primary: ${options.primaryColor};
-              --secondary: ${options.secondaryColor};
-              --accent: ${options.accentColor};
+              --primary: $primaryColor;
+              --secondary: $secondaryColor;
+              --accent: $accentColor;
               box-sizing: border-box; }
 
             :root {

@@ -1,13 +1,15 @@
 package com.hendraanggrian.pages
 
-import com.hendraanggrian.pages.cayman.CaymanPagesOptions
-import com.hendraanggrian.pages.minimal.MinimalPagesOptions
+import com.hendraanggrian.pages.cayman.CaymanOptions
+import com.hendraanggrian.pages.minimal.MinimalOptions
 import org.gradle.api.Action
 import org.gradle.api.file.CopySpec
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.provider.ListProperty
+import org.gradle.api.provider.MapProperty
 import org.gradle.api.provider.Property
 import org.gradle.kotlin.dsl.invoke
+import java.io.File
 
 /** Extension instance when configuring `pages` in Gradle scripts. */
 @PagesConfigurationDsl
@@ -22,10 +24,13 @@ interface PagesExtension {
     fun resources(action: Action<in CopySpec>): Unit = action(resources)
 
     /** Webpages to generate from markdown path. Default is project's README as `index.html`. */
-    val contents: PagesContent
+    val content: MapProperty<String, File>
 
-    /** Configures contents. */
-    fun contents(action: Action<in PagesContent>): Unit = action(contents)
+    /**
+     * Creates webpage file from markdown file. The destination is evaluated as per
+     * [org.gradle.api.Project.file].
+     */
+    fun content(htmlName: String, markdownFile: File): Unit = content.put(htmlName, markdownFile)
 
     /**
      * Optional relative path to website logo, the icon file should be included in [resources].
@@ -52,11 +57,11 @@ interface PagesExtension {
      * Enables `minimal` theme and customizes its content with provided [action]. Only one theme may
      * be configured.
      */
-    fun minimal(action: Action<in MinimalPagesOptions>)
+    fun minimal(action: Action<in MinimalOptions>)
 
     /**
      * Enables `minimal` theme and customizes its content with provided [action]. Only one theme may
      * be configured.
      */
-    fun cayman(action: Action<in CaymanPagesOptions>)
+    fun cayman(action: Action<in CaymanOptions>)
 }
