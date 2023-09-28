@@ -14,25 +14,25 @@ import kotlin.test.assertTrue
 
 class MinimalThemeFactoryTest {
     @Rule @JvmField
-    val testProjectDir = TemporaryFolder()
+    val rootFolder = TemporaryFolder()
     private lateinit var buildFile: File
     private lateinit var runner: GradleRunner
 
     @BeforeTest
     @Throws(IOException::class)
     fun setup() {
-        testProjectDir.newFile("settings.gradle.kts")
+        rootFolder.newFile("settings.gradle.kts")
             .writeText("rootProject.name = \"minimal-test\"")
-        buildFile = testProjectDir.newFile("build.gradle.kts")
+        buildFile = rootFolder.newFile("build.gradle.kts")
         runner = GradleRunner.create()
             .withPluginClasspath()
-            .withProjectDir(testProjectDir.root)
-            .withTestKitDir(testProjectDir.newFolder())
+            .withProjectDir(rootFolder.root)
+            .withTestKitDir(rootFolder.newFolder())
     }
 
     @Test
     fun fullConfiguration() {
-        testProjectDir.newFile("Content.md").writeText(
+        rootFolder.newFile("Content.md").writeText(
             """
             # Hello
             ## World
@@ -47,13 +47,13 @@ class MinimalThemeFactoryTest {
                 outputDirectory.set(buildDir.resolve("custom-dir"))
                 content.put("index.html", file("Content.md"))
                 minimal {
-                    accentColor = "#ff0000"
-                    accentLightHoverColor = "#00ff00"
-                    accentDarkHoverColor = "#0000ff"
+                    colorPrimary = "#ff0000"
+                    colorPrimaryContainer = "#00ff00"
+                    colorPrimaryContainer2 = "#0000ff"
                     authorName = "Cool Dude"
                     authorUrl = "https://www.google.com"
                     projectName = "Cool Stuff"
-                    projectDescription = "Cures cancer"
+                    projectDescription = "This project cures cancer"
                     projectUrl = "https://www.google.com"
                     footerCredit = false
                     button("Rate\nUs", "https://www.google.com")
@@ -67,11 +67,11 @@ class MinimalThemeFactoryTest {
             SUCCESS,
             runner.withArguments(TASK_DEPLOY_PAGES).build().task(":$TASK_DEPLOY_PAGES")!!.outcome
         )
-        testProjectDir.root.resolve("build/custom-dir/index.html").readText().let {
+        rootFolder.root.resolve("build/custom-dir/index.html").readText().let {
             assertTrue("Cool Dude" in it)
             assertTrue("https://www.google.com" in it)
             assertTrue("Cool Stuff" in it)
-            assertTrue("Cures cancer" in it)
+            assertTrue("This project cures cancer" in it)
             assertTrue("Hello" in it)
             assertTrue("World" in it)
         }

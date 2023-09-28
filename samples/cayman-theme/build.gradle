@@ -12,15 +12,17 @@ apply plugin: 'com.hendraanggrian.pages'
 pages {
     resources.from('src')
     favicon.set('images/my_icon.svg')
-    styles.add("https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css")
-    scripts.addAll("https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js",
-            "https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-groovy.min.js")
+    styles.add('styles/prism-tomorrow.min.css')
+    scripts.addAll('https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-groovy.min.js')
     cayman {
-        darkTheme()
+        darkMode = true
         authorName = 'Hendra Anggrian'
         authorUrl = 'https://github.com/hendraanggrian/'
         projectDescription = 'This is an awesome example'
         projectUrl = 'https://github.com/hendraanggrian/cayman-theme/'
-        button('Read\nDocumentation', 'documentation.html')
+        button('Read\nDocs', 'documentation.html')
+        button('Download\nSource', '')
+        button('Report\nError', '')
     }
 }

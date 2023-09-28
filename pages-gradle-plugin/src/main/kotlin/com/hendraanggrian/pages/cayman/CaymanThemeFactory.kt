@@ -16,31 +16,32 @@ import kotlinx.html.span
 import kotlinx.html.title
 import kotlinx.html.unsafe
 
-internal class CaymanThemeFactory(extension: PagesExtension, options: CaymanOptionsImpl) :
-    WebsiteFactory(extension, options.buttons), CaymanOptions by options {
+internal class CaymanThemeFactory(
+    extension: PagesExtension,
+    private val options: CaymanOptionsImpl
+) : WebsiteFactory(extension), CaymanOptions by options {
 
     override fun HEAD.onCreateHead() {
         title(projectName)
         if (favicon.isPresent) {
             link(rel = "icon", href = favicon.get())
         }
+
         meta(name = "viewport", content = "width=device-width, initial-scale=1")
-        meta(name = "theme-color", content = primaryColor)
+        meta(name = "theme-color", content = colorPrimary)
+
         link(rel = "stylesheet", href = "styles/main.css")
         if (darkMode) {
             link(rel = "stylesheet", href = "styles/dark.css")
         }
         link(rel = "stylesheet", href = "styles/normalize.css")
-        link(
-            rel = "stylesheet",
-            href = "https://fonts.googleapis.com/css?family=Open+Sans:400,700"
-        )
         if (styles.isPresent) {
             styles.get().forEach { link(rel = "stylesheet", href = it) }
         }
         if (scripts.isPresent) {
-            styles.get().forEach { script(src = it) { } }
+            scripts.get().forEach { script(src = it) { } }
         }
+
         comment("Primary meta tags")
         meta(name = "title", content = projectName)
         projectDescription?.let { meta(name = "description", content = it) }
@@ -50,7 +51,7 @@ internal class CaymanThemeFactory(extension: PagesExtension, options: CaymanOpti
         section(classes = "page-header") {
             h1(classes = "project-name") { text(projectName) }
             projectDescription?.let { h2(classes = "project-tagline") { text(it) } }
-            buttons.forEach { (text, url) ->
+            options.buttons.forEach { (text, url) ->
                 a(classes = "btn", href = url) { text(text) }
             }
         }
@@ -85,15 +86,24 @@ internal class CaymanThemeFactory(extension: PagesExtension, options: CaymanOpti
     }
 
     val mainCss: String
-        get() = """
-            * {
-              --primary: $primaryColor;
-              --secondary: $secondaryColor;
-              --accent: $accentColor;
-              box-sizing: border-box; }
+        get() =
+            """
+            @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
 
-            :root {
-              --background: #fafafa; /* Grey 50 */
+            /* Modification */
+
+            * {
+              --primary: $colorPrimary;
+              --secondary: $colorSecondary;
+              --secondary-container: $colorSecondaryContainer;
+
+              --surface: #fafafa; /*Gray 50*/
+              --surface-container: #eceff1; /*Blue Gray 50*/
+
+              --on-surface: #455a64; /*Blue Gray 700*/
+              --on-surface-variant: #607d8b; /*Blue Gray 500*/
+              --outline: #cfd8dc; /*Blue Gray 100*/
+              --outline-variant: #fafafa; /*Gray 50*/
 
               --button-text: rgba(255, 255, 255, 0.7);
               --button-text-hover: rgba(255, 255, 255, 0.8);
@@ -101,28 +111,27 @@ internal class CaymanThemeFactory(extension: PagesExtension, options: CaymanOpti
               --button-background-hover: rgba(255, 255, 255, 0.2);
               --button-border: rgba(255, 255, 255, 0.2);
               --button-border-hover: rgba(255, 255, 255, 0.3);
-
-              --text-heavy-inverse: #fafafa; /* Grey 50 */
-              --text-body: #455a64; /* Blue Grey 700 */
-              --text-caption: #607d8b; /* Blue Grey 500 */
-
-              --code-text: #455a64; /* Blue Grey 700 */
-              --code-background: #eceff1; /* Blue Grey 50 */
-              --code-border: #cfd8dc; /* Blue Grey 100 */
-
-              --border: #cfd8dc; /* Blue Grey 100 */ }
+            }
 
             body {
-              background-color: var(--background);
+              background-color: var(--surface);
+            }
+
+            /* Original */
+
+            * {
+              box-sizing: border-box; }
+
+            body {
               padding: 0;
               margin: 0;
               font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
               font-size: 16px;
               line-height: 1.5;
-              color: var(--text-body); }
+              color: /*#606c71;*/ var(--on-surface); }
 
             a {
-              color: var(--accent);
+              color: /*1e6bb8;*/ var(--secondary);
               text-decoration: none; }
               a:hover {
                 text-decoration: underline; }
@@ -130,18 +139,18 @@ internal class CaymanThemeFactory(extension: PagesExtension, options: CaymanOpti
             .btn {
               display: inline-block;
               margin-bottom: 1rem;
-              color: var(--button-text);
-              background-color: var(--button-background);
-              border-color: var(--button-border);
+              color: /*rgba(255, 255, 255, 0.7)*/ var(--button-text);
+              background-color: /*rgba(255, 255, 255, 0.08)*/ var(--button-background);
+              border-color: /*rgba(255, 255, 255, 0.2)*/ var(--button-border);
               border-style: solid;
               border-width: 1px;
               border-radius: 0.3rem;
               transition: color 0.2s, background-color 0.2s, border-color 0.2s; }
               .btn:hover {
-                color: var(--button-text-hover);
+                color: /*rgba(255, 255, 255, 0.8)*/ var(--button-text-hover);
                 text-decoration: none;
-                background-color: var(--button-background-hover);
-                border-color: var(--button-border-hover); }
+                background-color: /*rgba(255, 255, 255, 0.2)*/ var(--button-background-hover);
+                border-color: /*rgba(255, 255, 255, 0.3)*/ var(--button-border-hover); }
               .btn + .btn {
                 margin-left: 1rem; }
               @media screen and (min-width: 64em) {
@@ -162,10 +171,10 @@ internal class CaymanThemeFactory(extension: PagesExtension, options: CaymanOpti
                     margin-left: 0; } }
 
             .page-header {
-              color: var(--text-heavy-inverse);
+              color: /*fff;*/ var(--outline-variant);
               text-align: center;
-              background-color: var(--primary);
-              background-image: linear-gradient(120deg, var(--secondary), var(--primary)); }
+              background-color: /*#159957;*/ var(--primary);
+              background-image: linear-gradient(120deg, var(--secondary-container), var(--primary)); }
               @media screen and (min-width: 64em) {
                 .page-header {
                   padding: 5rem 6rem; } }
@@ -232,31 +241,31 @@ internal class CaymanThemeFactory(extension: PagesExtension, options: CaymanOpti
                 margin-top: 2rem;
                 margin-bottom: 1rem;
                 font-weight: normal;
-                color: var(--primary); }
+                color: /*#159957;*/ var(--primary); }
               .main-content p {
                 margin-bottom: 1em; }
               .main-content code {
                 padding: 2px 4px;
                 font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
                 font-size: 0.9rem;
-                color: var(--code-text);
-                background-color: var(--code-background);
+                color: /*#567482;*/ var(--on-surface);
+                background-color: /*#f3f6fa*/ var(--surface-container);
                 border-radius: 0.3rem; }
               .main-content pre {
                 padding: 0.8rem;
                 margin-top: 0;
                 margin-bottom: 1rem;
                 font: 1rem Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-                color: var(--code-text);
+                color: /*#567482*/ var(--on-surface);
                 word-wrap: normal;
-                background-color: var(--code-background);
-                border: solid 1px var(--code-border);
+                background-color: /*#f3f6fa*/ var(--surface-container);
+                border: solid 1px /*#dce6f0*/ var(--outline);
                 border-radius: 0.3rem; }
                 .main-content pre > code {
                   padding: 0;
                   margin: 0;
                   font-size: 0.9rem;
-                  color: var(--code-text);
+                  color: /*#567482*/ var(--on-surface);
                   word-break: normal;
                   white-space: pre;
                   background: transparent;
@@ -295,8 +304,8 @@ internal class CaymanThemeFactory(extension: PagesExtension, options: CaymanOpti
               .main-content blockquote {
                 padding: 0 1rem;
                 margin-left: 0;
-                color: var(--text-caption);
-                border-left: 0.3rem solid var(--border); }
+                color: /*#819198*/ var(--on-surface-variant);
+                border-left: 0.3rem solid /*#dce6f0*/ var(--outline); }
                 .main-content blockquote > :first-child {
                   margin-top: 0; }
                 .main-content blockquote > :last-child {
@@ -313,7 +322,7 @@ internal class CaymanThemeFactory(extension: PagesExtension, options: CaymanOpti
                 .main-content table th,
                 .main-content table td {
                   padding: 0.5rem 1rem;
-                  border: 1px solid var(--border); }
+                  border: 1px solid /*#e9ebec*/ var(--outline); }
               .main-content dl {
                 padding: 0; }
                 .main-content dl dt {
@@ -328,13 +337,13 @@ internal class CaymanThemeFactory(extension: PagesExtension, options: CaymanOpti
                 height: 2px;
                 padding: 0;
                 margin: 1rem 0;
-                background-color: var(--border);
+                background-color: /*#eff0f1*/ var(--outline);
                 border: 0; }
 
             .site-footer {
               padding-top: 2rem;
               margin-top: 2rem;
-              border-top: solid 1px var(--border); }
+              border-top: solid 1px /*#eff0f1*/ var(--outline); }
               @media screen and (min-width: 64em) {
                 .site-footer {
                   font-size: 1rem; } }
@@ -350,7 +359,7 @@ internal class CaymanThemeFactory(extension: PagesExtension, options: CaymanOpti
               font-weight: bold; }
 
             .site-footer-credits {
-              color: var(--text-caption); }
+              color: /*#819198*/ var(--on-surface-variant); }
 
-        """.trimIndent()
+            """.trimIndent()
 }

@@ -5,6 +5,9 @@ import com.hendraanggrian.pages.PagesExtension
 import com.hendraanggrian.pages.cayman.CaymanOptions
 import com.hendraanggrian.pages.cayman.CaymanOptionsImpl
 import com.hendraanggrian.pages.cayman.CaymanThemeFactory
+import com.hendraanggrian.pages.materialist.MaterialistOptions
+import com.hendraanggrian.pages.materialist.MaterialistOptionsImpl
+import com.hendraanggrian.pages.materialist.MaterialistThemeFactory
 import com.hendraanggrian.pages.minimal.MinimalOptions
 import com.hendraanggrian.pages.minimal.MinimalOptionsImpl
 import com.hendraanggrian.pages.minimal.MinimalThemeFactory
@@ -91,6 +94,19 @@ open class DefaultPageExtension(private val project: Project) : PagesExtension, 
             webpages.put(htmlName, pages.getDocument(markdownFile.readRaw()))
         }
         fencedCodeBlockIndent.set(3)
+    }
+
+    final override fun materialist(action: Action<in MaterialistOptions>) {
+        checkTheme()
+        scanReadme()
+        val options = MaterialistOptionsImpl(project.name).also { action(it) }
+        val pages = MaterialistThemeFactory(this, options)
+
+        dynamicResources.put("styles/main.css", pages.mainCss)
+        content.get().forEach { (htmlName, markdownFile) ->
+            webpages.put(htmlName, pages.getDocument(markdownFile.readRaw()))
+        }
+        fencedCodeBlockIndent.set(4)
     }
 
     private fun checkTheme() = check(

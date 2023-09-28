@@ -9,11 +9,7 @@ import kotlinx.html.html
 import kotlinx.html.meta
 import org.w3c.dom.Document
 
-internal abstract class WebsiteFactory(
-    extension: PagesExtension,
-    val buttons: Map<String, String>
-) : PagesExtension by extension {
-
+internal abstract class WebsiteFactory(extension: PagesExtension) : PagesExtension by extension {
     abstract fun HEAD.onCreateHead()
     abstract fun BODY.onCreateBody(content: String)
 

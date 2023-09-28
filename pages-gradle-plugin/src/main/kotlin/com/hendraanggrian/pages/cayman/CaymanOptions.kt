@@ -8,37 +8,32 @@ import com.hendraanggrian.pages.internal.PageOptions
  */
 @PagesConfigurationDsl
 interface CaymanOptions : PageOptions {
-    /** Use dark theme. Default is false. */
+    /** Use dark mode, default is false. */
     var darkMode: Boolean
 
-    /** Accent color of the webpage. Default is material color `Blue A200`. */
-    var accentColor: String
+    /** Primary color, default is #159957. */
+    var colorPrimary: String
 
-    /**
-     * Primary color of the webpage, used as banner's gradient end and heading color. Default
-     * is `#159957`.
-     */
-    var primaryColor: String
+    /** Secondary color, default is #448aff. */
+    var colorSecondary: String
 
-    /**
-     * Secondary color of the webpage, used as banner's gradient end and heading color. Default
-     * is `#155799`.
-     */
-    var secondaryColor: String
+    /** Secondary container color, default is #155799. */
+    var colorSecondaryContainer: String
 }
 
 internal class CaymanOptionsImpl(override var projectName: String) : CaymanOptions {
-    internal val buttons = mutableMapOf<String, String>()
+    override var darkMode = false
+    override var colorPrimary = "#159957"
+    override var colorSecondary = "#448aff"
+    override var colorSecondaryContainer = "#155799"
 
-    override var darkMode: Boolean = false
-    override var accentColor: String = "#448aff"
-    override var primaryColor: String = "#159957"
-    override var secondaryColor: String = "#155799"
     override var authorName: String? = null
     override var authorUrl: String? = null
     override var projectDescription: String? = null
     override var projectUrl: String? = null
     override var footerCredit: Boolean = true
+
+    internal val buttons = mutableMapOf<String, String>()
     override fun button(text: String, url: String) {
         buttons += text to url
     }

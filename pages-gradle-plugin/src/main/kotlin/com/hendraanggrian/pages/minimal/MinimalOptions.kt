@@ -8,33 +8,28 @@ import com.hendraanggrian.pages.internal.PageOptions
  */
 @PagesConfigurationDsl
 interface MinimalOptions : PageOptions {
-    /** Accent color of the webpage, used as button color. Default is material color `Blue A200`. */
-    var accentColor: String
+    /** Primary color, default is #448aff. */
+    var colorPrimary: String
 
-    /**
-     * Accent color of the webpage, used as button color when hovered in light theme. Default is
-     * material color `Blue A200 Dark`.
-     */
-    var accentLightHoverColor: String
+    /** Primary container color for light mode, default is #005ecb. */
+    var colorPrimaryContainer: String
 
-    /**
-     * Accent color of the webpage, used as button color when hovered in dark theme. Default is
-     * material color `Blue A200 Light`.
-     */
-    var accentDarkHoverColor: String
+    /** Primary container color for dark mode, default is #83b9ff. */
+    var colorPrimaryContainer2: String
 }
 
 internal class MinimalOptionsImpl(override var projectName: String) : MinimalOptions {
-    internal val buttons = mutableMapOf<String, String>()
+    override var colorPrimary = "#448aff"
+    override var colorPrimaryContainer = "#005ecb"
+    override var colorPrimaryContainer2 = "#83b9ff"
 
-    override var accentColor: String = "#448aff"
-    override var accentLightHoverColor: String = "#005ecb"
-    override var accentDarkHoverColor: String = "#83b9ff"
     override var authorName: String? = null
     override var authorUrl: String? = null
     override var projectDescription: String? = null
     override var projectUrl: String? = null
     override var footerCredit: Boolean = true
+
+    internal val buttons = mutableMapOf<String, String>()
     override fun button(text: String, url: String) {
         buttons += text to url
     }

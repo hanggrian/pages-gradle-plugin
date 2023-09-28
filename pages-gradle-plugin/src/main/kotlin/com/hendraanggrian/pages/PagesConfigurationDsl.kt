@@ -7,6 +7,7 @@ package com.hendraanggrian.pages
  * pages {
  *     minimal { }
  *     cayman { }
+ *     materialist { }
  * }
  * ```
  */

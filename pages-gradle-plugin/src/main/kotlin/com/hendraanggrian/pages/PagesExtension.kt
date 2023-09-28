@@ -1,6 +1,7 @@
 package com.hendraanggrian.pages
 
 import com.hendraanggrian.pages.cayman.CaymanOptions
+import com.hendraanggrian.pages.materialist.MaterialistOptions
 import com.hendraanggrian.pages.minimal.MinimalOptions
 import org.gradle.api.Action
 import org.gradle.api.file.CopySpec
@@ -60,8 +61,14 @@ interface PagesExtension {
     fun minimal(action: Action<in MinimalOptions>)
 
     /**
-     * Enables `minimal` theme and customizes its content with provided [action]. Only one theme may
+     * Enables `cayman` theme and customizes its content with provided [action]. Only one theme may
      * be configured.
      */
     fun cayman(action: Action<in CaymanOptions>)
+
+    /**
+     * Enables `materialist` theme and customizes its content with provided [action]. Only one theme
+     * may be configured.
+     */
+    fun materialist(action: Action<in MaterialistOptions>)
 }

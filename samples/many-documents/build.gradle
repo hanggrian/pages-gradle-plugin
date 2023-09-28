@@ -1,0 +1,25 @@
+buildscript {
+    repositories.mavenCentral()
+    dependencies {
+        classpath files('../pages-gradle-plugin-0.2.jar')
+        classpath libs.kotlinx.html.jvm
+        classpath libs.commonmark.ext.gfm.tables
+    }
+}
+
+apply plugin: 'com.hendraanggrian.pages'
+
+pages {
+  content('document-1.html', file('Document1.md'))
+  content('document-2.html', file('Document2.md'))
+  content('document-3.html', file('Document3.md'))
+    minimal {
+        authorName = 'Hendra Anggrian'
+        authorUrl = 'https://github.com/hendraanggrian/'
+        projectDescription = 'This is an awesome example'
+        projectUrl = 'https://github.com/hendraanggrian/minimal-theme/'
+        button('Document\n1', 'document-1.html')
+        button('Document\n2', 'document-2.html')
+        button('Document\n3', 'document-3.html')
+    }
+}

@@ -12,7 +12,7 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
-class CaymanThemeFactoryTest {
+class MaterialistThemeFactoryTest {
     @Rule @JvmField
     val rootFolder = TemporaryFolder()
     private lateinit var buildFile: File
@@ -22,7 +22,7 @@ class CaymanThemeFactoryTest {
     @Throws(IOException::class)
     fun setup() {
         rootFolder.newFile("settings.gradle.kts")
-            .writeText("rootProject.name = \"cayman-test\"")
+            .writeText("rootProject.name = \"materialist-test\"")
         buildFile = rootFolder.newFile("build.gradle.kts")
         runner = GradleRunner.create()
             .withPluginClasspath()
@@ -46,11 +46,17 @@ class CaymanThemeFactoryTest {
             pages {
                 outputDirectory.set(buildDir.resolve("custom-dir"))
                 content.put("index.html", file("Content.md"))
-                cayman {
-                    darkMode = true
-                    colorPrimary = "#ff0000"
-                    colorSecondary = "#00ff00"
-                    colorSecondaryContainer = "#0000ff"
+                materialist {
+                    colorPrimary = "#ffff00"
+                    colorSecondary = "#ff00ff"
+                    colorOnPrimary = "#00ffff"
+                    colorSurface = "#ff0000"
+                    colorSurfaceContainer = "#0000ff"
+                    colorSurfaceContainerHigh = "#000000"
+                    colorSurfaceContainerHighest = "#ffffff"
+                    colorOnSurface = "#ffff00"
+                    colorOnSurfaceVariant = "#ff00ff"
+                    colorOutline = "#00ffff"
                     authorName = "Cool Dude"
                     authorUrl = "https://www.google.com"
                     projectName = "Cool Stuff"
