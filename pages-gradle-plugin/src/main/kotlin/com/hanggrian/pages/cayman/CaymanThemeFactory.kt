@@ -1,7 +1,7 @@
-package com.hendraanggrian.pages.cayman
+package com.hanggrian.pages.cayman
 
-import com.hendraanggrian.pages.PagesExtension
-import com.hendraanggrian.pages.WebsiteFactory
+import com.hanggrian.pages.PagesExtension
+import com.hanggrian.pages.WebsiteFactory
 import kotlinx.html.BODY
 import kotlinx.html.HEAD
 import kotlinx.html.a
@@ -18,9 +18,9 @@ import kotlinx.html.unsafe
 
 internal class CaymanThemeFactory(
     extension: PagesExtension,
-    private val options: CaymanOptionsImpl
-) : WebsiteFactory(extension), CaymanOptions by options {
-
+    private val options: CaymanOptionsImpl,
+) : WebsiteFactory(extension),
+    CaymanOptions by options {
     override fun HEAD.onCreateHead() {
         title(projectName)
         if (favicon.isPresent) {
@@ -59,26 +59,28 @@ internal class CaymanThemeFactory(
             unsafe { +content }
             footer(classes = "site-footer") {
                 span(classes = "site-footer-owner") {
-                    if (authorName != null) {
-                        if (projectUrl != null) {
-                            a(href = projectUrl) { text(projectName) }
-                        } else {
-                            text("This project")
-                        }
-                        text(" is maintained by ")
-                        if (authorUrl != null) {
-                            a(href = authorUrl) { text(authorName!!) }
-                        } else {
-                            text(authorName!!)
-                        }
+                    if (authorName == null) {
+                        return@span
+                    }
+                    if (projectUrl != null) {
+                        a(href = projectUrl) { text(projectName) }
+                    } else {
+                        text("This project")
+                    }
+                    text(" is maintained by ")
+                    if (authorUrl != null) {
+                        a(href = authorUrl) { text(authorName!!) }
+                    } else {
+                        text(authorName!!)
                     }
                 }
-                if (footerCredit) {
-                    span(classes = "site-footer-credits") {
-                        text("Hosted on GitHub Pages — Theme by ")
-                        a(href = "https://github.com/jasonlong/cayman-theme/") {
-                            text("jasonlong")
-                        }
+                if (!isFooterCredit) {
+                    return@footer
+                }
+                span(classes = "site-footer-credits") {
+                    text("Hosted on GitHub Pages — Theme by ")
+                    a(href = "https://github.com/jasonlong/cayman-theme/") {
+                        text("jasonlong")
                     }
                 }
             }

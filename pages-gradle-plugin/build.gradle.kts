@@ -1,6 +1,6 @@
-val RELEASE_GROUP: String by project
-val RELEASE_DESCRIPTION: String by project
-val RELEASE_URL: String by project
+val releaseGroup: String by project
+val releaseDescription: String by project
+val releaseUrl: String by project
 
 plugins {
     kotlin("jvm") version libs.versions.kotlin
@@ -9,25 +9,27 @@ plugins {
     alias(libs.plugins.gradle.publish)
 }
 
-kotlin.jvmToolchain(libs.versions.jdk.get().toInt())
+kotlin {
+    jvmToolchain(libs.versions.jdk.get().toInt())
+    explicitApi()
+}
 
 ktlint.version.set(libs.versions.ktlint.get())
 
 gradlePlugin {
-    website.set(RELEASE_URL)
-    vcsUrl.set("$RELEASE_URL.git")
-    plugins.register("pagesPlugin") {
-        id = RELEASE_GROUP
+    website.set(releaseUrl)
+    vcsUrl.set("$releaseUrl.git")
+    plugins.register("pages") {
+        id = releaseGroup
         displayName = "Pages Plugin"
-        description = RELEASE_DESCRIPTION
+        description = releaseDescription
         tags.set(listOf("website", "github-pages"))
-        implementationClass = "$RELEASE_GROUP.PagesPlugin"
+        implementationClass = "$releaseGroup.PagesPlugin"
     }
     testSourceSets(sourceSets.test.get())
 }
 
 dependencies {
-    ktlintRuleset(libs.ktlint)
     ktlintRuleset(libs.rulebook.ktlint)
 
     compileOnly(kotlin("gradle-plugin-api"))
@@ -42,5 +44,5 @@ dependencies {
 }
 
 tasks.dokkaHtml {
-    outputDirectory.set(buildDir.resolve("dokka/dokka/"))
+    outputDirectory.set(layout.buildDirectory.dir("dokka/dokka/"))
 }

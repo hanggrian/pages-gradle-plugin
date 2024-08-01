@@ -1,6 +1,6 @@
-[![Travis CI](https://img.shields.io/travis/com/hendraanggrian/pages-gradle-plugin)](https://travis-ci.com/github/hendraanggrian/pages-gradle-plugin/)
-[![Plugin Portal](https://img.shields.io/maven-metadata/v.svg?label=plugin-portal&metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Fcom%2Fhendraanggrian%2Fpages%2Fcom.hendraanggrian.pages.gradle.plugin%2Fmaven-metadata.xml)](https://plugins.gradle.org/plugin/com.hendraanggrian.pages)
-[![OpenJDK](https://img.shields.io/badge/jdk-1.8%2B-informational)](https://openjdk.java.net/projects/jdk8/)
+[![CircleCI](https://img.shields.io/circleci/build/gh/hanggrian/pages-gradle-plugin)](https://app.circleci.com/pipelines/github/hanggrian/pages-gradle-plugin/)
+[![Plugin Portal](https://img.shields.io/maven-metadata/v.svg?label=plugin-portal&metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Fcom%2Fhendraanggrian%2Fpages%2Fcom.hanggrian.pages.gradle.plugin%2Fmaven-metadata.xml)](https://plugins.gradle.org/plugin/com.hanggrian.pages)
+[![OpenJDK](https://img.shields.io/badge/jdk-11%2B-informational)](https://openjdk.org/projects/jdk/11/)
 
 # Pages Gradle Plugin
 

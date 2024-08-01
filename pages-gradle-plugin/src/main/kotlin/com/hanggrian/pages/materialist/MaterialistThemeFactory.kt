@@ -1,7 +1,7 @@
-package com.hendraanggrian.pages.materialist
+package com.hanggrian.pages.materialist
 
-import com.hendraanggrian.pages.PagesExtension
-import com.hendraanggrian.pages.WebsiteFactory
+import com.hanggrian.pages.PagesExtension
+import com.hanggrian.pages.WebsiteFactory
 import kotlinx.html.BODY
 import kotlinx.html.HEAD
 import kotlinx.html.a
@@ -23,9 +23,9 @@ import kotlinx.html.unsafe
 
 internal class MaterialistThemeFactory(
     extension: PagesExtension,
-    private val options: MaterialistOptionsImpl
-) : WebsiteFactory(extension), MaterialistOptions by options {
-
+    private val options: MaterialistOptionsImpl,
+) : WebsiteFactory(extension),
+    MaterialistOptions by options {
     override fun HEAD.onCreateHead() {
         title(projectName)
         if (favicon.isPresent) {
@@ -58,10 +58,12 @@ internal class MaterialistThemeFactory(
                         a(href = url) {
                             if ("github.com" in url) {
                                 text("View the Project on GitHub ")
-                                val parts = when {
-                                    !url.endsWith('/') -> url
-                                    else -> url.substringBeforeLast('/')
-                                }.split('/').reversed()
+                                val parts =
+                                    when {
+                                        !url.endsWith('/') -> url
+                                        else -> url.substringBeforeLast('/')
+                                    }.split('/')
+                                        .reversed()
                                 small { text("${parts[1]}/${parts[0]}") }
                             } else {
                                 text("View the Project")
@@ -69,14 +71,15 @@ internal class MaterialistThemeFactory(
                         }
                     }
                 }
-                if (options.buttons.isNotEmpty()) {
-                    ul {
-                        options.buttons.forEach { (text, url) ->
-                            li {
-                                a(href = url) {
-                                    text(text.substringBefore('\n'))
-                                    strong { text(text.substringAfter('\n')) }
-                                }
+                if (options.buttons.isEmpty()) {
+                    return@header
+                }
+                ul {
+                    options.buttons.forEach { (text, url) ->
+                        li {
+                            a(href = url) {
+                                text(text.substringBefore('\n'))
+                                strong { text(text.substringAfter('\n')) }
                             }
                         }
                     }
@@ -86,20 +89,22 @@ internal class MaterialistThemeFactory(
         }
         footer {
             p {
-                if (authorName != null) {
-                    text("This project is maintained by ")
-                    if (authorUrl != null) {
-                        a(href = authorUrl) { text(authorName!!) }
-                    } else {
-                        text(authorName!!)
-                    }
+                if (authorName == null) {
+                    return@p
+                }
+                text("This project is maintained by ")
+                if (authorUrl != null) {
+                    a(href = authorUrl) { text(authorName!!) }
+                } else {
+                    text(authorName!!)
                 }
             }
-            if (footerCredit) {
-                small {
-                    text("Hosted on GitHub Pages — Theme by ")
-                    a(href = "https://github.com/orderedlist/") { text("orderedlist") }
-                }
+            if (!isFooterCredit) {
+                return@footer
+            }
+            small {
+                text("Hosted on GitHub Pages — Theme by ")
+                a(href = "https://github.com/orderedlist/") { text("orderedlist") }
             }
         }
         script(src = "scripts/scale.fix.js") { }

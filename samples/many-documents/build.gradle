@@ -1,13 +1,13 @@
 buildscript {
     repositories.mavenCentral()
     dependencies {
-        classpath files('../pages-gradle-plugin-0.2.jar')
+        classpath files('../pages-gradle-plugin-0.1.jar')
         classpath libs.kotlinx.html.jvm
         classpath libs.commonmark.ext.gfm.tables
     }
 }
 
-apply plugin: 'com.hendraanggrian.pages'
+apply plugin: 'com.hanggrian.pages'
 
 pages {
   content('document-1.html', file('Document1.md'))

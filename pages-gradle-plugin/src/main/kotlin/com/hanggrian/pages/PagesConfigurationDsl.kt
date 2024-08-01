@@ -1,4 +1,4 @@
-package com.hendraanggrian.pages
+package com.hanggrian.pages
 
 /**
  * Forces pages' configurations to be on the same level, such as:
@@ -13,4 +13,4 @@ package com.hendraanggrian.pages
  */
 @DslMarker
 @Target(AnnotationTarget.CLASS)
-annotation class PagesConfigurationDsl
+public annotation class PagesConfigurationDsl

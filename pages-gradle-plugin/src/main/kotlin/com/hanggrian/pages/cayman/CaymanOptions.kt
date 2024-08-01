@@ -1,24 +1,24 @@
-package com.hendraanggrian.pages.cayman
+package com.hanggrian.pages.cayman
 
-import com.hendraanggrian.pages.PagesConfigurationDsl
-import com.hendraanggrian.pages.internal.PageOptions
+import com.hanggrian.pages.PagesConfigurationDsl
+import com.hanggrian.pages.internal.PageOptions
 
 /**
  * Theme configuration for [minimal-dark-theme](https://github.com/hendraanggrian/cayman-dark-theme/).
  */
 @PagesConfigurationDsl
-interface CaymanOptions : PageOptions {
+public interface CaymanOptions : PageOptions {
     /** Use dark mode, default is false. */
-    var darkMode: Boolean
+    public var darkMode: Boolean
 
     /** Primary color, default is #159957. */
-    var colorPrimary: String
+    public var colorPrimary: String
 
     /** Secondary color, default is #448aff. */
-    var colorSecondary: String
+    public var colorSecondary: String
 
     /** Secondary container color, default is #155799. */
-    var colorSecondaryContainer: String
+    public var colorSecondaryContainer: String
 }
 
 internal class CaymanOptionsImpl(override var projectName: String) : CaymanOptions {
@@ -31,9 +31,10 @@ internal class CaymanOptionsImpl(override var projectName: String) : CaymanOptio
     override var authorUrl: String? = null
     override var projectDescription: String? = null
     override var projectUrl: String? = null
-    override var footerCredit: Boolean = true
+    override var isFooterCredit: Boolean = true
 
     internal val buttons = mutableMapOf<String, String>()
+
     override fun button(text: String, url: String) {
         buttons += text to url
     }

@@ -1,4 +1,4 @@
-package com.hendraanggrian.pages
+package com.hanggrian.pages
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.file.DirectoryProperty
@@ -22,7 +22,9 @@ import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
 
 /** Task to run when `deployPages` command is executed. */
-open class DeployPageTask : DefaultTask(), DeployPageSpec {
+public open class DeployPageTask :
+    DefaultTask(),
+    DeployPageSpec {
     @Input
     final override val staticResources: SetProperty<String> = project.objects.setProperty()
 
@@ -36,16 +38,16 @@ open class DeployPageTask : DefaultTask(), DeployPageSpec {
     final override val outputDirectory: DirectoryProperty = project.objects.directoryProperty()
 
     @Internal
-    val fencedCodeBlockIndent: Property<Int> = project.objects.property()
+    public val fencedCodeBlockIndent: Property<Int> = project.objects.property()
 
     private val transformer = TransformerFactory.newInstance().newTransformer()
 
     @TaskAction
-    fun deploy() {
+    public fun deploy() {
         check(
             staticResources.get().isNotEmpty() ||
                 dynamicResources.get().isNotEmpty() ||
-                webpages.get().isNotEmpty()
+                webpages.get().isNotEmpty(),
         ) { "Nothing to write." }
         val outputDir = outputDirectory.asFile.get()
 
@@ -58,7 +60,7 @@ open class DeployPageTask : DefaultTask(), DeployPageSpec {
             Files.copy(
                 javaClass.getResourceAsStream("/$filepath")!!,
                 targetFile.toPath(),
-                StandardCopyOption.REPLACE_EXISTING
+                StandardCopyOption.REPLACE_EXISTING,
             )
         }
 
@@ -83,13 +85,15 @@ open class DeployPageTask : DefaultTask(), DeployPageSpec {
                     } else {
                         append(file.readText())
                     }
-                }
+                },
             )
         }
     }
 
     private fun File.prepare() {
-        if (!exists()) mkdir()
+        if (!exists()) {
+            mkdir()
+        }
     }
 
     /**
@@ -98,7 +102,12 @@ open class DeployPageTask : DefaultTask(), DeployPageSpec {
      */
     private fun String.fixFencedCodeBlock(indentTimes: Int): String {
         val indent = "    "
-        val totalIndent = buildString { repeat(indentTimes) { append(indent) } }
+        val totalIndent =
+            buildString {
+                repeat(indentTimes) {
+                    append(indent)
+                }
+            }
         return replace("<pre>\n$totalIndent$indent<code", "<pre><code")
             .replace("</code>\n$totalIndent</pre>", "</code></pre>")
     }
