@@ -1,17 +1,16 @@
 package com.hanggrian.pages
 
-import com.hanggrian.pages.internal.DefaultPageExtension
+import com.hanggrian.pages.internal.DefaultPagesExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.tasks.Copy
 import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.register
-import org.gradle.plugin.management.internal.autoapply.AutoAppliedDevelocityPlugin.GROUP
 
 /**
  * Static webpages generator for GitHub pages.
  *
- * @see <a href="https://github.com/hendraanggrian/pages-gradle-plugin">pages-gradle-plugin</a>
+ * @see <a href="https://github.com/hanggrian/pages-gradle-plugin">pages-gradle-plugin</a>
  */
 public open class PagesPlugin : Plugin<Project> {
     override fun apply(project: Project) {
@@ -19,9 +18,9 @@ public open class PagesPlugin : Plugin<Project> {
             project.extensions.create(
                 PagesExtension::class,
                 "pages",
-                DefaultPageExtension::class,
+                DefaultPagesExtension::class,
                 project,
-            ) as DefaultPageExtension
+            ) as DefaultPagesExtension
         val deployResources =
             project.tasks.register<Copy>(TASK_DEPLOY_RESOURCES) {
                 group = GROUP
@@ -29,7 +28,7 @@ public open class PagesPlugin : Plugin<Project> {
                 with(pages.resources)
                 into(pages.outputDirectory)
             }
-        project.tasks.register<DeployPageTask>(TASK_DEPLOY_PAGES) {
+        project.tasks.register<DeployPagesTask>(TASK_DEPLOY_PAGES) {
             group = GROUP
             description = "Write webpages and their resources."
             staticResources.set(pages.staticResources)

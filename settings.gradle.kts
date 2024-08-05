@@ -11,7 +11,10 @@ include("website")
 includeDir("samples")
 
 fun includeDir(dir: String) =
-    include(*file(dir).listFiles()!!
-        .filter { it.isDirectory }
-        .map { "$dir:${it.name}" }
-        .toTypedArray())
+    include(
+        *file(dir)
+            .listFiles()!!
+            .filter { it.isDirectory }
+            .map { "$dir:${it.name}" }
+            .toTypedArray(),
+    )

@@ -1,6 +1,6 @@
 package com.hanggrian.pages.internal
 
-import com.hanggrian.pages.DeployPageSpec
+import com.hanggrian.pages.DeployPagesSpec
 import com.hanggrian.pages.PagesExtension
 import com.hanggrian.pages.cayman.CaymanOptions
 import com.hanggrian.pages.cayman.CaymanOptionsImpl
@@ -30,9 +30,9 @@ import org.gradle.kotlin.dsl.setProperty
 import org.w3c.dom.Document
 import java.io.File
 
-public open class DefaultPageExtension(private val project: Project) :
+public open class DefaultPagesExtension(private val project: Project) :
     PagesExtension,
-    DeployPageSpec {
+    DeployPagesSpec {
     final override val resources: CopySpec = project.copySpec()
 
     final override val content: MapProperty<String, File> =
@@ -53,6 +53,11 @@ public open class DefaultPageExtension(private val project: Project) :
         project.objects
             .listProperty<String>()
             .convention(emptyList())
+
+    final override val languageAliases: MapProperty<String, String> =
+        project.objects
+            .mapProperty<String, String>()
+            .convention(emptyMap())
 
     final override val outputDirectory: DirectoryProperty =
         project.objects
@@ -84,8 +89,7 @@ public open class DefaultPageExtension(private val project: Project) :
     private val parser = Parser.builder().extensions(extensions).build()
 
     final override fun minimal(action: Action<in MinimalOptions>) {
-        checkTheme()
-        scanReadme()
+        searchReadme()
         val options = MinimalOptionsImpl(project.name).also { action(it) }
         val pages = MinimalThemeFactory(this, options)
 
@@ -99,8 +103,7 @@ public open class DefaultPageExtension(private val project: Project) :
     }
 
     final override fun cayman(action: Action<in CaymanOptions>) {
-        checkTheme()
-        scanReadme()
+        searchReadme()
         val options = CaymanOptionsImpl(project.name).also { action(it) }
         val pages = CaymanThemeFactory(this, options)
 
@@ -116,8 +119,7 @@ public open class DefaultPageExtension(private val project: Project) :
     }
 
     final override fun materialist(action: Action<in MaterialistOptions>) {
-        checkTheme()
-        scanReadme()
+        searchReadme()
         val options = MaterialistOptionsImpl(project.name).also { action(it) }
         val pages = MaterialistThemeFactory(this, options)
 
@@ -128,28 +130,29 @@ public open class DefaultPageExtension(private val project: Project) :
         fencedCodeBlockIndent.set(4)
     }
 
-    private fun checkTheme() =
-        check(
-            staticResources.get().isEmpty() &&
-                dynamicResources.get().isEmpty() &&
-                webpages.get().isEmpty(),
-        ) { "Only one theme can be selected." }
+    private fun searchReadme() {
+        if (!project.contentFromReadme()) {
+            project.rootProject.contentFromReadme()
+        }
+    }
 
-    private fun scanReadme() {
-        var readme = project.rootDir.resolve("README.md")
+    private fun Project.contentFromReadme(): Boolean {
+        var readme = projectDir.resolve("README.md")
         if (readme.exists()) {
             content("index.html", readme)
-            return
+            return true
         }
-        readme = project.rootDir.resolve("docs/README.md")
+        readme = projectDir.resolve("docs/README.md")
         if (readme.exists()) {
             content("index.html", readme)
-            return
+            return true
         }
-        readme = project.rootDir.resolve(".github/README.md")
+        readme = projectDir.resolve(".github/README.md")
         if (readme.exists()) {
             content("index.html", readme)
+            return true
         }
+        return false
     }
 
     private fun File.readRaw() = htmlRenderer.render(parser.parse(readText()))

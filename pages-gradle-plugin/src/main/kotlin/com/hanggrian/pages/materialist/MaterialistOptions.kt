@@ -1,10 +1,10 @@
 package com.hanggrian.pages.materialist
 
+import com.hanggrian.pages.PageOptions
 import com.hanggrian.pages.PagesConfigurationDsl
-import com.hanggrian.pages.internal.PageOptions
 
 /**
- * Theme configuration for [materialist-theme](https://github.com/hendraanggrian/materialist-theme/).
+ * Theme configuration for [materialist-theme](https://github.com/hanggrian/materialist-theme/).
  */
 @PagesConfigurationDsl
 public interface MaterialistOptions : PageOptions {
@@ -60,6 +60,9 @@ internal class MaterialistOptionsImpl(override var projectName: String) : Materi
     internal val buttons = mutableMapOf<String, String>()
 
     override fun button(text: String, url: String) {
+        if (buttons.size == 3) {
+            error("Theme can only handle 3 buttons.")
+        }
         buttons += text to url
     }
 }

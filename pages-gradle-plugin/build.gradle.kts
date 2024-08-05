@@ -1,3 +1,5 @@
+val developerId: String by project
+val releaseArtifact: String by project
 val releaseGroup: String by project
 val releaseDescription: String by project
 val releaseUrl: String by project
@@ -18,13 +20,13 @@ ktlint.version.set(libs.versions.ktlint.get())
 
 gradlePlugin {
     website.set(releaseUrl)
-    vcsUrl.set("$releaseUrl.git")
-    plugins.register("pages") {
+    vcsUrl.set("https://github.com/$developerId/$releaseArtifact.git")
+    plugins.register("pagesPlugin") {
         id = releaseGroup
+        implementationClass = "$releaseGroup.PagesPlugin"
         displayName = "Pages Plugin"
         description = releaseDescription
         tags.set(listOf("website", "github-pages"))
-        implementationClass = "$releaseGroup.PagesPlugin"
     }
     testSourceSets(sourceSets.test.get())
 }

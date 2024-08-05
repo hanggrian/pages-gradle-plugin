@@ -56,22 +56,23 @@ internal class CaymanThemeFactory(
             }
         }
         section(classes = "main-content") {
-            unsafe { +content }
+            var current = content
+            languageAliases.get().forEach { (original, replacement) ->
+                current = current.replace("\"language-$original\"", "\"language-$replacement\"")
+            }
+            unsafe { +current }
+
             footer(classes = "site-footer") {
                 span(classes = "site-footer-owner") {
-                    if (authorName == null) {
-                        return@span
-                    }
-                    if (projectUrl != null) {
-                        a(href = projectUrl) { text(projectName) }
-                    } else {
-                        text("This project")
+                    authorName ?: return@span
+                    when (projectUrl) {
+                        null -> text("This project")
+                        else -> a(href = projectUrl) { text(projectName) }
                     }
                     text(" is maintained by ")
-                    if (authorUrl != null) {
-                        a(href = authorUrl) { text(authorName!!) }
-                    } else {
-                        text(authorName!!)
+                    when (authorUrl) {
+                        null -> text(authorName!!)
+                        else -> a(href = authorUrl) { text(authorName!!) }
                     }
                 }
                 if (!isFooterCredit) {

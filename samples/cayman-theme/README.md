@@ -12,7 +12,7 @@ repositories {
     mavenCentral()
 }
 dependencies {
-    implementation "com.hendraanggrian:library:$version"
+    implementation "com.johndoe:library:$version"
 }
 ```
 

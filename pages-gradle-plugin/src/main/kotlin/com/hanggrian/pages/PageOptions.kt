@@ -1,4 +1,4 @@
-package com.hanggrian.pages.internal
+package com.hanggrian.pages
 
 public interface PageOptions {
     /**

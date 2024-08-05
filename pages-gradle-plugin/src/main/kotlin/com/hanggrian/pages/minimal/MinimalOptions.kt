@@ -1,10 +1,10 @@
 package com.hanggrian.pages.minimal
 
+import com.hanggrian.pages.PageOptions
 import com.hanggrian.pages.PagesConfigurationDsl
-import com.hanggrian.pages.internal.PageOptions
 
 /**
- * Theme configuration for [minimal-dark-theme](https://github.com/hendraanggrian/minimal-dark-theme/).
+ * Theme configuration for [minimal-dark-theme](https://github.com/hanggrian/minimal-dark-theme/).
  */
 @PagesConfigurationDsl
 public interface MinimalOptions : PageOptions {
@@ -32,6 +32,9 @@ internal class MinimalOptionsImpl(override var projectName: String) : MinimalOpt
     internal val buttons = mutableMapOf<String, String>()
 
     override fun button(text: String, url: String) {
+        if (buttons.size == 3) {
+            error("Theme can only handle 3 buttons.")
+        }
         buttons += text to url
     }
 }

@@ -6,7 +6,7 @@ import org.gradle.api.provider.SetProperty
 import org.w3c.dom.Document
 
 /** A specification for generating webpages and their resources. */
-public interface DeployPageSpec {
+public interface DeployPagesSpec {
     /** Resources that are copied from jar. This list contains file paths. */
     public val staticResources: SetProperty<String>
 

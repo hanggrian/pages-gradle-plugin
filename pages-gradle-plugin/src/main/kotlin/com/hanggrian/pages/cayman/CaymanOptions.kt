@@ -1,10 +1,10 @@
 package com.hanggrian.pages.cayman
 
+import com.hanggrian.pages.PageOptions
 import com.hanggrian.pages.PagesConfigurationDsl
-import com.hanggrian.pages.internal.PageOptions
 
 /**
- * Theme configuration for [minimal-dark-theme](https://github.com/hendraanggrian/cayman-dark-theme/).
+ * Theme configuration for [minimal-dark-theme](https://github.com/hanggrian/cayman-dark-theme/).
  */
 @PagesConfigurationDsl
 public interface CaymanOptions : PageOptions {

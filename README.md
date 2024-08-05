@@ -1,5 +1,5 @@
 [![CircleCI](https://img.shields.io/circleci/build/gh/hanggrian/pages-gradle-plugin)](https://app.circleci.com/pipelines/github/hanggrian/pages-gradle-plugin/)
-[![Plugin Portal](https://img.shields.io/maven-metadata/v.svg?label=plugin-portal&metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Fcom%2Fhendraanggrian%2Fpages%2Fcom.hanggrian.pages.gradle.plugin%2Fmaven-metadata.xml)](https://plugins.gradle.org/plugin/com.hanggrian.pages)
+[![Plugin Portal](https://img.shields.io/gradle-plugin-portal/v/com.hanggrian.pages)](https://plugins.gradle.org/plugin/com.hanggrian.pages)
 [![OpenJDK](https://img.shields.io/badge/jdk-11%2B-informational)](https://openjdk.org/projects/jdk/11/)
 
 # Pages Gradle Plugin
@@ -12,7 +12,7 @@ Using plugins DSL:
 
 ```gradle
 plugins {
-    id('com.hendraanggrian.pages') version "$version"
+    id('com.hanggrian.pages') version "$version"
 }
 ```
 
@@ -24,11 +24,11 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("com.hendraanggrian:pages-gradle-plugin:$version")
+        classpath("com.hanggrian:pages-gradle-plugin:$version")
     }
 }
 
-apply plugin: 'com.hendraanggrian.pages'
+apply plugin: 'com.hanggrian.pages'
 ```
 
 ## Usage
@@ -46,18 +46,12 @@ pages {
         index('README.md')
         add('About.md', 'about.html')
     }
-    // enables prism syntax highlighter
-    prism {
-        version = '1.28.0'
-        theme = 'dark'
-        languages = ['java', 'kotlin]
-    }
 }
 ```
 
-### [Materialist Theme](https://github.com/hendraanggrian/materialist-theme/)
+### [Materialist Theme](https://github.com/hanggrian/materialist-theme/)
 
-![Materialist theme preview.](https://github.com/hendraanggrian/materialist-theme/raw/assets/preview_main.png)
+![Materialist theme preview.](https://github.com/hanggrian/materialist-theme/raw/assets/preview_main.png)
 
 ```gradle
 pages {
@@ -67,39 +61,35 @@ pages {
 }
 ```
 
-### [Cayman Theme](https://github.com/hendraanggrian/cayman-dark-theme/)
+### [Cayman Theme](https://github.com/hanggrian/cayman-dark-theme/)
 
-![Cayman theme preview.](https://github.com/hendraanggrian/cayman-dark-theme/raw/assets/preview_main.png)
+![Cayman theme preview.](https://github.com/hanggrian/cayman-dark-theme/raw/assets/preview_main.png)
 
 ```gradle
 pages {
     cayman {
         darkMode.set(true)
-        authorName.set('Hendra Anggrian')
+        authorName.set('John Doe')
         projectName.set('My Project')
         projectDescription.set('A very awesome project')
         markdownFile.set(file('path/to/README.md'))
-        headerButtons {
-            button('Download', 'Sources', 'https://somewhere.com')
-        }
+        button('Download', 'Sources', 'https://somewhere.com')
     }
 }
 ```
 
-### [Minimal Theme](https://github.com/hendraanggrian/minimal-dark-theme/)
+### [Minimal Theme](https://github.com/hanggrian/minimal-dark-theme/)
 
-![Minimal theme preview.](https://github.com/hendraanggrian/minimal-dark-theme/raw/assets/preview_main.png)
+![Minimal theme preview.](https://github.com/hanggrian/minimal-dark-theme/raw/assets/preview_main.png)
 
 ```gradle
 pages {
     minimal {
-        authorName.set('Hendra Anggrian')
+        authorName.set('John Doe')
         projectName.set('My Project')
         projectDescription.set('A very awesome project')
         markdownFile.set(file('path/to/README.md'))
-        headerButtons {
-            button('Download', 'Sources', 'https://somewhere.com')
-        }
+        button('Download', 'Sources', 'https://somewhere.com')
     }
 }
 ```

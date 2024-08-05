@@ -10,14 +10,14 @@ buildscript {
 apply plugin: 'com.hanggrian.pages'
 
 pages {
-  content('document-1.html', file('Document1.md'))
-  content('document-2.html', file('Document2.md'))
-  content('document-3.html', file('Document3.md'))
+    content('document-1.html', file('Document1.md'))
+    content('document-2.html', file('Document2.md'))
+    content('document-3.html', file('Document3.md'))
     minimal {
-        authorName = 'Hendra Anggrian'
-        authorUrl = 'https://github.com/hendraanggrian/'
+        authorName = 'John Doe'
+        authorUrl = 'https://github.com/johndoe/'
         projectDescription = 'This is an awesome example'
-        projectUrl = 'https://github.com/hendraanggrian/minimal-theme/'
+        projectUrl = 'https://github.com/johndoe/project/'
         button('Document\n1', 'document-1.html')
         button('Document\n2', 'document-2.html')
         button('Document\n3', 'document-3.html')

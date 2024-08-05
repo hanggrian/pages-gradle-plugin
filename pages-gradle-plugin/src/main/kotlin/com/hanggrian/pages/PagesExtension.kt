@@ -42,6 +42,9 @@ public interface PagesExtension {
      */
     public val scripts: ListProperty<String>
 
+    /** Alias to replace Markdown fenced code block language in HTML representation. */
+    public val languageAliases: MapProperty<String, String>
+
     /** Output directory of webpages and resources. Default is `$projectDir/build/pages`. */
     public val outputDirectory: DirectoryProperty
 

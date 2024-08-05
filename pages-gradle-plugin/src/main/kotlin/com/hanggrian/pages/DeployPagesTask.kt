@@ -22,23 +22,33 @@ import javax.xml.transform.dom.DOMSource
 import javax.xml.transform.stream.StreamResult
 
 /** Task to run when `deployPages` command is executed. */
-public open class DeployPageTask :
+public open class DeployPagesTask :
     DefaultTask(),
-    DeployPageSpec {
+    DeployPagesSpec {
     @Input
-    final override val staticResources: SetProperty<String> = project.objects.setProperty()
+    final override val staticResources: SetProperty<String> =
+        project.objects
+            .setProperty()
 
     @Input
-    final override val dynamicResources: MapProperty<String, String> = project.objects.mapProperty()
+    final override val dynamicResources: MapProperty<String, String> =
+        project.objects
+            .mapProperty()
 
     @Input
-    final override val webpages: MapProperty<String, Document> = project.objects.mapProperty()
+    final override val webpages: MapProperty<String, Document> =
+        project.objects
+            .mapProperty()
 
     @OutputDirectory
-    final override val outputDirectory: DirectoryProperty = project.objects.directoryProperty()
+    final override val outputDirectory: DirectoryProperty =
+        project.objects
+            .directoryProperty()
 
     @Internal
-    public val fencedCodeBlockIndent: Property<Int> = project.objects.property()
+    public val fencedCodeBlockIndent: Property<Int> =
+        project.objects
+            .property()
 
     private val transformer = TransformerFactory.newInstance().newTransformer()
 
