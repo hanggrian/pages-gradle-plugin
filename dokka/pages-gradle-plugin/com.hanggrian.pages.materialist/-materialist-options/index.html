@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>MaterialistOptions</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>document.documentElement.classList.replace("no-js","js");</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="https://unpkg.com/kotlin-playground@1/dist/playground.min.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<link href="../../../styles/font-jb-sans-auto.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+    <div class="root">
+<nav class="navigation" id="navigation-wrapper">
+    <div class="navigation--inner">
+        <div class="navigation-title">
+            <button class="menu-toggle" id="menu-toggle" type="button">toggle menu</button>
+            <div class="library-name">
+                    <a class="library-name--link" href="../../../index.html">
+                            pages-gradle-plugin
+                    </a>
+            </div>
+            <div class="library-version">
+0.1            </div>
+        </div>
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":pages-gradle-plugin:dokkaHtml/main">jvm</button>
+        </div>
+    </div>
+    <div class="navigation-controls">
+        <button class="navigation-controls--btn navigation-controls--theme" id="theme-toggle-button" type="button">switch theme</button>
+        <div class="navigation-controls--btn navigation-controls--search" id="searchBar" role="button">search in API</div>
+    </div>
+</nav>
+        <div id="container">
+            <div class="sidebar" id="leftColumn">
+                <div class="sidebar--inner" id="sideMenu"></div>
+            </div>
+            <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="pages-gradle-plugin::com.hanggrian.pages.materialist/MaterialistOptions///PointingToDeclaration//1366114949">
+  <div class="breadcrumbs"><a href="../../../index.html">pages-gradle-plugin</a><span class="delimiter">/</span><a href="../index.html">com.hanggrian.pages.materialist</a><span class="delimiter">/</span><span class="current">MaterialistOptions</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Materialist</span><wbr></wbr><span><span>Options</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">interface </span><a href="index.html">MaterialistOptions</a> : <a href="../../com.hanggrian.pages/-page-options/index.html">PageOptions</a></div><p class="paragraph">Theme configuration for <a href="https://github.com/hanggrian/materialist-theme/">materialist-theme</a>.</p></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,PROPERTY,FUNCTION">Members</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="124641306%2FProperties%2F1366114949" anchor-label="authorName" id="124641306%2FProperties%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../com.hanggrian.pages/-page-options/author-name.html"><span>author</span><wbr></wbr><span><span>Name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="124641306%2FProperties%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">var </span><a href="../../com.hanggrian.pages/-page-options/author-name.html">authorName</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Author full name in title and footer. If left empty, corresponding tag in footer is removed but title will still show project name.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="230392742%2FProperties%2F1366114949" anchor-label="authorUrl" id="230392742%2FProperties%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../com.hanggrian.pages/-page-options/author-url.html"><span>author</span><wbr></wbr><span><span>Url</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="230392742%2FProperties%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">var </span><a href="../../com.hanggrian.pages/-page-options/author-url.html">authorUrl</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Author website url in footer. If left empty, author information in footer will not be clickable.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-871486111%2FProperties%2F1366114949" anchor-label="colorOnPrimary" id="-871486111%2FProperties%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="color-on-primary.html"><span>color</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Primary</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-871486111%2FProperties%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">var </span><a href="color-on-primary.html">colorOnPrimary</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">On primary color, default is #fff.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="125932822%2FProperties%2F1366114949" anchor-label="colorOnSurface" id="125932822%2FProperties%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="color-on-surface.html"><span>color</span><wbr></wbr><span>On</span><wbr></wbr><span><span>Surface</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="125932822%2FProperties%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">var </span><a href="color-on-surface.html">colorOnSurface</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">On surface color, default is #141613.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1982484351%2FProperties%2F1366114949" anchor-label="colorOnSurfaceVariant" id="1982484351%2FProperties%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="color-on-surface-variant.html"><span>color</span><wbr></wbr><span>On</span><wbr></wbr><span>Surface</span><wbr></wbr><span><span>Variant</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1982484351%2FProperties%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">var </span><a href="color-on-surface-variant.html">colorOnSurfaceVariant</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">On surface variant color, default is #34382f.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1477831966%2FProperties%2F1366114949" anchor-label="colorOutline" id="-1477831966%2FProperties%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="color-outline.html"><span>color</span><wbr></wbr><span><span>Outline</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1477831966%2FProperties%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">var </span><a href="color-outline.html">colorOutline</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Outline color, default is #616659.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1761934046%2FProperties%2F1366114949" anchor-label="colorPrimary" id="-1761934046%2FProperties%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="color-primary.html"><span>color</span><wbr></wbr><span><span>Primary</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1761934046%2FProperties%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">var </span><a href="color-primary.html">colorPrimary</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Primary color, default is #448aff.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1067296720%2FProperties%2F1366114949" anchor-label="colorSecondary" id="-1067296720%2FProperties%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="color-secondary.html"><span>color</span><wbr></wbr><span><span>Secondary</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1067296720%2FProperties%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">var </span><a href="color-secondary.html">colorSecondary</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Secondary color, default is #44503b.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-764515113%2FProperties%2F1366114949" anchor-label="colorSurface" id="-764515113%2FProperties%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="color-surface.html"><span>color</span><wbr></wbr><span><span>Surface</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-764515113%2FProperties%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">var </span><a href="color-surface.html">colorSurface</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Surface color, default is #e9ebde.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1579092642%2FProperties%2F1366114949" anchor-label="colorSurfaceContainer" id="1579092642%2FProperties%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="color-surface-container.html"><span>color</span><wbr></wbr><span>Surface</span><wbr></wbr><span><span>Container</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1579092642%2FProperties%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">var </span><a href="color-surface-container.html">colorSurfaceContainer</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Surface container color, default is #f6f9ec.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1062019936%2FProperties%2F1366114949" anchor-label="colorSurfaceContainerHigh" id="-1062019936%2FProperties%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="color-surface-container-high.html"><span>color</span><wbr></wbr><span>Surface</span><wbr></wbr><span>Container</span><wbr></wbr><span><span>High</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1062019936%2FProperties%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">var </span><a href="color-surface-container-high.html">colorSurfaceContainerHigh</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Surface container high color, default is #e1e4d7.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-2091600588%2FProperties%2F1366114949" anchor-label="colorSurfaceContainerHighest" id="-2091600588%2FProperties%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="color-surface-container-highest.html"><span>color</span><wbr></wbr><span>Surface</span><wbr></wbr><span>Container</span><wbr></wbr><span><span>Highest</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-2091600588%2FProperties%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">var </span><a href="color-surface-container-highest.html">colorSurfaceContainerHighest</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Surface container highest color, default is #dadcd1.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-279802990%2FProperties%2F1366114949" anchor-label="isFooterCredit" id="-279802990%2FProperties%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../com.hanggrian.pages/-page-options/is-footer-credit.html"><span>is</span><wbr></wbr><span>Footer</span><wbr></wbr><span><span>Credit</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-279802990%2FProperties%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">var </span><a href="../../com.hanggrian.pages/-page-options/is-footer-credit.html">isFooterCredit</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html">Boolean</a></div><div class="brief "><p class="paragraph">Small theme credit in footer. Enabled by default.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-448008883%2FProperties%2F1366114949" anchor-label="projectDescription" id="-448008883%2FProperties%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../com.hanggrian.pages/-page-options/project-description.html"><span>project</span><wbr></wbr><span><span>Description</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-448008883%2FProperties%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">var </span><a href="../../com.hanggrian.pages/-page-options/project-description.html">projectDescription</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Project description in header. If left empty, corresponding tag in header is removed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-1930762490%2FProperties%2F1366114949" anchor-label="projectName" id="-1930762490%2FProperties%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../com.hanggrian.pages/-page-options/project-name.html"><span>project</span><wbr></wbr><span><span>Name</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-1930762490%2FProperties%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">var </span><a href="../../com.hanggrian.pages/-page-options/project-name.html">projectName</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></div><div class="brief "><p class="paragraph">Project full name in header. If left empty, module name will be used.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="441184058%2FProperties%2F1366114949" anchor-label="projectUrl" id="441184058%2FProperties%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../com.hanggrian.pages/-page-options/project-url.html"><span>project</span><wbr></wbr><span><span>Url</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="441184058%2FProperties%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">var </span><a href="../../com.hanggrian.pages/-page-options/project-url.html">projectUrl</a><span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token operator">?</span></div><div class="brief "><p class="paragraph">Project website url in header. If left empty, corresponding tag in header is removed.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="-273877109%2FFunctions%2F1366114949" anchor-label="button" id="-273877109%2FFunctions%2F1366114949" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":pages-gradle-plugin:dokkaHtml/main" data-filterable-set=":pages-gradle-plugin:dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../com.hanggrian.pages/-page-options/button.html"><span><span>button</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-273877109%2FFunctions%2F1366114949"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":pages-gradle-plugin:dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">abstract </span><span class="token keyword">fun </span><a href="../../com.hanggrian.pages/-page-options/button.html"><span class="token function">button</span></a><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">text<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a><span class="token punctuation">, </span></span><span class="parameter ">url<span class="token operator">: </span><a href="https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html">String</a></span></span><span class="token punctuation">)</span></div><div class="brief "><p class="paragraph">Add header button.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2024 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

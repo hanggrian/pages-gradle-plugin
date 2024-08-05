@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html>
     <head>
         <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta charset="UTF-8">
@@ -9,18 +9,18 @@
         <link href="styles/main.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" rel="stylesheet">
         <link href="styles/prism-tomorrow.min.css" rel="stylesheet">
-        <script src="scripts/theme.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-groovy.min.js"></script>
+        <script src="scripts/theme.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-gradle.min.js"></script>
         <!--Primary meta tags-->
         <meta content="pages-gradle-plugin" name="title">
-        <meta content="Static webpages generator for GitHub pages" name="description">
+        <meta content="Static webpage generator for GitHub Pages" name="description">
     </head>
     <body>
         <div class="wrapper">
             <header>
                 <h1>pages-gradle-plugin</h1>
-                <p>Static webpages generator for GitHub pages</p>
+                <p>Static webpage generator for GitHub Pages</p>
                 <p class="view">
-                    <a href="https://github.com/hendraanggrian/pages-gradle-plugin/">View the Project on GitHub <small>hendraanggrian/pages-gradle-plugin</small></a>
+                    <a href="https://github.com/hanggrian/pages-gradle-plugin/">View the Project on GitHub <small>hanggrian/pages-gradle-plugin</small></a>
                 </p>
                 <ul>
                     <li>
@@ -30,43 +30,43 @@
             </header>
             <section>
                 <p>
-                    <a href="https://travis-ci.com/github/hendraanggrian/pages-gradle-plugin/"><img alt="Travis CI" src="https://img.shields.io/travis/com/hendraanggrian/pages-gradle-plugin"></a>
-<a href="https://plugins.gradle.org/plugin/com.hendraanggrian.pages"><img alt="Plugin Portal" src="https://img.shields.io/maven-metadata/v.svg?label=plugin-portal&amp;metadataUrl=https%3A%2F%2Fplugins.gradle.org%2Fm2%2Fcom%2Fhendraanggrian%2Fpages%2Fcom.hendraanggrian.pages.gradle.plugin%2Fmaven-metadata.xml"></a>
-<a href="https://openjdk.java.net/projects/jdk8/"><img alt="OpenJDK" src="https://img.shields.io/badge/jdk-1.8%2B-informational"></a>
+                    <a href="https://app.circleci.com/pipelines/github/hanggrian/pages-gradle-plugin/"><img alt="CircleCI" src="https://img.shields.io/circleci/build/gh/hanggrian/pages-gradle-plugin"></a>
+<a href="https://plugins.gradle.org/plugin/com.hanggrian.pages"><img alt="Plugin Portal" src="https://img.shields.io/gradle-plugin-portal/v/com.hanggrian.pages"></a>
+<a href="https://openjdk.org/projects/jdk/11/"><img alt="OpenJDK" src="https://img.shields.io/badge/jdk-11%2B-informational"></a>
                 </p>
-
+                
                 <h1>Pages Gradle Plugin</h1>
-
+                
                 <p>Static webpages generator for GitHub pages.</p>
-
+                
                 <h2>Download</h2>
-
+                
                 <p>Using plugins DSL:</p>
-
-                <pre><code class="language-groovy">plugins {
-    id('com.hendraanggrian.pages') version "$version"
+                
+                <pre><code class="language-gradle">plugins {
+    id('com.hanggrian.pages') version "$version"
 }
 </code></pre>
-
+                
                 <p>Using legacy plugin application:</p>
-
-                <pre><code class="language-groovy">buildscript {
+                
+                <pre><code class="language-gradle">buildscript {
     repositories {
         gradlePluginPortal()
     }
     dependencies {
-        classpath("com.hendraanggrian:pages-gradle-plugin:$version")
+        classpath("com.hanggrian:pages-gradle-plugin:$version")
     }
 }
 
-apply plugin: 'com.hendraanggrian.pages'
+apply plugin: 'com.hanggrian.pages'
 </code></pre>
-
+                
                 <h2>Usage</h2>
-
+                
                 <p>Configure base extension, then select one of the available themes.</p>
-
-                <pre><code class="language-groovy">pages {
+                
+                <pre><code class="language-gradle">pages {
     // custom local resources
     resources {
         from('images')
@@ -76,47 +76,36 @@ apply plugin: 'com.hendraanggrian.pages'
         index('README.md')
         add('About.md', 'about.html')
     }
-    // enables prism syntax highlighter
-    prism {
-        version = '1.28.0'
-        theme = 'dark'
-        languages = ['java', 'kotlin]
+}
+</code></pre>
+                
+                <h3>
+                    <a href="https://github.com/hanggrian/materialist-theme/">Materialist Theme</a>
+                </h3>
+                
+                <p>
+                    <img alt="Materialist theme preview." src="https://github.com/hanggrian/materialist-theme/raw/assets/preview_main.png">
+                </p>
+                
+                <pre><code class="language-gradle">pages {
+    materialist {
+        darkMode.set(true)
     }
 }
 </code></pre>
-
+                
                 <h3>
-                    <a href="https://github.com/hendraanggrian/minimal-theme/">Minimal Theme</a>
+                    <a href="https://github.com/hanggrian/cayman-dark-theme/">Cayman Theme</a>
                 </h3>
-
+                
                 <p>
-                    <img alt="Minimal theme preview." src="https://github.com/hendraanggrian/minimal-theme/raw/assets/preview_main.png">
+                    <img alt="Cayman theme preview." src="https://github.com/hanggrian/cayman-dark-theme/raw/assets/preview_main.png">
                 </p>
-
-                <pre><code class="language-groovy">pages {
-    minimal {
-        authorName.set('Hendra Anggrian')
-        projectName.set('My Project')
-        projectDescription.set('A very awesome project')
-        markdownFile.set(file('path/to/README.md'))
-        headerButtons {
-            button('Download', 'Sources', 'https://somewhere.com')
-        }
-    }
-}
-</code></pre>
-
-                <h3>
-                    <a href="https://github.com/hendraanggrian/cayman-theme/">Cayman Theme</a>
-                </h3>
-
-                <p>
-                    <img alt="Cayman theme preview." src="https://github.com/hendraanggrian/cayman-theme/raw/assets/preview_main.png">
-                </p>
-
-                <pre><code class="language-groovy">pages {
+                
+                <pre><code class="language-gradle">pages {
     cayman {
-        authorName.set('Hendra Anggrian')
+        darkMode.set(true)
+        authorName.set('John Doe')
         projectName.set('My Project')
         projectDescription.set('A very awesome project')
         markdownFile.set(file('path/to/README.md'))
@@ -126,14 +115,35 @@ apply plugin: 'com.hendraanggrian.pages'
     }
 }
 </code></pre>
-
+                
+                <h3>
+                    <a href="https://github.com/hanggrian/minimal-dark-theme/">Minimal Theme</a>
+                </h3>
+                
+                <p>
+                    <img alt="Minimal theme preview." src="https://github.com/hanggrian/minimal-dark-theme/raw/assets/preview_main.png">
+                </p>
+                
+                <pre><code class="language-gradle">pages {
+    minimal {
+        authorName.set('John Doe')
+        projectName.set('My Project')
+        projectDescription.set('A very awesome project')
+        markdownFile.set(file('path/to/README.md'))
+        headerButtons {
+            button('Download', 'Sources', 'https://somewhere.com')
+        }
+    }
+}
+</code></pre>
+                
             </section>
             <footer>
                 <p>
                     <button class="material-symbols-sharp" id="theme-toggle" onclick="toggleDarkMode()" title="Toggle dark mode"></button>
                 </p>
                 <p>
-                    This project is maintained by <a href="https://github.com/hendraanggrian/">Hendra Anggrian</a>
+                    This project is maintained by <a href="https://github.com/hanggrian/">Hendra Anggrian</a>
                 </p>
                 <small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist/">orderedlist</a></small>
             </footer>

@@ -1,0 +1,91 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.hanggrian.pages.cayman////PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.cayman/index.html
+$dokka.location:com.hanggrian.pages.cayman/CaymanOptions///PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.cayman/-cayman-options/index.html
+$dokka.location:com.hanggrian.pages.cayman/CaymanOptions/colorPrimary/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.cayman/-cayman-options/color-primary.html
+$dokka.location:com.hanggrian.pages.cayman/CaymanOptions/colorSecondary/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.cayman/-cayman-options/color-secondary.html
+$dokka.location:com.hanggrian.pages.cayman/CaymanOptions/colorSecondaryContainer/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.cayman/-cayman-options/color-secondary-container.html
+$dokka.location:com.hanggrian.pages.cayman/CaymanOptions/darkMode/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.cayman/-cayman-options/dark-mode.html
+$dokka.location:com.hanggrian.pages.internal////PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/index.html
+$dokka.location:com.hanggrian.pages.internal/DefaultPagesExtension///PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/-default-pages-extension/index.html
+$dokka.location:com.hanggrian.pages.internal/DefaultPagesExtension/DefaultPagesExtension/#org.gradle.api.Project/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/-default-pages-extension/-default-pages-extension.html
+$dokka.location:com.hanggrian.pages.internal/DefaultPagesExtension/cayman/#org.gradle.api.Action[com.hanggrian.pages.cayman.CaymanOptions]/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/-default-pages-extension/cayman.html
+$dokka.location:com.hanggrian.pages.internal/DefaultPagesExtension/content/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/-default-pages-extension/content.html
+$dokka.location:com.hanggrian.pages.internal/DefaultPagesExtension/dynamicResources/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/-default-pages-extension/dynamic-resources.html
+$dokka.location:com.hanggrian.pages.internal/DefaultPagesExtension/favicon/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/-default-pages-extension/favicon.html
+$dokka.location:com.hanggrian.pages.internal/DefaultPagesExtension/fencedCodeBlockIndent/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/-default-pages-extension/fenced-code-block-indent.html
+$dokka.location:com.hanggrian.pages.internal/DefaultPagesExtension/languageAliases/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/-default-pages-extension/language-aliases.html
+$dokka.location:com.hanggrian.pages.internal/DefaultPagesExtension/materialist/#org.gradle.api.Action[com.hanggrian.pages.materialist.MaterialistOptions]/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/-default-pages-extension/materialist.html
+$dokka.location:com.hanggrian.pages.internal/DefaultPagesExtension/minimal/#org.gradle.api.Action[com.hanggrian.pages.minimal.MinimalOptions]/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/-default-pages-extension/minimal.html
+$dokka.location:com.hanggrian.pages.internal/DefaultPagesExtension/outputDirectory/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/-default-pages-extension/output-directory.html
+$dokka.location:com.hanggrian.pages.internal/DefaultPagesExtension/resources/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/-default-pages-extension/resources.html
+$dokka.location:com.hanggrian.pages.internal/DefaultPagesExtension/scripts/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/-default-pages-extension/scripts.html
+$dokka.location:com.hanggrian.pages.internal/DefaultPagesExtension/staticResources/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/-default-pages-extension/static-resources.html
+$dokka.location:com.hanggrian.pages.internal/DefaultPagesExtension/styles/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/-default-pages-extension/styles.html
+$dokka.location:com.hanggrian.pages.internal/DefaultPagesExtension/webpages/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.internal/-default-pages-extension/webpages.html
+$dokka.location:com.hanggrian.pages.materialist////PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.materialist/index.html
+$dokka.location:com.hanggrian.pages.materialist/MaterialistOptions///PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.materialist/-materialist-options/index.html
+$dokka.location:com.hanggrian.pages.materialist/MaterialistOptions/colorOnPrimary/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.materialist/-materialist-options/color-on-primary.html
+$dokka.location:com.hanggrian.pages.materialist/MaterialistOptions/colorOnSurface/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.materialist/-materialist-options/color-on-surface.html
+$dokka.location:com.hanggrian.pages.materialist/MaterialistOptions/colorOnSurfaceVariant/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.materialist/-materialist-options/color-on-surface-variant.html
+$dokka.location:com.hanggrian.pages.materialist/MaterialistOptions/colorOutline/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.materialist/-materialist-options/color-outline.html
+$dokka.location:com.hanggrian.pages.materialist/MaterialistOptions/colorPrimary/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.materialist/-materialist-options/color-primary.html
+$dokka.location:com.hanggrian.pages.materialist/MaterialistOptions/colorSecondary/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.materialist/-materialist-options/color-secondary.html
+$dokka.location:com.hanggrian.pages.materialist/MaterialistOptions/colorSurface/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.materialist/-materialist-options/color-surface.html
+$dokka.location:com.hanggrian.pages.materialist/MaterialistOptions/colorSurfaceContainer/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.materialist/-materialist-options/color-surface-container.html
+$dokka.location:com.hanggrian.pages.materialist/MaterialistOptions/colorSurfaceContainerHigh/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.materialist/-materialist-options/color-surface-container-high.html
+$dokka.location:com.hanggrian.pages.materialist/MaterialistOptions/colorSurfaceContainerHighest/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.materialist/-materialist-options/color-surface-container-highest.html
+$dokka.location:com.hanggrian.pages.minimal////PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.minimal/index.html
+$dokka.location:com.hanggrian.pages.minimal/MinimalOptions///PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.minimal/-minimal-options/index.html
+$dokka.location:com.hanggrian.pages.minimal/MinimalOptions/colorPrimary/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.minimal/-minimal-options/color-primary.html
+$dokka.location:com.hanggrian.pages.minimal/MinimalOptions/colorPrimaryContainer/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.minimal/-minimal-options/color-primary-container.html
+$dokka.location:com.hanggrian.pages.minimal/MinimalOptions/colorPrimaryContainer2/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages.minimal/-minimal-options/color-primary-container2.html
+$dokka.location:com.hanggrian.pages////PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/index.html
+$dokka.location:com.hanggrian.pages/DeployPagesSpec///PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-deploy-pages-spec/index.html
+$dokka.location:com.hanggrian.pages/DeployPagesSpec/dynamicResources/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-deploy-pages-spec/dynamic-resources.html
+$dokka.location:com.hanggrian.pages/DeployPagesSpec/outputDirectory/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-deploy-pages-spec/output-directory.html
+$dokka.location:com.hanggrian.pages/DeployPagesSpec/staticResources/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-deploy-pages-spec/static-resources.html
+$dokka.location:com.hanggrian.pages/DeployPagesSpec/webpages/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-deploy-pages-spec/webpages.html
+$dokka.location:com.hanggrian.pages/DeployPagesTask///PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-deploy-pages-task/index.html
+$dokka.location:com.hanggrian.pages/DeployPagesTask/DeployPagesTask/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-deploy-pages-task/-deploy-pages-task.html
+$dokka.location:com.hanggrian.pages/DeployPagesTask/deploy/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-deploy-pages-task/deploy.html
+$dokka.location:com.hanggrian.pages/DeployPagesTask/dynamicResources/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-deploy-pages-task/dynamic-resources.html
+$dokka.location:com.hanggrian.pages/DeployPagesTask/fencedCodeBlockIndent/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-deploy-pages-task/fenced-code-block-indent.html
+$dokka.location:com.hanggrian.pages/DeployPagesTask/outputDirectory/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-deploy-pages-task/output-directory.html
+$dokka.location:com.hanggrian.pages/DeployPagesTask/staticResources/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-deploy-pages-task/static-resources.html
+$dokka.location:com.hanggrian.pages/DeployPagesTask/webpages/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-deploy-pages-task/webpages.html
+$dokka.location:com.hanggrian.pages/PageOptions///PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-page-options/index.html
+$dokka.location:com.hanggrian.pages/PageOptions/authorName/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-page-options/author-name.html
+$dokka.location:com.hanggrian.pages/PageOptions/authorUrl/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-page-options/author-url.html
+$dokka.location:com.hanggrian.pages/PageOptions/button/#kotlin.String#kotlin.String/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-page-options/button.html
+$dokka.location:com.hanggrian.pages/PageOptions/isFooterCredit/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-page-options/is-footer-credit.html
+$dokka.location:com.hanggrian.pages/PageOptions/projectDescription/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-page-options/project-description.html
+$dokka.location:com.hanggrian.pages/PageOptions/projectName/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-page-options/project-name.html
+$dokka.location:com.hanggrian.pages/PageOptions/projectUrl/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-page-options/project-url.html
+$dokka.location:com.hanggrian.pages/PagesConfigurationDsl///PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-configuration-dsl/index.html
+$dokka.location:com.hanggrian.pages/PagesExtension///PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-extension/index.html
+$dokka.location:com.hanggrian.pages/PagesExtension/cayman/#org.gradle.api.Action[com.hanggrian.pages.cayman.CaymanOptions]/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-extension/cayman.html
+$dokka.location:com.hanggrian.pages/PagesExtension/content/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-extension/content.html
+$dokka.location:com.hanggrian.pages/PagesExtension/content/#kotlin.String#java.io.File/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-extension/content.html
+$dokka.location:com.hanggrian.pages/PagesExtension/favicon/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-extension/favicon.html
+$dokka.location:com.hanggrian.pages/PagesExtension/languageAliases/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-extension/language-aliases.html
+$dokka.location:com.hanggrian.pages/PagesExtension/materialist/#org.gradle.api.Action[com.hanggrian.pages.materialist.MaterialistOptions]/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-extension/materialist.html
+$dokka.location:com.hanggrian.pages/PagesExtension/minimal/#org.gradle.api.Action[com.hanggrian.pages.minimal.MinimalOptions]/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-extension/minimal.html
+$dokka.location:com.hanggrian.pages/PagesExtension/outputDirectory/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-extension/output-directory.html
+$dokka.location:com.hanggrian.pages/PagesExtension/resources/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-extension/resources.html
+$dokka.location:com.hanggrian.pages/PagesExtension/resources/#org.gradle.api.Action[org.gradle.api.file.CopySpec]/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-extension/resources.html
+$dokka.location:com.hanggrian.pages/PagesExtension/scripts/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-extension/scripts.html
+$dokka.location:com.hanggrian.pages/PagesExtension/styles/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-extension/styles.html
+$dokka.location:com.hanggrian.pages/PagesPlugin.Companion///PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-plugin/-companion/index.html
+$dokka.location:com.hanggrian.pages/PagesPlugin.Companion/GROUP/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-plugin/-companion/-g-r-o-u-p.html
+$dokka.location:com.hanggrian.pages/PagesPlugin.Companion/TASK_DEPLOY_PAGES/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-plugin/-companion/-t-a-s-k_-d-e-p-l-o-y_-p-a-g-e-s.html
+$dokka.location:com.hanggrian.pages/PagesPlugin.Companion/TASK_DEPLOY_RESOURCES/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-plugin/-companion/-t-a-s-k_-d-e-p-l-o-y_-r-e-s-o-u-r-c-e-s.html
+$dokka.location:com.hanggrian.pages/PagesPlugin///PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-plugin/index.html
+$dokka.location:com.hanggrian.pages/PagesPlugin/PagesPlugin/#/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-plugin/-pages-plugin.html
+$dokka.location:com.hanggrian.pages/PagesPlugin/apply/#org.gradle.api.Project/PointingToDeclaration/pages-gradle-plugin/com.hanggrian.pages/-pages-plugin/apply.html
+com.hanggrian.pages
+com.hanggrian.pages.cayman
+com.hanggrian.pages.internal
+com.hanggrian.pages.materialist
+com.hanggrian.pages.minimal
+
