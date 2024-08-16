@@ -1,8 +1,14 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 val developerId: String by project
 val releaseArtifact: String by project
 val releaseGroup: String by project
 val releaseDescription: String by project
 val releaseUrl: String by project
+
+val jdkVersion = JavaLanguageVersion.of(libs.versions.jdk.get())
+val jreVersion = JavaLanguageVersion.of(libs.versions.jre.get())
 
 plugins {
     kotlin("jvm") version libs.versions.kotlin
@@ -12,7 +18,7 @@ plugins {
 }
 
 kotlin {
-    jvmToolchain(libs.versions.jdk.get().toInt())
+    jvmToolchain(jdkVersion.asInt())
     explicitApi()
 }
 
@@ -45,6 +51,16 @@ dependencies {
     testImplementation(libs.truth)
 }
 
-tasks.dokkaHtml {
-    outputDirectory.set(layout.buildDirectory.dir("dokka/dokka/"))
+tasks {
+    withType<JavaCompile> {
+        options.release = jreVersion.asInt()
+    }
+    withType<KotlinCompile> {
+        compilerOptions.jvmTarget
+            .set(JvmTarget.fromTarget(JavaVersion.toVersion(jreVersion).toString()))
+    }
+
+    dokkaHtml {
+        outputDirectory.set(layout.buildDirectory.dir("dokka/dokka/"))
+    }
 }
