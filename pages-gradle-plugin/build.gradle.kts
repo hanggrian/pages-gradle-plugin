@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 val developerId: String by project
 val releaseArtifact: String by project
@@ -52,10 +51,10 @@ dependencies {
 }
 
 tasks {
-    withType<JavaCompile> {
+    compileJava {
         options.release = jreVersion.asInt()
     }
-    withType<KotlinCompile> {
+    compileKotlin {
         compilerOptions.jvmTarget
             .set(JvmTarget.fromTarget(JavaVersion.toVersion(jreVersion).toString()))
     }

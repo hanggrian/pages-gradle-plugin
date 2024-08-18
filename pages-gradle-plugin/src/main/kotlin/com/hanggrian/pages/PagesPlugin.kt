@@ -31,10 +31,10 @@ public open class PagesPlugin : Plugin<Project> {
         project.tasks.register<DeployPagesTask>(TASK_DEPLOY_PAGES) {
             group = GROUP
             description = "Write webpages and their resources."
-            staticResources.set(pages.staticResources)
-            dynamicResources.set(pages.dynamicResources)
-            webpages.set(pages.webpages)
-            outputDirectory.set(pages.outputDirectory)
+            staticResources.convention(pages.staticResources)
+            dynamicResources.convention(pages.dynamicResources)
+            webpages.convention(pages.webpages)
+            outputDirectory.convention(pages.outputDirectory)
             fencedCodeBlockIndent.set(pages.fencedCodeBlockIndent)
             dependsOn(deployResources)
         }

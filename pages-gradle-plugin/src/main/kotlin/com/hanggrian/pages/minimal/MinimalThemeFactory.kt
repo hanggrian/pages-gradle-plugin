@@ -140,6 +140,11 @@ internal class MinimalThemeFactory(
                     options.buttons.isEmpty() -> 0
                     else -> 270 / options.buttons.size - (options.buttons.size * 1)
                 }
+            val miniButtonPct =
+                when {
+                    options.buttons.isEmpty() -> 99
+                    else -> 99 / options.buttons.size
+                }
             return """
                 /* Modification */
 
@@ -498,7 +503,7 @@ internal class MinimalThemeFactory(
                   }
 
                   header li, header ul li + li + li {
-                    width: 33%;
+                    width: $miniButtonPct%;
                   }
 
                   footer button {

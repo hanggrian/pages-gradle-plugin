@@ -1,6 +1,6 @@
 [![CircleCI](https://img.shields.io/circleci/build/gh/hanggrian/pages-gradle-plugin)](https://app.circleci.com/pipelines/github/hanggrian/pages-gradle-plugin/)
 [![Plugin Portal](https://img.shields.io/gradle-plugin-portal/v/com.hanggrian.pages)](https://plugins.gradle.org/plugin/com.hanggrian.pages)
-[![Java](https://img.shields.io/badge/java-8+-informational)](https://www.java.com/en/download/help/java8.html)
+[![Java](https://img.shields.io/badge/java-8+-informational)](https://docs.oracle.com/javase/8/)
 
 # Pages Gradle Plugin
 

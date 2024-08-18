@@ -1,7 +1,7 @@
 buildscript {
     repositories.mavenCentral()
     dependencies {
-        classpath files('../pages-gradle-plugin-0.1.jar')
+        classpath files('../pages-gradle-plugin-0.2.jar')
         classpath libs.kotlinx.html.jvm
         classpath libs.commonmark.ext.gfm.tables
     }

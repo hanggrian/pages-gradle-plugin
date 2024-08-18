@@ -9,7 +9,7 @@ dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
 ktlint = "org.jlleitschuh.gradle.ktlint:12.1.1"
 gradle-publish = "com.gradle.plugin-publish:1.2.1"
 git-publish = "org.ajoberstar.git-publish:4.2.2"
-pages = "com.hanggrian.pages:0.1"
+pages = "com.hanggrian.pages:0.2"
 
 [libraries]
 # lint
