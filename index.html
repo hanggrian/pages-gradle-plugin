@@ -8,7 +8,7 @@
         <meta content="chrome=1" http-equiv="X-UA-Compatible">
         <link href="styles/main.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@48,400,1,0" rel="stylesheet">
-        <link href="styles/prism-tomorrow.min.css" rel="stylesheet">
+        <link href="styles/prism-tomorrow.css" rel="stylesheet">
         <script src="scripts/theme.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-gradle.min.js"></script>
         <!--Primary meta tags-->
         <meta content="pages-gradle-plugin" name="title">
@@ -32,7 +32,7 @@
                 <p>
                     <a href="https://app.circleci.com/pipelines/github/hanggrian/pages-gradle-plugin/"><img alt="CircleCI" src="https://img.shields.io/circleci/build/gh/hanggrian/pages-gradle-plugin"></a>
 <a href="https://plugins.gradle.org/plugin/com.hanggrian.pages"><img alt="Plugin Portal" src="https://img.shields.io/gradle-plugin-portal/v/com.hanggrian.pages"></a>
-<a href="https://openjdk.org/projects/jdk/11/"><img alt="OpenJDK" src="https://img.shields.io/badge/jdk-11%2B-informational"></a>
+<a href="https://docs.oracle.com/javase/8/"><img alt="Java" src="https://img.shields.io/badge/java-8+-informational"></a>
                 </p>
                 
                 <h1>Pages Gradle Plugin</h1>
@@ -109,9 +109,7 @@ apply plugin: 'com.hanggrian.pages'
         projectName.set('My Project')
         projectDescription.set('A very awesome project')
         markdownFile.set(file('path/to/README.md'))
-        headerButtons {
-            button('Download', 'Sources', 'https://somewhere.com')
-        }
+        button('Download', 'Sources', 'https://somewhere.com')
     }
 }
 </code></pre>
@@ -130,9 +128,7 @@ apply plugin: 'com.hanggrian.pages'
         projectName.set('My Project')
         projectDescription.set('A very awesome project')
         markdownFile.set(file('path/to/README.md'))
-        headerButtons {
-            button('Download', 'Sources', 'https://somewhere.com')
-        }
+        button('Download', 'Sources', 'https://somewhere.com')
     }
 }
 </code></pre>
