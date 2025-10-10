@@ -106,12 +106,12 @@ internal class MaterialistThemeFactory(
             if (!isFooterCredit) {
                 return@footer
             }
-            small {
+            p {
                 text("Hosted on GitHub Pages — Theme by ")
                 a(href = "https://github.com/orderedlist/") { text("orderedlist") }
             }
         }
-        script(src = "scripts/scale.fix.js") { }
+        script(src = "scripts/scale.fix.js") {}
     }
 
     val mainCss: String

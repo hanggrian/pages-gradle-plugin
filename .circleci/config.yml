@@ -1,18 +1,21 @@
 version: 2.1
 
+orbs:
+  codecov: codecov/codecov@3
+
 executors:
   linux:
     docker:
       - image: cimg/openjdk:21.0
 
 jobs:
-  unit-test:
+  verification:
     executor: linux
     steps:
       - checkout
-      - run: ./gradlew test
+      - run: ./gradlew check
 
 workflows:
   build:
     jobs:
-      - unit-test
+      - verification

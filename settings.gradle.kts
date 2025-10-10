@@ -8,7 +8,7 @@ rootProject.name = "pages-gradle-plugin"
 
 include("pages-gradle-plugin")
 include("website")
-includeDir("samples")
+// includeDir("samples")
 
 fun includeDir(dir: String) =
     include(

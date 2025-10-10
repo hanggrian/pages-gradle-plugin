@@ -6,18 +6,19 @@ val releaseGroup: String by project
 val releaseDescription: String by project
 val releaseUrl: String by project
 
-val jdkVersion = JavaLanguageVersion.of(libs.versions.jdk.get())
-val jreVersion = JavaLanguageVersion.of(libs.versions.jre.get())
+val javaCompileVersion = JavaLanguageVersion.of(libs.versions.java.compile.get())
+val javaSupportVersion = JavaLanguageVersion.of(libs.versions.java.support.get())
 
 plugins {
     kotlin("jvm") version libs.versions.kotlin
     alias(libs.plugins.dokka)
+    alias(libs.plugins.dokka.javadoc)
     alias(libs.plugins.ktlint)
     alias(libs.plugins.gradle.publish)
 }
 
 kotlin {
-    jvmToolchain(jdkVersion.asInt())
+    jvmToolchain(javaCompileVersion.asInt())
     explicitApi()
 }
 
@@ -47,19 +48,15 @@ dependencies {
 
     testImplementation(gradleTestKit())
     testImplementation(kotlin("test-junit", libs.versions.kotlin.get()))
-    testImplementation(libs.truth)
+    testImplementation(libs.bundles.junit4)
 }
 
 tasks {
     compileJava {
-        options.release = jreVersion.asInt()
+        options.release = javaSupportVersion.asInt()
     }
     compileKotlin {
         compilerOptions.jvmTarget
-            .set(JvmTarget.fromTarget(JavaVersion.toVersion(jreVersion).toString()))
-    }
-
-    dokkaHtml {
-        outputDirectory.set(layout.buildDirectory.dir("dokka/dokka/"))
+            .set(JvmTarget.fromTarget(JavaVersion.toVersion(javaSupportVersion).toString()))
     }
 }
