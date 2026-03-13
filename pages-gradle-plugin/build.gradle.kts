@@ -1,3 +1,4 @@
+import org.gradle.plugin.compatibility.compatibility
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 val developerId: String by project
@@ -7,23 +8,30 @@ val releaseDescription: String by project
 val releaseUrl: String by project
 
 val javaCompileVersion = JavaLanguageVersion.of(libs.versions.java.compile.get())
-val javaSupportVersion = JavaLanguageVersion.of(libs.versions.java.support.get())
+val javaSupportVersion = JavaVersion.toVersion(libs.versions.java.support.get())
 
 plugins {
     kotlin("jvm") version libs.versions.kotlin
     alias(libs.plugins.dokka)
     alias(libs.plugins.dokka.javadoc)
-    alias(libs.plugins.ktlint)
     alias(libs.plugins.gradle.publish)
 }
 
+java {
+    toolchain.languageVersion.set(javaCompileVersion)
+    sourceCompatibility = javaSupportVersion
+    targetCompatibility = javaSupportVersion
+}
+
 kotlin {
-    jvmToolchain(javaCompileVersion.asInt())
+    compilerOptions.jvmTarget.set(JvmTarget.fromTarget(javaSupportVersion.toString()))
+    jvmToolchain {
+        languageVersion.set(javaCompileVersion)
+    }
     explicitApi()
 }
 
-ktlint.version.set(libs.versions.ktlint.get())
-
+@Suppress("UnstableApiUsage")
 gradlePlugin {
     website.set(releaseUrl)
     vcsUrl.set("https://github.com/$developerId/$releaseArtifact.git")
@@ -33,13 +41,14 @@ gradlePlugin {
         displayName = "Pages Plugin"
         description = releaseDescription
         tags.set(listOf("website", "github-pages"))
+        compatibility {
+            features.configurationCache = true
+        }
     }
     testSourceSets(sourceSets.test.get())
 }
 
 dependencies {
-    ktlintRuleset(libs.rulebook.ktlint)
-
     compileOnly(kotlin("gradle-plugin-api"))
 
     implementation(gradleKotlinDsl())
@@ -51,12 +60,9 @@ dependencies {
     testImplementation(libs.bundles.junit4)
 }
 
-tasks {
-    compileJava {
-        options.release = javaSupportVersion.asInt()
-    }
-    compileKotlin {
-        compilerOptions.jvmTarget
-            .set(JvmTarget.fromTarget(JavaVersion.toVersion(javaSupportVersion).toString()))
-    }
+tasks.register<Copy>("deployPlugin") {
+    dependsOn("build")
+    from(layout.buildDirectory.file("libs/$releaseArtifact-${project.version}.jar"))
+    into(rootProject.layout.projectDirectory)
+    rename("(.+)-$version\\.jar", "$1-SNAPSHOT.jar")
 }

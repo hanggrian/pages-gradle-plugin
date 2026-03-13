@@ -4,7 +4,7 @@ import com.hanggrian.pages.PageOptions
 import com.hanggrian.pages.PagesConfigurationDsl
 
 /**
- * Theme configuration for [minimal-dark-theme](https://github.com/hanggrian/minimal-dark-theme/).
+ * Theme config for [minimal-dark-theme](https://github.com/hanggrian/minimal-dark-theme/).
  */
 @PagesConfigurationDsl
 public interface MinimalOptions : PageOptions {

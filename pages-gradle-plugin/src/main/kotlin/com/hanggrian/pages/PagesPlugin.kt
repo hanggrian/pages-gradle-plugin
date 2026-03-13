@@ -33,8 +33,8 @@ public open class PagesPlugin : Plugin<Project> {
             description = "Write webpages and their resources."
             staticResources.convention(pages.staticResources)
             dynamicResources.convention(pages.dynamicResources)
-            webpages.convention(pages.webpages)
             outputDirectory.convention(pages.outputDirectory)
+            webpages.set(pages.webpages)
             fencedCodeBlockIndent.set(pages.fencedCodeBlockIndent)
             dependsOn(deployResources)
         }

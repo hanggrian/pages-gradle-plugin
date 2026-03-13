@@ -39,7 +39,7 @@ internal class CaymanThemeFactory(
             styles.get().forEach { link(rel = "stylesheet", href = it) }
         }
         if (scripts.isPresent) {
-            scripts.get().forEach { script(src = it) { } }
+            scripts.get().forEach { script(src = it) {} }
         }
 
         comment("Primary meta tags")

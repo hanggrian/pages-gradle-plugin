@@ -1,0 +1,57 @@
+buildscript {
+    repositories.mavenCentral()
+    dependencies {
+        classpath files("../pages-gradle-plugin-SNAPSHOT.jar")
+        classpath libs.kotlinx.html.jvm
+        classpath libs.commonmark.ext.gfm.tables
+    }
+}
+
+plugins {
+    alias libs.plugins.dokka
+    alias libs.plugins.git.publish
+}
+
+apply plugin: 'com.hanggrian.pages'
+
+var developerId = project.property('developerId')
+var developerName = project.property('developerName')
+var developerUrl = project.property('developerUrl')
+var releaseArtifact = project.property('releaseArtifact')
+var releaseDescription = project.property('releaseDescription')
+var releaseUrl = project.property('releaseUrl')
+
+pages {
+    resources.from 'src', layout.buildDirectory.dir('dokka')
+    styles.add 'styles/prism-tomorrow.css'
+    scripts.addAll(
+        'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-gradle.min.js'
+    )
+    minimal {
+        authorName = developerName
+        authorUrl = developerUrl
+        projectName = releaseArtifact
+        projectDescription = releaseDescription
+        projectUrl = releaseUrl
+        button 'View\nDocumentation', 'dokka'
+    }
+}
+
+dokka.dokkaPublications.html {
+    outputDirectory = layout.buildDirectory.dir('dokka/dokka/')
+}
+
+dependencies {
+    dokka project(":$releaseArtifact")
+}
+
+gitPublish {
+    repoUri = "git@github.com:$developerId/${releaseArtifact}.git"
+    branch = 'gh-pages'
+    contents.from pages.outputDirectory
+}
+
+tasks.deployResources {
+    dependsOn tasks.dokkaGenerate
+}

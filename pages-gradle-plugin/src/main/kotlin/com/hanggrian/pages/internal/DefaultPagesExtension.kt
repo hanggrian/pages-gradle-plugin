@@ -27,7 +27,6 @@ import org.gradle.kotlin.dsl.listProperty
 import org.gradle.kotlin.dsl.mapProperty
 import org.gradle.kotlin.dsl.property
 import org.gradle.kotlin.dsl.setProperty
-import org.w3c.dom.Document
 import java.io.File
 
 public open class DefaultPagesExtension(private val project: Project) :
@@ -36,57 +35,62 @@ public open class DefaultPagesExtension(private val project: Project) :
     final override val resources: CopySpec = project.copySpec()
 
     final override val content: MapProperty<String, File> =
-        project.objects
+        project
+            .objects
             .mapProperty<String, File>()
             .convention(emptyMap())
 
     final override var favicon: Property<String> =
-        project.objects
+        project
+            .objects
             .property()
 
     final override val styles: ListProperty<String> =
-        project.objects
+        project
+            .objects
             .listProperty<String>()
             .convention(emptyList())
 
     final override val scripts: ListProperty<String> =
-        project.objects
+        project
+            .objects
             .listProperty<String>()
             .convention(emptyList())
 
     final override val languageAliases: MapProperty<String, String> =
-        project.objects
+        project
+            .objects
             .mapProperty<String, String>()
             .convention(emptyMap())
 
     final override val outputDirectory: DirectoryProperty =
-        project.objects
+        project
+            .objects
             .directoryProperty()
             .convention(project.layout.buildDirectory.dir("pages"))
 
     final override val staticResources: SetProperty<String> =
-        project.objects
+        project
+            .objects
             .setProperty<String>()
             .convention(emptySet())
 
     final override val dynamicResources: MapProperty<String, String> =
-        project.objects
+        project
+            .objects
             .mapProperty<String, String>()
             .convention(emptyMap())
 
-    final override val webpages: MapProperty<String, Document> =
-        project.objects
-            .mapProperty<String, Document>()
-            .convention(emptyMap())
+    final override val webpages: MapProperty<String, String> =
+        project
+            .objects
+            .mapProperty<String, String>()
+            .value(emptyMap())
 
-    public val fencedCodeBlockIndent: Property<Int> =
-        project.objects
+    final override val fencedCodeBlockIndent: Property<Int> =
+        project
+            .objects
             .property<Int>()
-            .convention(0)
-
-    private val extensions = listOf(TablesExtension.create())
-    private val htmlRenderer = HtmlRenderer.builder().extensions(extensions).build()
-    private val parser = Parser.builder().extensions(extensions).build()
 
     final override fun minimal(action: Action<in MinimalOptions>) {
         searchReadme()
@@ -123,6 +127,7 @@ public open class DefaultPagesExtension(private val project: Project) :
         val options = MaterialistOptionsImpl(project.name).also { action(it) }
         val pages = MaterialistThemeFactory(this, options)
 
+        staticResources.add("materialist/scripts/scale.fix.js")
         dynamicResources.put("styles/main.css", pages.mainCss)
         content.get().forEach { (htmlName, markdownFile) ->
             webpages.put(htmlName, pages.getDocument(markdownFile.readRaw()))
@@ -155,5 +160,13 @@ public open class DefaultPagesExtension(private val project: Project) :
         return false
     }
 
-    private fun File.readRaw() = htmlRenderer.render(parser.parse(readText()))
+    private fun File.readRaw(): String {
+        val extensions = listOf(TablesExtension.create())
+        val parser = Parser.builder().extensions(extensions).build()
+        return HtmlRenderer
+            .builder()
+            .extensions(extensions)
+            .build()
+            .render(parser.parse(readText()))
+    }
 }

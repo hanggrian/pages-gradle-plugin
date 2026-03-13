@@ -40,7 +40,7 @@ internal class MaterialistThemeFactory(
             link(rel = "stylesheet", href = it)
         }
         scripts.orNull?.forEach {
-            script(src = it) { }
+            script(src = it) {}
         }
 
         comment("Primary meta tags")
@@ -67,6 +67,7 @@ internal class MaterialistThemeFactory(
                                             .reversed()
                                     small { text("${parts[1]}/${parts[0]}") }
                                 }
+
                                 else -> text("View the Project")
                             }
                         }

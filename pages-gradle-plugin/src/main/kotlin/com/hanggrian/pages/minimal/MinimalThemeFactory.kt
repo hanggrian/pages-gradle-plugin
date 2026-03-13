@@ -49,9 +49,9 @@ internal class MinimalThemeFactory(
         styles.orNull?.forEach {
             link(rel = "stylesheet", href = it)
         }
-        script(src = "scripts/theme.js") { }
+        script(src = "scripts/theme.js") {}
         scripts.orNull?.forEach {
-            script(src = it) { }
+            script(src = it) {}
         }
 
         comment("Primary meta tags")
@@ -78,6 +78,7 @@ internal class MinimalThemeFactory(
                                             .reversed()
                                     small { text("${parts[1]}/${parts[0]}") }
                                 }
+
                                 else -> text("View the Project")
                             }
                         }
@@ -130,7 +131,7 @@ internal class MinimalThemeFactory(
                 }
             }
         }
-        script(src = "scripts/scale.fix.js") { }
+        script(src = "scripts/scale.fix.js") {}
     }
 
     val mainCss: String

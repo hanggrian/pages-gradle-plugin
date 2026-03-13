@@ -9,60 +9,45 @@ import org.gradle.api.tasks.Input
 import org.gradle.api.tasks.Internal
 import org.gradle.api.tasks.OutputDirectory
 import org.gradle.api.tasks.TaskAction
-import org.gradle.kotlin.dsl.mapProperty
-import org.gradle.kotlin.dsl.property
-import org.gradle.kotlin.dsl.setProperty
-import org.w3c.dom.Document
+import org.gradle.work.DisableCachingByDefault
 import java.io.File
-import java.io.FileWriter
 import java.nio.file.Files
 import java.nio.file.StandardCopyOption
-import javax.xml.transform.TransformerFactory
-import javax.xml.transform.dom.DOMSource
-import javax.xml.transform.stream.StreamResult
 
 /** Task to run when `deployPages` command is executed. */
-public open class DeployPagesTask :
+@DisableCachingByDefault
+public abstract class DeployPagesTask :
     DefaultTask(),
     DeployPagesSpec {
-    @Input
-    final override val staticResources: SetProperty<String> =
-        project.objects
-            .setProperty()
+    @get:Input
+    abstract override val staticResources: SetProperty<String>
 
-    @Input
-    final override val dynamicResources: MapProperty<String, String> =
-        project.objects
-            .mapProperty()
+    @get:Input
+    abstract override val dynamicResources: MapProperty<String, String>
 
-    @Input
-    final override val webpages: MapProperty<String, Document> =
-        project.objects
-            .mapProperty()
+    @get:OutputDirectory
+    abstract override val outputDirectory: DirectoryProperty
 
-    @OutputDirectory
-    final override val outputDirectory: DirectoryProperty =
-        project.objects
-            .directoryProperty()
+    @get:Internal
+    abstract override val webpages: MapProperty<String, String>
 
-    @Internal
-    public val fencedCodeBlockIndent: Property<Int> =
-        project.objects
-            .property()
-
-    private val transformer = TransformerFactory.newInstance().newTransformer()
+    @get:Internal
+    abstract override val fencedCodeBlockIndent: Property<Int>
 
     @TaskAction
     public fun deploy() {
+        val staticResourcesContent = staticResources.get()
+        val dynamicResourcesContent = dynamicResources.get()
+        val webpagesContent = webpages.get()
         check(
-            staticResources.get().isNotEmpty() ||
-                dynamicResources.get().isNotEmpty() ||
-                webpages.get().isNotEmpty(),
+            staticResourcesContent.isNotEmpty() ||
+                dynamicResourcesContent.isNotEmpty() ||
+                webpagesContent.isNotEmpty(),
         ) { "Nothing to write." }
         val outputDir = outputDirectory.asFile.get()
 
         logger.info("Copying resources:")
-        staticResources.get().forEach { filepath ->
+        staticResourcesContent.forEach { filepath ->
             val filepathWithoutRoot = filepath.substringAfter('/')
             logger.info("  - $filepathWithoutRoot")
             val targetFile = outputDir.resolve(filepathWithoutRoot)
@@ -75,7 +60,7 @@ public open class DeployPagesTask :
         }
 
         logger.info("Writing resources:")
-        dynamicResources.get().forEach { (filepath, content) ->
+        dynamicResourcesContent.forEach { (filepath, content) ->
             logger.info("  - $filepath")
             val targetDir = outputDir.resolve(filepath.substringBefore('/'))
             targetDir.prepare()
@@ -83,18 +68,16 @@ public open class DeployPagesTask :
         }
 
         logger.info("Writing pages:")
-        webpages.get().forEach { (filename, document) ->
+        webpagesContent.forEach { (filename, content) ->
             logger.info("  - $filename")
-            val file = outputDir.resolve(filename)
-            transformer.transform(DOMSource(document), StreamResult(FileWriter(file)))
-            file.writeText(
+            outputDir.resolve(filename).writeText(
                 buildString {
                     appendLine("<!doctype html>")
+                    var text = content
                     if (fencedCodeBlockIndent.isPresent) {
-                        append(file.readText().fixFencedCodeBlock(fencedCodeBlockIndent.get()))
-                    } else {
-                        append(file.readText())
+                        text = text.fixFencedCodeBlock(fencedCodeBlockIndent.get())
                     }
+                    append(text)
                 },
             )
         }

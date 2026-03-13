@@ -1,21 +1,32 @@
 version: 2.1
 
 orbs:
-  codecov: codecov/codecov@3
+  gradle: circleci/gradle@4.1.0
 
 executors:
-  linux:
+  openjdk:
     docker:
       - image: cimg/openjdk:21.0
+  renovate:
+    docker:
+      - image: renovate/renovate:latest
 
 jobs:
-  verification:
-    executor: linux
+  run-lint:
+    executor: openjdk
     steps:
       - checkout
-      - run: ./gradlew check
+      - gradle/with_cache:
+          deps_checksum_file: build.gradle.kts
+          steps:
+            - run: ./gradlew check
+  activate-renovatebot:
+    executor: renovate
+    steps:
+      - run: renovate
 
 workflows:
-  build:
+  code-analysis:
     jobs:
-      - verification
+      - run-lint
+      - activate-renovatebot
