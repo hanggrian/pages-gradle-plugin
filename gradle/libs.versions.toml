@@ -2,7 +2,7 @@
 java-compile = "21"
 java-support = "8"
 kotlin = "2.3.10"
-dokka = "2.1.0"
+dokka = "2.2.0"
 ktlint = "1.8.0"
 
 [plugins]
